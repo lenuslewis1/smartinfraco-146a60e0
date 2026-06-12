@@ -1,5 +1,4 @@
 import { ReactNode } from "react";
-import GridBackdrop from "@/components/ui-system/GridBackdrop";
 import Eyebrow from "@/components/ui-system/Eyebrow";
 import MagneticButton from "@/components/ui-system/MagneticButton";
 import { Reveal } from "@/components/ui-system/RevealOnScroll";
@@ -24,23 +23,23 @@ export default function CtaBand({
   secondaryTo,
 }: CtaBandProps) {
   return (
-    <section className="relative overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-aurora" />
-      <GridBackdrop variant="lines" className="opacity-40" />
-      <div className="relative container-wide section-padding-sm text-center">
+    <section className="bg-white py-24 lg:py-32">
+      <div className="container-wide">
         <Reveal>
-          <Eyebrow tone="accent">{eyebrow}</Eyebrow>
-          <h2 className="font-display mt-5 text-display-xl text-primary-foreground max-w-3xl mx-auto">
-            {title}
-          </h2>
-          {description && (
-            <p className="mt-6 text-lg text-primary-foreground/80 max-w-xl mx-auto">{description}</p>
-          )}
-          <div className="mt-10 flex justify-center gap-4 flex-wrap">
-            <MagneticButton to={primaryTo} variant="accent">{primaryLabel}</MagneticButton>
-            {secondaryLabel && secondaryTo && (
-              <MagneticButton to={secondaryTo} variant="ghost">{secondaryLabel}</MagneticButton>
+          <div className="rounded-[24px] bg-secondary p-8 text-white lg:p-16">
+            <Eyebrow tone="accent">{eyebrow}</Eyebrow>
+            <h2 className="mt-6 max-w-4xl font-display text-display-xl font-medium text-white">
+              {title}
+            </h2>
+            {description && (
+              <p className="mt-6 max-w-2xl text-base leading-7 text-white/75 lg:text-lg">{description}</p>
             )}
+            <div className="mt-10 flex flex-wrap gap-4">
+              <MagneticButton to={primaryTo} variant="primary">{primaryLabel}</MagneticButton>
+              {secondaryLabel && secondaryTo && (
+                <MagneticButton to={secondaryTo} variant="ghost">{secondaryLabel}</MagneticButton>
+              )}
+            </div>
           </div>
         </Reveal>
       </div>

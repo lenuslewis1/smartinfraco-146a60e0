@@ -30,7 +30,7 @@ const services = [
   {
     icon: Cable,
     title: "Dark Fibre",
-    description: "Go unlimited. Stay future-proof. Dark Fibre is a high-capacity network solution for businesses who need unrestricted bandwidth, complete service control and total reliability. We have fibre networking solutions for customers across a wide variety of industries, delivered through our nationwide fibre footprint.",
+    description: "Go unlimited. Stay future-proof. Dark Fibre is a high-capacity network solution for businesses who need unrestricted bandwidth, complete service control and total reliability. We have fibre networking solutions for customers across a wide variety of sectors, delivered through our nationwide fibre footprint.",
     features: ["Design your own network", "Secure traffic with private physical infrastructure", "Scale without additional cost"],
   },
   {
@@ -52,7 +52,7 @@ const highlights: [string, string][] = [
   ["Tier III Design Standard", "Designed with uptime tier III design standards with resilience across all critical infrastructures"],
   ["N+1 Cooling", "Independent dual power distribution, N+1 cooling infrastructure, state-of-art fire detection and suppression"],
   ["Earthquake-Resistant", "1-metre elevated earthquake-resistant building design, built for different seismic zones"],
-  ["Industry-Leading Reliability", "Redundant systems (N+1 and 2(N+1)) with the latest technologies for industry-leading reliability"],
+  ["Operational Reliability", "Redundant systems (N+1 and 2(N+1)) with the latest technologies for high operational reliability"],
   ["All Telecom Carriers", "Including all telecommunication carriers in Ghana, ISPs, direct connection to all 5 undersea cables"],
 ];
 

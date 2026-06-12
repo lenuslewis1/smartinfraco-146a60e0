@@ -65,13 +65,13 @@ export default function MagneticButton({
       onMouseLeave={onLeave}
       style={{ x: sx, y: sy }}
       className={cn(
-        "group inline-flex items-center gap-3 pl-7 pr-2 py-2 text-sm font-semibold tracking-tight transition-all rounded-full select-none cursor-pointer disabled:opacity-50",
+        "group inline-flex min-h-12 items-center gap-3 pl-7 pr-2 py-2 font-mono text-sm font-medium tracking-tight transition-all rounded-full select-none cursor-pointer disabled:opacity-50",
         !icon && "pr-7",
         surface,
         className
       )}
     >
-      <span className="uppercase tracking-[0.12em]">{children}</span>
+      <span className="uppercase tracking-[0.08em]">{children}</span>
       {icon && (
         <span className={cn("flex items-center justify-center w-9 h-9 rounded-full transition-transform duration-500 ease-out group-hover:rotate-45", bubble)}>
           <ArrowUpRight className="w-4 h-4" />

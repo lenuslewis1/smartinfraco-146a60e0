@@ -8,7 +8,7 @@ import GlassCard from "@/components/ui-system/GlassCard";
 import { Reveal } from "@/components/ui-system/RevealOnScroll";
 import { motion } from "framer-motion";
 import { useToast } from "@/hooks/use-toast";
-import contactHero from "@/assets/contact-hero.jpg";
+import contactHero from "@/assets/contact-header-building.jpg";
 
 const inputClass =
   "w-full bg-transparent border-0 border-b border-hairline text-foreground text-sm py-3 placeholder:text-muted-foreground/60 focus:outline-none focus:border-secondary transition-colors";
@@ -41,8 +41,8 @@ export default function ContactPage() {
 
   const contactRows = [
     { icon: Mail,  label: "Email",   value: "info@smartinfraco.com",      href: "mailto:info@smartinfraco.com" },
-    { icon: Phone, label: "Phone",   value: "+233 (0) 30 000 0000",        href: "tel:+233300000000" },
-    { icon: MapPin,label: "Address", value: "Smart Infraco HQ, Accra, Ghana", href: undefined },
+    { icon: Phone, label: "Phone",   value: "030 277 1425",                href: "tel:+233302771425" },
+    { icon: MapPin,label: "Address", value: "HR9F+XM6, 2nd Soula Street, Accra", href: undefined },
   ];
 
   return (

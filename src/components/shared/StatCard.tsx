@@ -9,14 +9,14 @@ interface StatCardProps {
 export default function StatCard({ value, label, index = 0 }: StatCardProps) {
   return (
     <motion.div
-      initial={{ opacity: 0, scale: 0.9 }}
-      whileInView={{ opacity: 1, scale: 1 }}
+      initial={{ opacity: 0, y: 16 }}
+      whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
-      transition={{ duration: 0.4, delay: index * 0.1 }}
-      className="text-center"
+      transition={{ duration: 0.45, delay: index * 0.08 }}
+      className="rounded-[24px] bg-primary p-6 text-primary-foreground"
     >
-      <div className="text-4xl lg:text-5xl font-bold text-gradient mb-2">{value}</div>
-      <div className="text-sm text-dark-foreground/70">{label}</div>
+      <div className="font-display text-5xl font-medium tabular-nums">{value}</div>
+      <div className="mt-8 font-mono text-xs uppercase tracking-[0.18em] opacity-70">{label}</div>
     </motion.div>
   );
 }

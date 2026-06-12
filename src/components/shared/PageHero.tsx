@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import Eyebrow from "@/components/ui-system/Eyebrow";
+import MagneticButton from "@/components/ui-system/MagneticButton";
 import heroSky from "@/assets/hero-sky.jpg";
 
 interface PageHeroProps {
@@ -13,32 +14,40 @@ const ease = [0.22, 1, 0.36, 1] as const;
 
 export default function PageHero({ title, description, bgImage, eyebrow }: PageHeroProps) {
   return (
-    <section className="relative overflow-hidden pt-32 lg:pt-40 pb-24 lg:pb-32">
+    <section className="relative min-h-[78vh] overflow-hidden bg-secondary text-white">
       <img
         src={bgImage || heroSky}
         alt=""
-        className="absolute inset-0 w-full h-full object-cover"
-        loading="lazy"
+        className="absolute inset-0 h-full w-full object-cover"
+        loading="eager"
       />
-      {bgImage && <div className="absolute inset-0 bg-gradient-to-b from-secondary/60 via-secondary/40 to-background/30" />}
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent to-background/30" />
+      <div className="absolute inset-0 bg-black/25" />
+      <div className="absolute inset-0 bg-gradient-to-r from-secondary/90 via-secondary/60 to-secondary/10" />
+      <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-white via-white/20 to-transparent" />
 
-      <div className="relative container-wide text-center">
+      <div className="relative flex min-h-[78vh] items-center px-5 pb-20 pt-32 lg:px-10 lg:pt-40">
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, ease }}
-          className="max-w-3xl mx-auto"
+          transition={{ duration: 0.75, ease }}
+          className="mx-auto w-full max-w-6xl"
         >
-          {eyebrow && <Eyebrow tone="accent">{eyebrow}</Eyebrow>}
-          <h1 className="font-display mt-5 text-display-xl text-white">
-            {title}
-          </h1>
-          <p className="mt-6 text-base lg:text-lg text-white/85 leading-relaxed max-w-2xl mx-auto">
-            {description}
-          </p>
+          <div className="max-w-4xl">
+            {eyebrow && <Eyebrow tone="accent">{eyebrow}</Eyebrow>}
+            <h1 className="mt-6 font-display text-[clamp(3rem,6vw,6rem)] font-medium leading-[0.98] tracking-[-0.02em] text-white">
+              {title}
+            </h1>
+            <p className="mt-7 max-w-2xl text-base leading-7 text-white/85 lg:text-lg">
+              {description}
+            </p>
+            <div className="mt-9 flex flex-wrap gap-4">
+              <MagneticButton to="/contact" variant="primary">Start a conversation</MagneticButton>
+              <MagneticButton to="/connectivity" variant="dark">View solutions</MagneticButton>
+            </div>
+          </div>
         </motion.div>
       </div>
     </section>
   );
 }
+

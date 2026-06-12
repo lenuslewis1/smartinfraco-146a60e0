@@ -6,7 +6,7 @@ import GridBackdrop from "@/components/ui-system/GridBackdrop";
 import { Reveal, RevealGroup, RevealItem } from "@/components/ui-system/RevealOnScroll";
 
 const articles = [
-  { id: 1, category: "Industry Insight", title: "The future of digital infrastructure in West Africa", read: "5 min read", excerpt: "An in-depth look at how fibre connectivity and cloud services are transforming businesses across the region.", author: "Smart Infraco Editorial" },
+  { id: 1, category: "Infrastructure Insight", title: "The future of digital infrastructure in West Africa", read: "5 min read", excerpt: "An in-depth look at how fibre connectivity and cloud services are transforming businesses across the region.", author: "Smart Infraco Editorial" },
   { id: 2, category: "Sovereign Cloud", title: "Why data sovereignty matters for African enterprises",   read: "7 min read", excerpt: "How keeping workloads in-country unlocks regulatory clarity, lower latency and stronger resilience.",      author: "Cloud Architecture Team" },
   { id: 3, category: "Connectivity",    title: "From backbone to last mile: anatomy of a national network", read: "6 min read", excerpt: "What it takes to design, light and operate a 1,010 km national fibre backbone.",                              author: "Network Engineering" },
   { id: 4, category: "Cybersecurity",   title: "Building a SOC for the African continent",                read: "8 min read", excerpt: "A blueprint for 24/7 detection and response operations tuned to local threat profiles.",                  author: "Security Operations" },

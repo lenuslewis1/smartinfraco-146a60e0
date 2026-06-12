@@ -7,7 +7,7 @@ import { Reveal, RevealGroup, RevealItem } from "@/components/ui-system/RevealOn
 
 const posts = [
   { id: 1, category: "Network", date: "March 11, 2026", title: "Smart Infraco completes Eastern Corridor capacity upgrade", excerpt: "A milestone moment as backbone capacity is upgraded across the Eastern fibre corridor — unlocking new bandwidth for government and enterprise customers." },
-  { id: 2, category: "Cloud",   date: "March 12, 2026", title: "New sovereign cloud region goes live in Accra",                excerpt: "The expansion strengthens local data residency for regulated industries — banking, government and healthcare." },
+  { id: 2, category: "Cloud",   date: "March 12, 2026", title: "New sovereign cloud region goes live in Accra",                excerpt: "The expansion strengthens local data residency for regulated sectors — banking, government and healthcare." },
   { id: 3, category: "Partnerships", date: "March 13, 2026", title: "Smart Infraco signs strategic partnership with Tier-1 carrier", excerpt: "Direct interconnect deepens international reach via the South Atlantic submarine cable system." },
   { id: 4, category: "Security",     date: "March 14, 2026", title: "SOC team launches 24/7 proactive threat-hunting service",     excerpt: "A new managed cybersecurity offering combines analytics, response and continuous threat intelligence." },
   { id: 5, category: "Network",      date: "March 15, 2026", title: "Metro-fibre coverage expands across Accra & Tema",            excerpt: "More dual-path metro rings are lit, taking last-mile reach into key business districts." },

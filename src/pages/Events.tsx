@@ -9,7 +9,7 @@ const events = [
   { title: "AfricaCom 2026",            date: "May 14–16, 2026",     location: "Cape Town, South Africa", tag: "Conference", featured: true,  blurb: "Smart Infraco joins Africa's largest telecoms gathering as a featured infrastructure partner — meet the team at booth A12." },
   { title: "Ghana Digital Summit",       date: "June 8–9, 2026",      location: "Accra, Ghana",            tag: "Summit",     featured: false, blurb: "Sponsoring the keynote stage on sovereign cloud and AI infrastructure for the public sector." },
   { title: "West Africa Tech Week",      date: "July 20–22, 2026",    location: "Lagos, Nigeria",          tag: "Tech Week",  featured: false, blurb: "Workshop track on building resilient interconnect across West African markets." },
-  { title: "Cloud Africa Conference",    date: "September 5, 2026",   location: "Nairobi, Kenya",          tag: "Conference", featured: false, blurb: "Panel session: Sovereign cloud strategy for regulated industries across the continent." },
+  { title: "Cloud Africa Conference",    date: "September 5, 2026",   location: "Nairobi, Kenya",          tag: "Conference", featured: false, blurb: "Panel session: Sovereign cloud strategy for regulated sectors across the continent." },
 ];
 
 const monthOf = (d: string) => d.split(" ")[0].slice(0, 3).toUpperCase();

@@ -1,144 +1,204 @@
+import { useEffect, useMemo, useState } from "react";
 import { Link } from "react-router-dom";
-import { motion, useScroll, useTransform } from "framer-motion";
-import { useRef } from "react";
+import { motion } from "framer-motion";
 import {
-  Network, Server, Cloud, Shield, Globe, Zap, Activity,
-  Building2, Landmark, Wifi, HardDrive, MonitorCheck, Smartphone,
-  Sparkles, TrendingUp, Check, Quote, ArrowRight, ArrowUpRight, Star,
+  ArrowRight,
+  ArrowUpRight,
+  BarChart3,
+  Building2,
+  Check,
+  Cloud,
+  FileText,
+  Globe,
+  Landmark,
+  Network,
+  Quote,
+  Server,
+  Shield,
+  ShieldCheck,
+  Smartphone,
+  Star,
+  Wifi,
+  Zap,
+  TrendingUp,
 } from "lucide-react";
 import Layout from "@/components/layout/Layout";
 import Eyebrow from "@/components/ui-system/Eyebrow";
 import AnimatedCounter from "@/components/ui-system/AnimatedCounter";
 import MagneticButton from "@/components/ui-system/MagneticButton";
 import { Reveal, RevealGroup, RevealItem } from "@/components/ui-system/RevealOnScroll";
-import heroSky from "@/assets/hero-datacenter.jpg";
-import ctaSky from "@/assets/cta-sky.jpg";
-import svcNetwork from "@/assets/service-network.jpg";
-import svcInternet from "@/assets/service-internet.jpg";
-import svcDatacenter from "@/assets/service-datacenter.jpg";
+import heroSmartInfraco from "@/assets/hero-smart-infraco.png";
+import ctaInfrastructure from "@/assets/cta-infrastructure.png";
 import svcCloud from "@/assets/service-cloud.jpg";
 import svcStorage from "@/assets/service-storage.jpg";
 import svcManaged from "@/assets/service-managed.jpg";
-import whySingleWindow from "@/assets/why-single-window.jpg";
-import whyReliability from "@/assets/why-reliability.jpg";
-import whyScale from "@/assets/why-scale.jpg";
-import whyEnterprise from "@/assets/why-enterprise.jpg";
+import serviceConnectivityCustom from "@/assets/service-connectivity-custom.jpg";
+import serviceDataCenterCustom from "@/assets/service-data-center-custom.jpg";
+import serviceCloudCustom from "@/assets/service-cloud-custom.jpg";
+import serviceCyberCustom from "@/assets/service-cyber-custom.jpg";
+import featureSingleWindow from "@/assets/feature-single-window.png";
+import featureReliabilitySecurity from "@/assets/feature-reliability-security.jpg";
+import featureNationalReach from "@/assets/feature-national-reach.jpg";
+import featureEnterpriseSupport from "@/assets/feature-enterprise-support.jpg";
+import industriesBackground from "@/assets/industries-background.jpg";
 import testimonial1 from "@/assets/testimonial-1.jpg";
 import testimonial2 from "@/assets/testimonial-2.jpg";
 import testimonial3 from "@/assets/testimonial-3.jpg";
 import testimonial4 from "@/assets/testimonial-4.jpg";
+import whyDefault from "@/assets/why-default.jpg";
 
 const ease = [0.22, 1, 0.36, 1] as const;
+const heroHeadlines = [
+  "Data Centre leader in Ghana",
+  "Cloud Services Leader in Ghana",
+  "Connectivity services leader in Ghana",
+];
+const longestHeroHeadline = heroHeadlines.reduce((longest, current) =>
+  current.length > longest.length ? current : longest
+);
 
-/* ============================================================
-   HERO  (Aeline-style sky + fanned cards)
-   ============================================================ */
-function Hero() {
-  const fanCards = [
-    { img: svcNetwork,    label: "National Fibre" },
-    { img: svcInternet,   label: "100 Gbps DIA" },
-    { img: svcDatacenter, label: "Tier III Accra" },
-    { img: svcCloud,      label: "Hybrid Cloud" },
-    { img: svcStorage,    label: "Sovereign Storage" },
-    { img: svcManaged,    label: "24/7 NOC" },
-    { img: svcNetwork,    label: "Metro Rings" },
-  ];
+const customers = [
+  {
+    name: "Customer",
+    src: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQDDHBXMnJjit5g7j2Tn3vc6ypN39RDdZlxEA&s",
+  },
+  {
+    name: "MTN Ghana",
+    src: "https://mtn.com.gh/wp-content/themes/mtn-vivid-wp/public/img/mtn-logo-footer.svg",
+  },
+  {
+    name: "Orange",
+    src: "https://logos-world.net/wp-content/uploads/2021/09/Orange-Emblem.png",
+  },
+  {
+    name: "Telecel Ghana",
+    src: "https://www.telecel.com.gh/img/Telecel-Icon-Red.png",
+  },
+  {
+    name: "Afriwave Telecom",
+    src: "https://www.afriwavetelecom.com/assets/afriwave123.png",
+  },
+  {
+    name: "NGIC",
+    src: "https://www.ngicgh.com/icon.svg",
+  },
+];
 
-  const heroRef = useRef<HTMLElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: heroRef,
-    offset: ["start start", "end start"],
-  });
-  const bgY = useTransform(scrollYProgress, [0, 1], ["0%", "22%"]);
-  const bgScale = useTransform(scrollYProgress, [0, 1], [1.08, 1.18]);
-  const overlayOpacity = useTransform(scrollYProgress, [0, 1], [1, 1.35]);
+function TypewriterHeroText() {
+  const [phraseIndex, setPhraseIndex] = useState(0);
+  const [visibleChars, setVisibleChars] = useState(0);
+  const [isDeleting, setIsDeleting] = useState(false);
+  const prefersReducedMotion = useMemo(() => {
+    if (typeof window === "undefined") return true;
+    return window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  }, []);
+  const activePhrase = heroHeadlines[phraseIndex];
+
+  useEffect(() => {
+    if (prefersReducedMotion) {
+      setVisibleChars(heroHeadlines[0].length);
+      return;
+    }
+
+    const isFullyTyped = !isDeleting && visibleChars === activePhrase.length;
+    const isFullyDeleted = isDeleting && visibleChars === 0;
+    const delay = isFullyTyped ? 3000 : isDeleting ? 55 : 85;
+
+    const timeout = window.setTimeout(() => {
+      if (isFullyTyped) {
+        setIsDeleting(true);
+        return;
+      }
+
+      if (isFullyDeleted) {
+        setIsDeleting(false);
+        setPhraseIndex((current) => (current + 1) % heroHeadlines.length);
+        return;
+      }
+
+      setVisibleChars((current) => current + (isDeleting ? -1 : 1));
+    }, delay);
+
+    return () => window.clearTimeout(timeout);
+  }, [activePhrase.length, isDeleting, prefersReducedMotion, visibleChars]);
+
+  const visiblePhrase = activePhrase.slice(0, visibleChars);
+  const highlightStart = Math.max(0, visiblePhrase.lastIndexOf(" in Ghana"));
+  const prefixVisible = highlightStart > 0 ? visiblePhrase.slice(0, highlightStart) : visiblePhrase;
+  const highlightVisible = highlightStart > 0 ? visiblePhrase.slice(highlightStart) : "";
 
   return (
-    <section ref={heroRef} className="relative overflow-hidden h-screen min-h-[640px] flex items-center justify-center pt-20">
-      <motion.img
-        src={heroSky}
-        alt=""
-        width={1920}
-        height={1088}
-        style={{ y: bgY, scale: bgScale }}
-        className="absolute inset-0 w-full h-full object-cover will-change-transform"
-      />
-      <motion.div
-        style={{ opacity: overlayOpacity }}
-        className="absolute inset-0 bg-gradient-to-b from-background/75 via-background/65 to-background/90"
-      />
+    <h1
+      className="relative grid max-w-[11ch] font-display text-[2rem] font-light leading-[1.03] text-white sm:max-w-[12ch] sm:text-6xl md:text-7xl lg:text-8xl"
+      aria-label={activePhrase}
+    >
+      <span className="invisible col-start-1 row-start-1" aria-hidden="true">
+        <span className="font-semibold">
+          {longestHeroHeadline.replace(" in Ghana", "")}<span className="text-primary"> in Ghana</span>
+        </span>
+      </span>
+      <span className="col-start-1 row-start-1 font-semibold" aria-hidden="true">
+        {prefixVisible}
+        <span className="text-primary">{highlightVisible}</span>
+        <span className="typewriter-caret ml-1 inline-block h-[0.86em] w-[0.08em] translate-y-[0.08em] bg-primary" />
+      </span>
+    </h1>
+  );
+}
 
+function Hero() {
 
-      <div className="relative container-wide">
-        <div className="text-center max-w-5xl mx-auto">
-          <motion.h1
-            initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.9, ease, delay: 0.1 }}
-            className="font-display text-display-2xl text-white"
-          >
-            <span className="block font-semibold">Data centre, cloud,</span>
-            <span className="block font-light italic text-white/85">CONNECTIVITY &<br />CYBERSECURITY</span>
-          </motion.h1>
+  return (
+    <section className="bg-white px-3 py-3 text-white sm:px-5 sm:py-5">
+      <div className="relative min-h-[calc(100svh-1.5rem)] overflow-hidden rounded-[2.4rem] bg-secondary sm:min-h-[calc(100svh-2.5rem)] lg:rounded-[3.2rem]">
+        <img
+          src={heroSmartInfraco}
+          alt=""
+          className="absolute inset-0 h-full w-full object-cover object-[66%_center] md:object-center"
+        />
+        <div className="absolute inset-0 bg-[linear-gradient(90deg,hsl(203_92%_42%_/_0.86)_0%,hsl(203_88%_48%_/_0.58)_28%,hsl(203_88%_48%_/_0.18)_52%,transparent_72%)]" />
+        <div className="absolute inset-0 bg-gradient-to-t from-secondary/18 via-transparent to-secondary/4" />
+        <div className="absolute left-0 top-0 h-full w-[58%] bg-gradient-to-r from-sky-200/18 via-sky-200/8 to-transparent" />
 
-          <motion.p
-            initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease, delay: 0.25 }}
-            className="mt-8 text-base lg:text-lg text-white/85 max-w-xl mx-auto leading-relaxed"
-          >
-            Smart Infraco powers Ghana's digital backbone — secure, scalable
-            national infrastructure for government and enterprise.
-          </motion.p>
-
-          <motion.div
-            initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, ease, delay: 0.4 }}
-            className="mt-10 flex flex-wrap items-center justify-center gap-4"
-          >
-            <MagneticButton to="/connectivity" variant="dark">View Solutions</MagneticButton>
-            <MagneticButton to="/contact" variant="primary">Get Started</MagneticButton>
-          </motion.div>
-
+        <div className="relative flex min-h-[calc(100svh-1.5rem)] flex-col justify-end px-6 pb-10 pt-40 sm:min-h-[calc(100svh-2.5rem)] sm:px-10 lg:justify-center lg:px-24 lg:pb-20 lg:pt-36">
+          <div className="mx-auto grid w-full max-w-[1500px] items-center gap-12">
+            <motion.div
+              initial={{ opacity: 0, y: 24 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, ease }}
+              className="max-w-[980px] text-left"
+            >
+              <TypewriterHeroText />
+              <p className="mt-4 max-w-3xl text-pretty text-sm font-medium leading-6 text-white/90 sm:text-lg sm:leading-8 lg:mt-7 lg:text-2xl lg:leading-9">
+                Smart Infraco powers Ghana's digital backbone - secure, scalable national infrastructure for government and enterprise.
+              </p>
+              <div className="mt-6 flex flex-wrap items-center gap-3 lg:mt-9 lg:gap-4">
+                <MagneticButton to="/connectivity" variant="dark" className="min-h-12 pl-6 text-xs font-bold tracking-[0.12em] lg:min-h-16 lg:pl-9 lg:text-base">
+                  View Solutions
+                </MagneticButton>
+                <MagneticButton to="/contact" variant="primary" className="min-h-12 pl-6 text-xs font-bold tracking-[0.12em] lg:min-h-16 lg:pl-9 lg:text-base">
+                  Get Started
+                </MagneticButton>
+              </div>
+            </motion.div>
+          </div>
         </div>
       </div>
     </section>
   );
 }
-
-/* ============================================================
-   LOGO STRIP
-   ============================================================ */
-import customer1Logo from "@/assets/customers/customer1.png";
-import mtnLogo from "@/assets/customers/mtn.svg";
-import orangeLogo from "@/assets/customers/orange.png";
-import telecelLogo from "@/assets/customers/telecel.png";
-import afriwaveLogo from "@/assets/customers/afriwave.png";
-import ngicLogo from "@/assets/customers/ngic.svg";
-
-function LogoStrip() {
-  const customers = [
-    { name: "Customer", src: customer1Logo },
-    { name: "MTN", src: mtnLogo },
-    { name: "Orange", src: orangeLogo },
-    { name: "Telecel", src: telecelLogo },
-    { name: "Afriwave", src: afriwaveLogo },
-    { name: "NGIC", src: ngicLogo },
-  ];
+function CustomerLogoStrip() {
   return (
-    <section className="bg-white py-12 lg:py-16 border-y border-border overflow-hidden">
-      <div className="container-wide">
-        <p className="text-center text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground/70 mb-8">
-          Trusted by Ghana's leading enterprises & institutions
-        </p>
-      </div>
-      <div className="relative w-full overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)]">
-        <div className="flex w-max animate-marquee gap-x-16 lg:gap-x-24">
-          {[...customers, ...customers].map((c, i) => (
+    <section className="overflow-hidden bg-white py-10 lg:py-12">
+      <div className="mask-fade-x">
+        <div className="flex w-max animate-marquee items-center gap-14 opacity-85 hover:[animation-play-state:paused] lg:gap-20">
+          {[...customers, ...customers, ...customers].map((customer, index) => (
             <img
-              key={`${c.name}-${i}`}
-              src={c.src}
-              alt={`${c.name} logo`}
-              className="h-10 lg:h-12 w-auto object-contain opacity-70 hover:opacity-100 transition-opacity duration-300 shrink-0"
+              key={`${customer.name}-${index}`}
+              src={customer.src}
+              alt={`${customer.name} logo`}
               loading="lazy"
+              className="h-9 w-auto max-w-[140px] shrink-0 object-contain grayscale transition duration-300 hover:grayscale-0 hover:opacity-100 lg:h-11"
             />
           ))}
         </div>
@@ -147,134 +207,94 @@ function LogoStrip() {
   );
 }
 
-
-
-
-/* ============================================================
-   ABOUT BENTO
-   ============================================================ */
 function AboutBento() {
   return (
-    <section className="bg-muted/40 section-padding-sm">
-      <div className="container-narrow">
-        <Reveal className="text-center max-w-3xl mx-auto">
-          <Eyebrow tone="muted">About Us</Eyebrow>
-          <h2 className="font-display mt-5 text-display-lg text-foreground">
-            A national infrastructure partner
-            <br />
+    <section className="bg-[#f4f7fa] py-16 lg:py-20">
+      <div className="mx-auto w-full max-w-[1260px] px-5 sm:px-8">
+        <Reveal className="mx-auto max-w-[860px] text-center">
+          <div className="flex items-center justify-center gap-3 font-mono text-[10px] uppercase tracking-[0.24em] text-slate-500">
+            <span className="h-px w-7 bg-slate-500/70" />
+            About Us
+          </div>
+          <h2 className="mt-5 font-display text-[clamp(2rem,3.35vw,3.35rem)] font-medium leading-[1.05] tracking-[-0.02em] text-secondary">
+            A national technology partner<br className="hidden lg:block" />
             dedicated to building{" "}
-            <span className="inline-flex items-center gap-2 align-middle">
-              <span className="inline-flex w-9 h-9 rounded-full bg-primary items-center justify-center">
-                <Sparkles className="w-4 h-4 text-primary-foreground" />
-              </span>
-              <span className="font-semibold">smarter</span>
-            </span>
-            <br className="hidden sm:block" />
-            and{" "}
-            <span className="inline-flex items-center gap-2 align-middle">
-              <span className="inline-flex w-9 h-9 rounded-full bg-primary items-center justify-center">
-                <TrendingUp className="w-4 h-4 text-primary-foreground" />
-              </span>
-              <span className="font-light italic">more resilient</span>
+            <span className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-primary text-secondary align-middle md:h-9 md:w-9">
+              <Zap className="h-4 w-4" />
             </span>{" "}
-            networks.
+            <span className="font-bold">smarter</span><br className="hidden lg:block" />
+            and{" "}
+            <span className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-primary text-secondary align-middle md:h-9 md:w-9">
+              <TrendingUp className="h-4 w-4" />
+            </span>{" "}
+            <span className="font-bold">resilient</span> digital infrastructure.
           </h2>
         </Reveal>
 
-        <RevealGroup className="mt-14 grid grid-cols-1 md:grid-cols-12 gap-5">
-          {/* blue stat card */}
-          <RevealItem className="md:col-span-4">
-            <div className="relative h-full rounded-3xl overflow-hidden p-7 text-white min-h-[260px] flex flex-col justify-between"
-                 style={{ background: "linear-gradient(160deg, hsl(206 70% 50%), hsl(206 80% 35%))" }}>
-              <div className="flex items-center justify-between">
-                <span className="text-[11px] font-semibold uppercase tracking-[0.18em]">Smart Infraco</span>
-                <span className="inline-flex w-8 h-8 rounded-full bg-white/20 items-center justify-center">
-                  <ArrowUpRight className="w-4 h-4" />
-                </span>
+        <RevealGroup className="mt-11 grid grid-cols-1 gap-5 lg:grid-cols-3">
+          <RevealItem>
+            <div className="group relative flex min-h-[225px] flex-col justify-center rounded-[24px] bg-sky-600 p-7 text-white shadow-[0_24px_70px_hsl(204_88%_30%_/_0.16)] transition duration-500 hover:-translate-y-2 hover:bg-primary hover:text-primary-foreground hover:shadow-[0_28px_80px_hsl(95_82%_35%_/_0.24)]">
+              <div className="absolute right-6 top-6 flex h-9 w-9 items-center justify-center rounded-full bg-white/20 text-secondary transition duration-500 group-hover:rotate-45 group-hover:bg-secondary group-hover:text-primary">
+                <ArrowUpRight className="h-4 w-4" />
               </div>
-              <div>
-                <div className="font-display text-6xl font-semibold tabular-nums">
-                  <AnimatedCounter to={300} suffix="+" />
-                </div>
-                <p className="mt-3 text-sm text-white/80">
-                  Customers served across Ghana — backed by 1,000 km of owned national fibre reaching every region.
-                </p>
+              <p className="font-mono text-[10px] font-bold uppercase tracking-[0.24em] text-white/90 transition duration-500 group-hover:text-primary-foreground/70">Customers</p>
+              <div className="mt-5 font-display text-[clamp(2.65rem,4vw,3.55rem)] font-semibold leading-none tracking-[-0.04em] tabular-nums">
+                <AnimatedCounter to={300} suffix="+" />
               </div>
+              <p className="mt-5 max-w-xs text-sm leading-6 text-white/78 transition duration-500 group-hover:text-primary-foreground/75">
+                Customers served across Ghana in both the public and private sectors.
+              </p>
             </div>
           </RevealItem>
 
-          {/* white quote card */}
-          <RevealItem className="md:col-span-4">
-            <div className="relative h-full rounded-3xl bg-white p-7 min-h-[260px] flex flex-col justify-between border border-border">
-              <div>
-                <div className="text-[11px] font-semibold uppercase tracking-[0.18em] text-foreground/60">Network availability</div>
-                <div className="mt-3 font-display text-5xl font-semibold text-foreground tabular-nums">
-                  <AnimatedCounter to={99.99} decimals={2} suffix="%" />
-                </div>
+          <RevealItem>
+            <div className="group flex min-h-[225px] flex-col justify-center rounded-[24px] border border-slate-300 bg-white p-7 text-secondary shadow-[0_24px_70px_hsl(215_45%_22%_/_0.06)] transition duration-500 hover:-translate-y-2 hover:border-primary hover:bg-secondary hover:text-white hover:shadow-[0_28px_80px_hsl(215_45%_22%_/_0.18)]">
+              <p className="font-mono text-[10px] font-bold uppercase tracking-[0.24em] text-slate-500 transition duration-500 group-hover:text-primary">Network availability</p>
+              <div className="mt-5 font-display text-[clamp(2.65rem,4vw,3.55rem)] font-semibold leading-none tracking-[-0.04em] tabular-nums">
+                <AnimatedCounter to={99.99} decimals={2} suffix="%" />
               </div>
-              <div>
-                <div className="flex -space-x-2 mb-3">
-                  {["A", "K", "T", "B"].map((c, i) => (
-                    <span key={i} className="w-7 h-7 rounded-full border-2 border-white text-[11px] font-semibold flex items-center justify-center text-white"
-                          style={{ background: `hsl(${[206, 75, 225, 200][i]} 60% 50%)` }}>{c}</span>
-                  ))}
-                </div>
-                <p className="text-xs text-muted-foreground leading-relaxed">
-                  "Smart Infraco completely reshaped how we operate. Resilient, secure and engineered for our scale."
-                </p>
-              </div>
+              <p className="mt-5 max-w-xs text-sm leading-6 text-slate-600 transition duration-500 group-hover:text-white/72">
+                "Smart Infraco completely reshaped how we operate. Resilient, secure and engineered for our scale."
+              </p>
             </div>
           </RevealItem>
 
-          {/* lime stat card */}
-          <RevealItem className="md:col-span-4">
-            <div className="relative h-full rounded-3xl bg-primary p-7 min-h-[260px] flex flex-col justify-between text-primary-foreground">
-              <div className="flex items-center justify-between">
-                <span className="text-[11px] font-semibold uppercase tracking-[0.18em]">Backbone</span>
-                <Network className="w-4 h-4" />
+          <RevealItem>
+            <div className="group relative flex min-h-[225px] flex-col justify-center rounded-[24px] bg-primary p-7 text-secondary transition duration-500 hover:-translate-y-2 hover:brightness-105 hover:shadow-[0_28px_80px_hsl(95_82%_35%_/_0.24)]">
+              <Network className="absolute right-6 top-6 h-5 w-5 transition duration-500 group-hover:scale-125 group-hover:rotate-6" />
+              <p className="font-mono text-[10px] font-bold uppercase tracking-[0.24em]">Fibre backbone</p>
+              <div className="mt-5 font-display text-[clamp(2.65rem,4vw,3.55rem)] font-semibold leading-none tracking-[-0.04em] tabular-nums">
+                <AnimatedCounter to={1000} suffix="+ Km" />
               </div>
-              <div>
-                <div className="font-display text-6xl font-semibold tabular-nums">
-                  <AnimatedCounter to={1000} suffix="+" /> km
-                </div>
-                <p className="mt-3 text-sm text-primary-foreground/80">
-                  National fibre backbone reaching every region — engineered for sub-millisecond intra-Ghana latency.
-                </p>
+              <p className="mt-5 max-w-xs text-sm leading-6 text-secondary/78 transition duration-500 group-hover:text-secondary/90">
+                National fibre backbone reaching every region - engineered for sub-millisecond intra-Ghana latency.
+              </p>
+            </div>
+          </RevealItem>
+        </RevealGroup>
+
+        <RevealGroup className="mt-5 grid grid-cols-1 gap-5 lg:grid-cols-2">
+          <RevealItem>
+            <div className="group flex min-h-[205px] flex-col justify-center rounded-[24px] bg-secondary p-7 text-white transition duration-500 hover:-translate-y-2 hover:bg-[hsl(206_70%_50%)] hover:shadow-[0_28px_80px_hsl(206_70%_28%_/_0.22)] lg:p-8">
+              <p className="font-mono text-[10px] font-bold uppercase tracking-[0.24em] text-white/55 transition duration-500 group-hover:text-primary">Active connections</p>
+              <div className="mt-5 font-display text-[clamp(2.65rem,4vw,3.55rem)] font-semibold leading-none tracking-[-0.04em] tabular-nums">
+                <AnimatedCounter to={48} suffix="+ PoPs" />
               </div>
+              <p className="mt-5 max-w-sm text-sm leading-6 text-white/68 transition duration-500 group-hover:text-white/82">
+                Points of presence distributed across Ghana for low-latency access.
+              </p>
             </div>
           </RevealItem>
 
-          {/* PoPs card */}
-          <RevealItem className="md:col-span-6">
-            <div className="relative h-full rounded-3xl bg-secondary text-secondary-foreground p-7 flex items-center justify-between gap-6 flex-wrap min-h-[180px]">
-              <div>
-                <div className="text-[11px] font-semibold uppercase tracking-[0.18em] text-secondary-foreground/60">Active connections</div>
-                <div className="mt-2 font-display text-4xl lg:text-5xl font-semibold">
-                  <AnimatedCounter to={48} suffix="+" /> PoPs
-                </div>
-                <p className="mt-3 text-sm text-secondary-foreground/70 max-w-sm">
-                  Points of presence distributed across Ghana for low-latency access.
-                </p>
-              </div>
-            </div>
-          </RevealItem>
-
-          {/* Data centres card */}
-          <RevealItem className="md:col-span-6">
-            <div className="relative h-full rounded-3xl bg-secondary text-secondary-foreground p-7 flex items-center justify-between gap-6 flex-wrap min-h-[180px]">
-              <div>
-                <div className="text-[11px] font-semibold uppercase tracking-[0.18em] text-secondary-foreground/60">Data centres</div>
-                <div className="mt-2 font-display text-4xl lg:text-5xl font-semibold">
-                  Two facilities
-                </div>
-                <p className="mt-3 text-sm text-secondary-foreground/70 max-w-sm">
-                  Tier II (Kumasi) &amp; Tier III (Accra) — Ghana's most modern colocation facilities.
-                </p>
-              </div>
-              <Link to="/about" className="inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-[0.12em] text-primary group">
-                More about us
-                <ArrowUpRight className="w-4 h-4 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
-              </Link>
+          <RevealItem>
+            <div className="group flex min-h-[205px] flex-col justify-center rounded-[24px] bg-secondary p-7 text-white transition duration-500 hover:-translate-y-2 hover:bg-primary hover:text-primary-foreground hover:shadow-[0_28px_80px_hsl(95_82%_35%_/_0.22)] lg:p-8">
+              <p className="font-mono text-[10px] font-bold uppercase tracking-[0.24em] text-white/55 transition duration-500 group-hover:text-primary-foreground/70">Data centres</p>
+              <h3 className="mt-5 font-display text-[clamp(2.65rem,4vw,3.55rem)] font-semibold leading-none tracking-[-0.04em]">
+                2 Data Centres
+              </h3>
+              <p className="mt-5 max-w-md text-sm leading-6 text-white/68 transition duration-500 group-hover:text-primary-foreground/75">
+                Tier II (Kumasi) and Tier III (Accra) - Ghana's most modern colocation facilities.
+              </p>
             </div>
           </RevealItem>
         </RevealGroup>
@@ -283,45 +303,42 @@ function AboutBento() {
   );
 }
 
-/* ============================================================
-   SERVICES (3-card)
-   ============================================================ */
 function ServicesThree() {
-  const items = [
-    { title: "Connectivity", desc: "National fibre backbone, metro rings and dedicated internet access up to 100 Gbps.", img: svcNetwork, href: "/connectivity", icon: Network },
-    { title: "Data Centres", desc: "Tier III Accra and Tier II Kumasi — Ghana's most modern colocation facilities.", img: svcDatacenter, href: "/data-centres", icon: Server },
-    { title: "Cloud & Security", desc: "Sovereign hybrid cloud, managed storage, BaaS and a 24/7 SOC.", img: svcCloud, href: "/cloud-services", icon: Cloud },
+  const services = [
+    { title: "Connectivity", desc: "National fibre, metro rings, dark fibre and dedicated internet access up to 100 Gbps.", img: serviceConnectivityCustom, href: "/connectivity", icon: Network },
+    { title: "Data Centres", desc: "Carrier-neutral colocation and local hosting designed for uptime, security and control.", img: serviceDataCenterCustom, href: "/data-centres", icon: Server },
+    { title: "Cloud", desc: "Sovereign cloud, managed storage and backup services delivered from local infrastructure.", img: serviceCloudCustom, href: "/cloud-services", icon: Cloud },
+    { title: "Cybersecurity", desc: "Threat monitoring, network protection and response support for critical enterprise systems.", img: serviceCyberCustom, href: "/cybersecurity", icon: Shield },
   ];
+
   return (
-    <section className="bg-muted/40 section-padding-sm">
-      <div className="container-wide">
-        <Reveal className="text-center max-w-2xl mx-auto">
-          <Eyebrow tone="muted">Services</Eyebrow>
-          <h2 className="font-display mt-5 text-display-lg text-foreground">
-            Comprehensive infrastructure and intelligent operations.
+    <section className="bg-slate-100 py-24 lg:py-32">
+      <div className="mx-auto w-full max-w-[1680px] px-5 sm:px-8">
+        <Reveal className="mx-auto max-w-2xl text-center">
+          <Eyebrow tone="muted" className="justify-center">Solutions</Eyebrow>
+          <h2 className="mt-4 font-display text-[clamp(2rem,3.2vw,3.25rem)] font-medium leading-[1.08] text-foreground">
+            The core infrastructure stack, delivered through one operating window.
           </h2>
-          <p className="mt-5 text-muted-foreground">
-            Whether you're scaling today or building for tomorrow, we help you move faster with confidence.
-          </p>
-          <div className="mt-8 flex justify-center">
-            <MagneticButton to="/contact" variant="primary">Get Started</MagneticButton>
-          </div>
         </Reveal>
 
-        <RevealGroup className="mt-14 grid grid-cols-1 md:grid-cols-3 gap-5">
-          {items.map((s) => (
-            <RevealItem key={s.title}>
-              <Link to={s.href} className="group block h-full rounded-3xl bg-white border border-border p-5 hover:shadow-elevated transition-shadow">
-                <div className="relative aspect-[4/3] rounded-2xl overflow-hidden">
-                  <img src={s.img} alt={s.title} className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
-                  <span className="absolute top-3 left-3 w-9 h-9 rounded-full bg-primary text-primary-foreground flex items-center justify-center">
-                    <s.icon className="w-4 h-4" />
+        <RevealGroup className="mt-14 grid grid-cols-1 gap-5 md:grid-cols-2 xl:grid-cols-4">
+          {services.map((service, index) => (
+            <RevealItem key={service.title}>
+              <Link to={service.href} className="group relative block min-h-[500px] overflow-hidden rounded-[24px] bg-secondary text-white transition-transform duration-500 hover:-translate-y-1">
+                <img src={service.img} alt={service.title} className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" />
+                <div className="absolute inset-0 bg-[linear-gradient(180deg,hsl(220_50%_8%_/_0.32)_0%,hsl(220_50%_8%_/_0.24)_38%,hsl(220_50%_8%_/_0.88)_100%)]" />
+                <div className="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-secondary via-secondary/82 to-transparent" />
+                <div className="absolute left-5 top-5 flex h-10 w-10 items-center justify-center rounded-full bg-primary text-primary-foreground">
+                  <service.icon className="h-5 w-5" />
+                </div>
+                <div className="absolute right-5 top-5 font-mono text-xs text-white/80">0{index + 1}</div>
+                <div className="absolute inset-x-0 bottom-0 p-6">
+                  <h3 className="font-display text-2xl font-medium text-white">{service.title}</h3>
+                  <p className="mt-3 text-sm leading-6 text-white/76">{service.desc}</p>
+                  <span className="mt-8 inline-flex items-center gap-2 font-mono text-xs uppercase tracking-[0.16em] text-white">
+                    Explore <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
                   </span>
                 </div>
-                <div className="px-2 pt-5 pb-2">
-                  <h3 className="font-display text-xl font-semibold text-foreground">{s.title}</h3>
-                  <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{s.desc}</p>
-                </div>
               </Link>
             </RevealItem>
           ))}
@@ -331,252 +348,418 @@ function ServicesThree() {
   );
 }
 
-/* ============================================================
-   EXPERTISE GRID (4 mixed feature cards)
-   ============================================================ */
 function ExpertiseGrid() {
-  return (
-    <section className="bg-muted/40 section-padding-sm">
-      <div className="container-wide">
-        <Reveal className="text-center max-w-2xl mx-auto">
-          <Eyebrow tone="muted">Why Smart Infraco</Eyebrow>
-          <h2 className="font-display mt-5 text-display-lg text-foreground">
-            Strength, resource, capacity — the partner of choice for Enterprises in Ghana.
-          </h2>
-          <p className="mt-5 text-muted-foreground">
-            One trusted infrastructure partner — built for reliability, scale and enterprise performance across the nation.
-          </p>
-        </Reveal>
-
-        <RevealGroup className="mt-14 grid grid-cols-1 md:grid-cols-2 gap-5">
-          {[
-            {
-              img: whySingleWindow,
-              title: "A single window interface",
-              desc: "One provider, one contract, one portal — helping you gain cost efficiencies and extended reach across the continent.",
-            },
-            {
-              img: whyReliability,
-              title: "Reliability and security",
-              desc: "Resilient, redundant and secure infrastructure — engineered to keep your services online and your data protected, 24/7.",
-            },
-            {
-              img: whyScale,
-              title: "Unrivalled scale and network reach",
-              desc: "Owned national fibre, towers and data centres — extending your reach into every region of Ghana and beyond.",
-            },
-            {
-              img: whyEnterprise,
-              title: "Enterprise-grade services",
-              desc: "Backed by strict SLAs, 24/7 NOC support and a dedicated account team — the standard of service enterprises and CSPs demand.",
-            },
-          ].map((c) => (
-            <RevealItem key={c.title}>
-              <div className="group rounded-3xl bg-white border border-border p-5 lg:p-6 h-full hover:shadow-elevated transition-shadow">
-                <div className="relative aspect-[16/10] rounded-2xl overflow-hidden">
-                  <img
-                    src={c.img}
-                    alt={c.title}
-                    loading="lazy"
-                    width={896}
-                    height={672}
-                    className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                  />
-                </div>
-                <div className="px-2 pt-6 pb-2">
-                  <h3 className="font-display text-2xl font-semibold text-foreground">{c.title}</h3>
-                  <p className="mt-3 text-sm text-muted-foreground leading-relaxed">{c.desc}</p>
-                </div>
-              </div>
-            </RevealItem>
-          ))}
-        </RevealGroup>
-      </div>
-    </section>
-  );
-}
-
-/* ============================================================
-   PRICING TIERS
-   ============================================================ */
-function IndustriesWeServe() {
-  const industries = [
-    {
-      name: "Government & Public Sector",
-      icon: Landmark,
-      blurb: "Powering Ghana's digital agenda with sovereign, secure infrastructure for ministries, agencies and e-government platforms.",
-    },
-    {
-      name: "Telecom & ISPs",
-      icon: Wifi,
-      blurb: "Wholesale fibre, dark fibre, IP transit and tower co-location — the backbone behind the country's carriers and service providers.",
-      highlighted: true,
-    },
-    {
-      name: "Financial Services",
-      icon: Building2,
-      blurb: "Low-latency connectivity, secure data centres and resilient links for banks, fintechs and payment networks.",
-    },
-    {
-      name: "Energy & Utilities",
-      icon: Zap,
-      blurb: "Mission-critical fibre, SCADA-grade links and remote-site connectivity to keep generation, transmission and distribution online.",
-    },
-    {
-      name: "Enterprise & SMEs",
-      icon: Server,
-      blurb: "Dedicated internet, cloud and managed services tailored to growing Ghanaian businesses across every sector.",
-    },
-    {
-      name: "Education & Health",
-      icon: Globe,
-      blurb: "High-capacity connectivity and cloud services that bring universities, schools and hospitals into the digital era.",
-    },
+  const features = [
+    { icon: BarChart3, title: "Single window interface", desc: "One provider, one contract and one operational path for critical infrastructure.", image: featureSingleWindow },
+    { icon: FileText, title: "Reliability and security", desc: "Redundant network design, secure hosting and support for always-on operations.", image: featureReliabilitySecurity },
+    { icon: Smartphone, title: "National network reach", desc: "Owned fibre, PoPs and data centre capacity extending service coverage across Ghana.", image: featureNationalReach },
+    { icon: ShieldCheck, title: "Enterprise-grade support", desc: "Strict SLAs, 24/7 monitoring and account ownership for high-stakes environments.", image: featureEnterpriseSupport },
   ];
+  const [activeFeatureImage, setActiveFeatureImage] = useState(whyDefault);
 
   return (
-    <section className="bg-muted/40 section-padding-sm">
-      <div className="container-wide">
-        <Reveal className="text-center max-w-2xl mx-auto">
-          <Eyebrow tone="muted">Industries we serve</Eyebrow>
-          <h2 className="font-display mt-5 text-display-lg text-foreground">
-            Trusted infrastructure for every sector driving Ghana forward.
+    <section className="bg-white py-20 lg:py-28">
+      <div className="mx-auto w-full max-w-[1680px] px-5 sm:px-8">
+        <Reveal className="mx-auto max-w-2xl text-center">
+          <Eyebrow tone="muted" className="justify-center">Why Smart Infraco</Eyebrow>
+          <h2 className="font-display text-[clamp(2.1rem,4vw,3.35rem)] font-medium leading-[1.08] text-foreground">
+            Strength, resource, capacity - the partner of choice for Enterprises in Ghana.
           </h2>
-          <p className="mt-5 text-muted-foreground">
-            From government and telecoms to banking, energy and education — we deliver the connectivity and cloud foundations that critical industries rely on.
+          <p className="mx-auto mt-5 max-w-xl text-sm leading-6 text-muted-foreground">
+            One trusted infrastructure partner - built for reliability, scale and enterprise performance across the nation.
           </p>
         </Reveal>
 
-        <RevealGroup className="mt-14 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-          {industries.map((ind) => (
-            <RevealItem key={ind.name}>
-              <div
-                className={`group relative h-full rounded-3xl p-7 lg:p-8 border transition-shadow hover:shadow-elevated ${
-                  ind.highlighted
-                    ? "bg-primary border-primary text-primary-foreground"
-                    : "bg-white border-border text-foreground"
-                }`}
-              >
-                <span
-                  className={`inline-flex items-center justify-center w-12 h-12 rounded-full ${
-                    ind.highlighted ? "bg-secondary text-primary" : "bg-secondary text-primary"
-                  }`}
-                >
-                  <ind.icon className="w-5 h-5" />
-                </span>
-                <h3 className="font-display mt-6 text-2xl font-semibold">{ind.name}</h3>
-                <p
-                  className={`mt-3 text-sm leading-relaxed ${
-                    ind.highlighted ? "text-primary-foreground/85" : "text-muted-foreground"
-                  }`}
-                >
-                  {ind.blurb}
+        <RevealGroup className="mt-16 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-6 lg:auto-rows-[310px]">
+          <RevealItem className="lg:col-span-2">
+            <motion.div
+              whileHover={{ y: -10, scale: 1.02 }}
+              transition={{ duration: 0.28, ease }}
+              onMouseEnter={() => setActiveFeatureImage(features[0].image)}
+              onFocus={() => setActiveFeatureImage(features[0].image)}
+              onMouseLeave={() => setActiveFeatureImage(whyDefault)}
+              tabIndex={0}
+              className="group relative flex h-full min-h-[310px] overflow-hidden rounded-[24px] bg-[hsl(206_70%_50%)] p-8 text-white shadow-card transition-colors duration-300 hover:bg-primary"
+            >
+              <div className="absolute inset-x-0 top-0 h-px bg-white/30" />
+              <div className="flex h-full flex-col justify-between">
+                <h3 className="font-display text-2xl font-semibold leading-tight text-white transition-colors duration-300 group-hover:text-primary-foreground">
+                  {features[0].title}
+                </h3>
+                <p className="mt-10 text-base leading-7 text-white/84 transition-colors duration-300 group-hover:text-primary-foreground/80">
+                  {features[0].desc}
                 </p>
               </div>
-            </RevealItem>
-          ))}
+            </motion.div>
+          </RevealItem>
+
+          <RevealItem className="md:row-span-2 lg:col-span-2 lg:row-span-2">
+            <motion.div
+              whileHover={{ y: -8, scale: 1.015 }}
+              transition={{ duration: 0.28, ease }}
+              className="relative h-full min-h-[644px] overflow-hidden rounded-[24px] bg-slate-100 shadow-card"
+            >
+              <motion.img
+                key={activeFeatureImage}
+                src={activeFeatureImage}
+                alt="Smart Infraco service specialist"
+                initial={{ opacity: 0, scale: 1.04 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.35, ease }}
+                className="absolute inset-0 h-full w-full object-cover object-center"
+              />
+              <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-white/70 to-transparent" />
+            </motion.div>
+          </RevealItem>
+
+          <RevealItem className="lg:col-span-2">
+            <motion.div
+              whileHover={{ y: -10, scale: 1.02 }}
+              transition={{ duration: 0.28, ease }}
+              onMouseEnter={() => setActiveFeatureImage(features[2].image)}
+              onFocus={() => setActiveFeatureImage(features[2].image)}
+              onMouseLeave={() => setActiveFeatureImage(whyDefault)}
+              tabIndex={0}
+              className="group relative flex h-full min-h-[310px] overflow-hidden rounded-[24px] bg-[hsl(206_70%_50%)] p-8 text-white shadow-card transition-colors duration-300 hover:bg-primary"
+            >
+              <div className="absolute inset-x-0 top-0 h-px bg-white/30" />
+              <div className="flex h-full flex-col justify-between">
+                <h3 className="font-display text-2xl font-semibold leading-tight text-white transition-colors duration-300 group-hover:text-primary-foreground">
+                  {features[2].title}
+                </h3>
+                <p className="mt-10 text-base leading-7 text-white/84 transition-colors duration-300 group-hover:text-primary-foreground/80">
+                  {features[2].desc}
+                </p>
+              </div>
+            </motion.div>
+          </RevealItem>
+
+          <RevealItem className="lg:col-span-2">
+            <motion.div
+              whileHover={{ y: -10, scale: 1.02 }}
+              transition={{ duration: 0.28, ease }}
+              onMouseEnter={() => setActiveFeatureImage(features[1].image)}
+              onFocus={() => setActiveFeatureImage(features[1].image)}
+              onMouseLeave={() => setActiveFeatureImage(whyDefault)}
+              tabIndex={0}
+              className="group relative flex h-full min-h-[310px] overflow-hidden rounded-[24px] bg-[hsl(206_70%_50%)] p-8 text-white shadow-card transition-colors duration-300 hover:bg-primary"
+            >
+              <div className="absolute inset-x-0 top-0 h-px bg-white/30" />
+              <div className="flex h-full flex-col justify-between">
+                <h3 className="font-display text-2xl font-semibold leading-tight text-white transition-colors duration-300 group-hover:text-primary-foreground">
+                  {features[1].title}
+                </h3>
+                <p className="mt-10 text-base leading-7 text-white/84 transition-colors duration-300 group-hover:text-primary-foreground/80">
+                  {features[1].desc}
+                </p>
+              </div>
+            </motion.div>
+          </RevealItem>
+
+          <RevealItem className="lg:col-span-2">
+            <motion.div
+              whileHover={{ y: -10, scale: 1.02 }}
+              transition={{ duration: 0.28, ease }}
+              onMouseEnter={() => setActiveFeatureImage(features[3].image)}
+              onFocus={() => setActiveFeatureImage(features[3].image)}
+              onMouseLeave={() => setActiveFeatureImage(whyDefault)}
+              tabIndex={0}
+              className="group relative flex h-full min-h-[310px] overflow-hidden rounded-[24px] bg-[hsl(206_70%_50%)] p-8 text-white shadow-card transition-colors duration-300 hover:bg-primary"
+            >
+              <div className="absolute inset-x-0 top-0 h-px bg-white/30" />
+              <div className="flex h-full flex-col justify-between">
+                <h3 className="font-display text-2xl font-semibold leading-tight text-white transition-colors duration-300 group-hover:text-primary-foreground">
+                  {features[3].title}
+                </h3>
+                <p className="mt-10 text-base leading-7 text-white/84 transition-colors duration-300 group-hover:text-primary-foreground/80">
+                  {features[3].desc}
+                </p>
+              </div>
+            </motion.div>
+          </RevealItem>
         </RevealGroup>
       </div>
     </section>
   );
 }
 
-/* ============================================================
-   TESTIMONIALS
-   ============================================================ */
-function Testimonials() {
-  const quotes = [
-    { name: "Kwame Mensah", role: "Director, MDA Ghana", img: testimonial1, quote: "They brought clarity to complex problems, breaking down barriers and delivering innovative solutions." },
-    { name: "Ama Boateng", role: "Head of IT, National Bank", img: testimonial2, quote: "Their insight resolved difficult hurdles, opening new paths and creating highly effective strategies." },
-    { name: "Kojo Asare", role: "CTO, Telecom Provider", img: testimonial3, quote: "We found focus for tricky requirements, cutting through noise and providing truly advanced responses." },
-    { name: "Akosua Owusu", role: "COO, Energy Sector", img: testimonial4, quote: "They gave a simple path to fix capability, removing all delays while building fresh brilliant projects." },
+function IndustriesWeServe() {
+  const industries = [
+    { name: "Government", icon: Landmark, blurb: "Sovereign platforms for ministries, agencies and public services." },
+    { name: "Telecoms & ISPs", icon: Wifi, blurb: "Wholesale fibre, dark fibre, IP transit and carrier infrastructure.", highlighted: true },
+    { name: "Financial Services", icon: Building2, blurb: "Low-latency connectivity and resilient hosting for payment networks." },
+    { name: "Energy & Utilities", icon: Zap, blurb: "Mission-critical links for distributed operations and control systems." },
+    { name: "Enterprise", icon: Server, blurb: "Dedicated internet, cloud and managed services for growing teams." },
+    { name: "Education & Health", icon: Globe, blurb: "High-capacity connectivity for institutions with essential services." },
   ];
+
   return (
-    <section className="bg-muted/40 section-padding-sm">
-      <div className="container-wide">
-        <Reveal className="flex items-end justify-between flex-wrap gap-4 mb-10">
-          <div>
-            <Eyebrow tone="muted">Testimonials</Eyebrow>
-            <h2 className="font-display mt-5 text-display-lg text-foreground">What they say about us</h2>
-            <p className="mt-3 text-muted-foreground max-w-xl text-sm">
-              Here's what they shared about their experience working with our team.
-            </p>
-          </div>
-          <div className="flex gap-2">
-            <button aria-label="prev" className="w-10 h-10 rounded-full border border-border bg-white flex items-center justify-center text-foreground hover:bg-muted transition-colors">
-              <ArrowRight className="w-4 h-4 rotate-180" />
-            </button>
-            <button aria-label="next" className="w-10 h-10 rounded-full border border-border bg-white flex items-center justify-center text-foreground hover:bg-muted transition-colors">
-              <ArrowRight className="w-4 h-4" />
-            </button>
-          </div>
+    <section className="relative overflow-hidden py-24 text-white lg:py-32">
+      <img
+        src={industriesBackground}
+        alt=""
+        aria-hidden="true"
+        className="absolute inset-0 h-full w-full object-cover"
+      />
+      <div className="absolute inset-0 bg-[linear-gradient(90deg,hsl(206_70%_31%_/_0.92),hsl(206_70%_50%_/_0.78))]" />
+      <div className="absolute inset-0 bg-secondary/35" />
+
+      <div className="container-wide relative">
+        <Reveal className="max-w-3xl">
+          <Eyebrow tone="accent">Industries we serve</Eyebrow>
+          <h2 className="mt-6 font-display text-display-xl font-medium text-white">
+            Critical sectors need infrastructure that stays accountable under pressure.
+          </h2>
         </Reveal>
 
-        <RevealGroup className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
-          {quotes.map((q, i) => (
-            <RevealItem key={i}>
-              <div className="rounded-3xl bg-white border border-border overflow-hidden h-full flex flex-col">
-                <div className="relative aspect-square overflow-hidden">
-                  <img
-                    src={q.img}
-                    alt={q.name}
-                    loading="lazy"
-                    width={1024}
-                    height={1024}
-                    className="absolute inset-0 w-full h-full object-cover"
-                  />
-                </div>
-                <div className="p-5 flex-1 flex flex-col">
-                  <Quote className="w-5 h-5 text-primary mb-3" />
-                  <p className="text-sm text-foreground leading-relaxed">"{q.quote}"</p>
-                  <p className="mt-4 font-display text-sm font-semibold text-foreground">{q.name}</p>
-                  <p className="text-[11px] uppercase tracking-[0.18em] text-muted-foreground">{q.role}</p>
-                </div>
+      </div>
+
+      <Reveal className="relative mt-16 w-full overflow-hidden">
+        <div className="overflow-hidden">
+          <div className="flex w-max animate-industries-scroll gap-5 hover:[animation-play-state:paused]">
+            {[...industries, ...industries].map((industry, index) => (
+              <article
+                key={`${industry.name}-${index}`}
+                aria-hidden={index >= industries.length}
+                className="flex min-h-[340px] w-[290px] shrink-0 flex-col bg-primary/95 p-7 text-primary-foreground shadow-2xl shadow-secondary/20 backdrop-blur-sm sm:w-[340px] lg:w-[390px]"
+              >
+                <industry.icon className="h-6 w-6" />
+                <h3 className="mt-10 font-display text-2xl font-medium leading-tight">{industry.name}</h3>
+                <p className="mt-3 text-sm leading-6 text-primary-foreground/75">{industry.blurb}</p>
+                <ul className="mt-auto space-y-3 pt-8 font-mono text-xs uppercase tracking-[0.14em]">
+                  {["Continuity", "Scale", "Support"].map((item) => (
+                    <li key={item} className="flex items-center gap-2">
+                      <Check className="h-4 w-4" />
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              </article>
+            ))}
+          </div>
+        </div>
+      </Reveal>
+    </section>
+  );
+}
+
+function Testimonials() {
+  const quotes = [
+    { 
+      name: "Public Sector Client", 
+      role: "Director of IT", 
+      quote: "Smart Infraco gave us a clearer path to <strong>resilient, local infrastructure</strong> and <strong>dependable support</strong> that transformed our operations." 
+    },
+    { 
+      name: "Financial Services Client", 
+      role: "Head of Technology", 
+      quote: "Their network and data centre services <strong>improved uptime planning</strong> across our critical operations and gave us <strong>confidence in our infrastructure</strong>." 
+    },
+    { 
+      name: "Telecom Partner", 
+      role: "Chief Technology Officer", 
+      quote: "The single-window model <strong>reduced operational complexity</strong> while giving us <strong>national reach</strong> and <strong>reliable connectivity</strong>." 
+    },
+    { 
+      name: "Enterprise Client", 
+      role: "Operations Lead", 
+      quote: "We needed <strong>accountability, security and scale</strong>. Smart Infraco delivered all three with <strong>consistent, enterprise-grade support</strong>." 
+    },
+  ];
+
+  const [activeIndex, setActiveIndex] = useState(0);
+
+  useEffect(() => {
+    const interval = window.setInterval(() => {
+      setActiveIndex((current) => (current + 1) % quotes.length);
+    }, 6000);
+    return () => window.clearInterval(interval);
+  }, [quotes.length]);
+
+  const activeQuote = quotes[activeIndex];
+
+  return (
+    <section className="relative overflow-hidden bg-secondary py-24 border-t border-b border-white/5 lg:py-32">
+      {/* Background glow effects */}
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_30%_50%,hsl(95_82%_55%_/_0.03),transparent_60%)] pointer-events-none" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_70%_80%,hsl(206_70%_50%_/_0.02),transparent_60%)] pointer-events-none" />
+
+      <div className="container-wide relative z-10 px-5 sm:px-8">
+        <Reveal>
+          <div className="relative mx-auto max-w-5xl">
+            <h2 className="font-display text-[clamp(2.5rem,5vw,4.2rem)] leading-[1.1] tracking-tight text-center">
+              <span className="font-light text-white">Impactful </span>
+              <span className="font-medium text-primary">Successes</span>
+            </h2>
+
+            <div className="mt-16 grid grid-cols-1 md:grid-cols-[auto_1fr_auto] items-center gap-8 lg:gap-16">
+              {/* Left Quote */}
+              <div className="hidden md:block shrink-0">
+                <svg
+                  className="h-[120px] w-[90px] lg:h-[200px] lg:w-[150px]"
+                  viewBox="0 0 210 280"
+                  fill="url(#quote-grad-left)"
+                  aria-hidden="true"
+                >
+                  <defs>
+                    <linearGradient id="quote-grad-left" x1="0%" y1="0%" x2="100%" y2="100%">
+                      <stop offset="0%" stopColor="hsl(var(--primary))" stopOpacity="0.9" />
+                      <stop offset="100%" stopColor="hsl(var(--primary) / 0.1)" stopOpacity="0.2" />
+                    </linearGradient>
+                  </defs>
+                  <path d="M0 172c0-60 42-116 96-140l12 28c-40 22-64 58-68 96h52v124H0V172zm114 0c0-60 42-116 96-140l12 28c-40 22-64 58-68 96h52v124H114V172z" />
+                </svg>
               </div>
-            </RevealItem>
-          ))}
-        </RevealGroup>
+
+              {/* Center Content */}
+              <div className="min-h-[220px] sm:min-h-[180px] flex flex-col justify-center text-center px-4">
+                <motion.div
+                  key={activeIndex}
+                  initial={{ opacity: 0, y: 12 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -12 }}
+                  transition={{ duration: 0.5, ease }}
+                  className="flex flex-col items-center"
+                >
+                  {/* Small Quote Icon for Mobile Only */}
+                  <div className="md:hidden mb-6 text-primary/80">
+                    <svg
+                      className="h-10 w-10"
+                      viewBox="0 0 210 280"
+                      fill="hsl(var(--primary))"
+                      aria-hidden="true"
+                    >
+                      <path d="M0 172c0-60 42-116 96-140l12 28c-40 22-64 58-68 96h52v124H0V172zm114 0c0-60 42-116 96-140l12 28c-40 22-64 58-68 96h52v124H114V172z" />
+                    </svg>
+                  </div>
+
+                  <p 
+                    className="text-lg leading-relaxed text-white/70 sm:text-xl md:text-2xl font-light [&>strong]:text-white [&>strong]:font-semibold"
+                    dangerouslySetInnerHTML={{ __html: activeQuote.quote }}
+                  />
+                  <p className="mt-8 text-base font-semibold text-primary tracking-wide">
+                    {activeQuote.name}
+                  </p>
+                  <p className="mt-1.5 font-mono text-[10px] uppercase tracking-[0.2em] text-white/45">
+                    {activeQuote.role}
+                  </p>
+                </motion.div>
+              </div>
+
+              {/* Right Quote */}
+              <div className="hidden md:block shrink-0">
+                <svg
+                  className="h-[120px] w-[90px] lg:h-[200px] lg:w-[150px]"
+                  viewBox="0 0 210 280"
+                  fill="url(#quote-grad-right)"
+                  aria-hidden="true"
+                >
+                  <defs>
+                    <linearGradient id="quote-grad-right" x1="100%" y1="100%" x2="0%" y2="0%">
+                      <stop offset="0%" stopColor="hsl(var(--primary))" stopOpacity="0.9" />
+                      <stop offset="100%" stopColor="hsl(var(--primary) / 0.1)" stopOpacity="0.2" />
+                    </linearGradient>
+                  </defs>
+                  <path d="M210 108c0 60-42 116-96 140l-12-28c40-22 64-58 68-96H118V0h92v108zm-114 0c0 60-42 116-96 140L-12 220c40-22 64-58 68-96H4V0h92v108z" />
+                </svg>
+              </div>
+            </div>
+
+            <div className="mt-12 flex items-center justify-center gap-2.5">
+              {quotes.map((_, index) => (
+                <button
+                  key={index}
+                  onClick={() => setActiveIndex(index)}
+                  aria-label={`Go to testimonial ${index + 1}`}
+                  className={`h-1.5 transition-all duration-300 ${
+                    index === activeIndex
+                      ? "w-8 bg-primary"
+                      : "w-2 bg-white/20 hover:bg-white/40"
+                  }`}
+                />
+              ))}
+            </div>
+          </div>
+        </Reveal>
       </div>
     </section>
   );
 }
 
-/* ============================================================
-   BLOG STRIP
-   ============================================================ */
 function BlogStrip() {
   const posts = [
-    { title: "Turning data into strategy: the power of analytics", img: svcManaged, href: "/articles" },
-    { title: "5 ways infrastructure can streamline operations",   img: svcCloud,   href: "/articles" },
-    { title: "Human × Machine: finding the perfect balance",      img: svcStorage, href: "/articles" },
+    { 
+      title: "Turning infrastructure into strategy", 
+      category: "Managed Services, Strategy",
+      img: svcManaged,
+      date: { month: "Jun", day: "10", year: "2026" }
+    },
+    { 
+      title: "5 ways fibre improves business continuity", 
+      category: "Connectivity, Fibre",
+      img: svcCloud,
+      date: { month: "Jun", day: "08", year: "2026" }
+    },
+    { 
+      title: "Cloud and data centres: finding the right balance", 
+      category: "Cloud, Colo",
+      img: svcStorage,
+      date: { month: "May", day: "28", year: "2026" }
+    },
   ];
+
   return (
-    <section className="bg-muted/40 pb-16 lg:pb-20">
+    <section className="bg-slate-100 py-24 lg:py-32">
       <div className="container-wide">
-        <Reveal className="flex items-end justify-between flex-wrap gap-4 mb-10">
+        <Reveal className="mb-14 flex flex-wrap items-end justify-between gap-6">
           <div>
-            <Eyebrow tone="muted">Blog &amp; Articles</Eyebrow>
-            <h2 className="font-display mt-5 text-display-lg text-foreground">Latest insights and trends</h2>
-            <p className="mt-3 text-muted-foreground max-w-xl text-sm">
-              Whether you're optimising today or building for tomorrow, we help you move faster with confidence.
-            </p>
+            <Eyebrow tone="muted">Insights</Eyebrow>
+            <h2 className="mt-6 font-display text-display-lg font-medium text-foreground">Latest thinking for resilient operations.</h2>
           </div>
-          <Link to="/articles" className="inline-flex items-center gap-2 pl-5 pr-1.5 py-1.5 text-[12px] font-semibold uppercase tracking-[0.12em] bg-secondary text-secondary-foreground rounded-full">
+          <Link to="/articles" className="inline-flex h-12 items-center gap-2 rounded-full bg-secondary py-2 pl-6 pr-3 font-mono text-xs uppercase tracking-[0.16em] text-secondary-foreground">
             View all
-            <span className="flex items-center justify-center w-7 h-7 rounded-full bg-primary text-primary-foreground">
-              <ArrowUpRight className="w-3.5 h-3.5" />
+            <span className="flex h-7 w-7 items-center justify-center rounded-full bg-primary text-primary-foreground">
+              <ArrowUpRight className="h-4 w-4" />
             </span>
           </Link>
         </Reveal>
 
-        <RevealGroup className="grid grid-cols-1 md:grid-cols-3 gap-5">
-          {posts.map((p) => (
-            <RevealItem key={p.title}>
-              <Link to={p.href} className="group block rounded-3xl overflow-hidden relative aspect-[4/3]">
-                <img src={p.img} alt={p.title} className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
-                <div className="absolute inset-x-0 bottom-0 p-5">
-                  <h3 className="font-display text-lg lg:text-xl font-semibold text-white leading-tight">{p.title}</h3>
+        <RevealGroup className="grid grid-cols-1 gap-8 md:grid-cols-3">
+          {posts.map((post) => (
+            <RevealItem key={post.title} className="flex">
+              <Link 
+                to="/articles" 
+                className="group flex flex-col w-full bg-white rounded-[24px] overflow-hidden border border-slate-200/40 shadow-sm transition-all duration-300 hover:shadow-lg hover:-translate-y-1"
+              >
+                <div className="relative aspect-[4/2.6] w-full overflow-hidden">
+                  <img 
+                    src={post.img} 
+                    alt={post.title} 
+                    className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" 
+                  />
+                  {/* Floating Date Badge */}
+                  <div className="absolute right-5 top-5 z-10 flex h-14 w-14 flex-col items-center justify-center rounded-full bg-white shadow-[0_4px_12px_rgba(0,0,0,0.08)]">
+                    <span className="font-mono text-[9px] uppercase tracking-wider text-slate-400 font-bold leading-none">{post.date.month}</span>
+                    <span className="mt-1 font-display text-base font-bold text-secondary leading-none">{post.date.day}</span>
+                    <span className="mt-0.5 font-mono text-[7px] text-slate-400/80 leading-none">{post.date.year}</span>
+                  </div>
+                </div>
+
+                <div className="flex flex-col flex-grow p-7 lg:p-8">
+                  {/* Category */}
+                  <span className="font-mono text-[10px] font-bold uppercase tracking-[0.2em] text-slate-400 mb-3.5">
+                    {post.category}
+                  </span>
+                  {/* Title */}
+                  <h3 className="font-display text-xl font-semibold leading-snug text-secondary tracking-tight mb-7 group-hover:text-primary transition-colors duration-300">
+                    {post.title}
+                  </h3>
+                  {/* Button */}
+                  <div className="mt-auto">
+                    <span className="inline-flex h-9 items-center justify-center rounded-full border border-slate-200 px-5 font-mono text-[10px] uppercase tracking-wider text-slate-600 transition-all duration-300 group-hover:bg-secondary group-hover:text-white group-hover:border-secondary">
+                      Read More
+                    </span>
+                  </div>
                 </div>
               </Link>
             </RevealItem>
@@ -587,38 +770,24 @@ function BlogStrip() {
   );
 }
 
-/* ============================================================
-   CTA SKY PANEL
-   ============================================================ */
 function CtaPanel() {
   return (
-    <section className="pb-16 lg:pb-24 bg-muted/40">
-      <div className="w-full">
+    <section className="bg-white py-24 lg:py-32">
+      <div className="w-full px-5 lg:px-10">
         <Reveal>
-          <div className="relative overflow-hidden p-10 lg:p-16 min-h-[300px] lg:min-h-[360px]">
-            <img src={ctaSky} alt="" className="absolute inset-0 w-full h-full object-cover" loading="lazy" />
-            <div className="absolute inset-0 bg-gradient-to-r from-white/40 via-white/10 to-transparent" />
-            <div className="container-wide relative">
-              <div className="max-w-xl">
-                <div className="flex items-center gap-2 mb-4">
-                  <span className="text-[11px] font-semibold uppercase tracking-[0.18em] text-foreground">Trusted by 300+ customers</span>
-                  <div className="flex -space-x-1.5">
-                    {["A", "K", "T"].map((c, i) => (
-                      <span key={i} className="w-6 h-6 rounded-full border-2 border-white text-[10px] font-semibold flex items-center justify-center text-white"
-                            style={{ background: `hsl(${[206, 75, 225][i]} 60% 50%)` }}>{c}</span>
-                    ))}
-                  </div>
-                </div>
-                <h2 className="font-display text-display-lg text-foreground">
-                  <span className="block font-semibold">We combine national reach</span>
-                  <span className="block font-light italic">with intelligent infrastructure.</span>
-                </h2>
-                <p className="mt-5 text-sm lg:text-base text-foreground/75 max-w-md">
-                  Our consultancy team brings deep network engineering, security and operations expertise — designed to support your scale.
-                </p>
-                <div className="mt-7">
-                  <MagneticButton to="/contact" variant="primary">Get Started</MagneticButton>
-                </div>
+          <div className="relative min-h-[460px] w-full overflow-hidden rounded-[24px] p-8 text-white lg:p-20">
+            <img src={ctaInfrastructure} alt="" className="absolute inset-0 h-full w-full object-cover" />
+            <div className="absolute inset-0 bg-gradient-to-r from-[hsl(206_70%_35%_/_0.82)] via-[hsl(206_70%_50%_/_0.42)] to-transparent" />
+            <div className="relative max-w-3xl">
+              <p className="font-mono text-xs uppercase tracking-[0.2em] text-white/80">Trusted by 300+ customers</p>
+              <h2 className="mt-6 font-display text-display-xl font-medium text-white">
+                Build on infrastructure<br className="hidden sm:block" /> designed for Ghana's<br className="hidden sm:block" /> critical digital economy.
+              </h2>
+              <p className="mt-6 max-w-xl text-base leading-7 text-white/84">
+                Speak with Smart Infraco about fibre, cloud and data centre services that match your scale, risk and geography.
+              </p>
+              <div className="mt-9">
+                <MagneticButton to="/contact" variant="primary">Get Started</MagneticButton>
               </div>
             </div>
           </div>
@@ -628,14 +797,11 @@ function CtaPanel() {
   );
 }
 
-/* ============================================================
-   PAGE
-   ============================================================ */
 export default function HomePage() {
   return (
     <Layout>
       <Hero />
-      <LogoStrip />
+      <CustomerLogoStrip />
       <AboutBento />
       <ServicesThree />
       <ExpertiseGrid />
@@ -646,3 +812,9 @@ export default function HomePage() {
     </Layout>
   );
 }
+
+
+
+
+
+

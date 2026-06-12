@@ -16,7 +16,7 @@ const services = [
   { icon: Database,     title: "Backup as a Service",         description: "Offsite data storage through regular data transfer from on-premises to data centre. Protect sensitive government, business, or personal data from loss associated with user error, hacking, or any other kind of technological and natural disaster." },
   { icon: HardDrive,    title: "Storage as a Service",        description: "Enable your organisation to use our data centre and cloud storage resources. More cost-efficient than building private storage infrastructure, especially based on regulatory requirements of storing data locally in the jurisdiction of Ghana." },
   { icon: MonitorCheck, title: "Monitoring as a Service",     description: "24×7 monitoring of various levels of IT assets with proactive and reactive measures, such as early detection alerts against cyber threats, vulnerabilities detection, and management of resource utilisation." },
-  { icon: Settings,     title: "Managed IT Infrastructure",   description: "End-to-end management of your IT estate including servers, networking, security, and compliance. Through our decades of industry experience in data centre operations, we will help you find the right solution for your business." },
+  { icon: Settings,     title: "Managed IT Infrastructure",   description: "End-to-end management of your IT estate including servers, networking, security, and compliance. Through decades of data centre operations experience, we help you find the right solution for your business." },
 ];
 
 const benefits = [

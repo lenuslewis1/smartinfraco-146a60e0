@@ -23,7 +23,6 @@ const navLinks = [
   { label: "Home",       href: "/" },
   { label: "About",      href: "/about" },
   { label: "Solutions",  href: "#", children: solutions },
-  
   { label: "Media",      href: "#", children: media },
   { label: "Contact",    href: "/contact" },
 ];
@@ -53,13 +52,16 @@ export default function Navbar() {
   return (
     <nav
       className={cn(
-        "fixed top-4 left-1/2 -translate-x-1/2 z-50 transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]",
-        "rounded-full",
+        "absolute top-8 left-1/2 -translate-x-1/2 z-50 transition-all duration-500 [transition-timing-function:var(--ease-out-expo)]",
+        "overflow-visible rounded-full text-secondary backdrop-blur-2xl backdrop-saturate-200",
+        "border border-white/55 shadow-[0_18px_70px_hsl(206_70%_12%_/_0.20),inset_0_1px_0_hsl(0_0%_100%_/_0.85),inset_0_-1px_0_hsl(206_70%_20%_/_0.10)]",
+        "before:pointer-events-none before:absolute before:inset-px before:rounded-full before:bg-[linear-gradient(135deg,hsl(0_0%_100%_/_0.72)_0%,hsl(0_0%_100%_/_0.18)_34%,hsl(202_90%_80%_/_0.18)_56%,hsl(0_0%_100%_/_0.46)_100%)]",
+        "after:pointer-events-none after:absolute after:left-8 after:right-8 after:top-2 after:h-1/2 after:rounded-full after:bg-[linear-gradient(180deg,hsl(0_0%_100%_/_0.62),transparent)] after:blur-sm",
         scrolled
-          ? "bg-white/80 backdrop-blur-xl shadow-card border border-white/60"
-          : "bg-white/15 backdrop-blur-md border border-white/30"
+          ? "bg-white/28"
+          : "bg-white/18 supports-[backdrop-filter]:bg-white/14"
       )}
-      style={{ width: "min(96vw, 1280px)" }}
+      style={{ width: "min(90vw, 1610px)" }}
     >
       {/* scroll progress hairline */}
       <motion.div
@@ -67,32 +69,30 @@ export default function Navbar() {
         style={{ scaleX: progress }}
       />
 
-      <div className="flex items-center justify-between h-16 lg:h-20 px-4 lg:px-6">
+      <div className="relative flex items-center justify-between h-20 px-5 lg:px-8">
         {/* Logo lockup */}
-        <Link to="/" className="flex items-center group shrink-0" style={{ width: 180 }}>
-          <img src={logo} alt="Smart Infraco" className="h-36 lg:h-44 w-auto -my-12" />
+        <Link to="/" className="flex items-center group" aria-label="Smart Infraco home">
+          <img src={logo} alt="Smart Infraco" className="h-14 w-44 object-cover object-left lg:h-16 lg:w-52" />
         </Link>
 
         {/* Desktop Nav */}
-        <div className="hidden lg:flex items-center gap-1">
+        <div className="hidden lg:flex items-center gap-7">
           {navLinks.map((link) =>
             link.children ? (
               <div
                 key={link.label}
-                className="relative"
+                className="relative z-10"
                 onMouseEnter={() => setMegaOpen(link.label)}
                 onMouseLeave={() => setMegaOpen(null)}
               >
                 <button
                   className={cn(
-                    "flex items-center gap-1 px-3.5 py-2 text-[12px] font-semibold uppercase tracking-[0.12em] transition-colors rounded-full",
-                    scrolled
-                      ? (isGroupActive(link.children) ? "text-foreground" : "text-foreground/70 hover:text-foreground")
-                      : (isGroupActive(link.children) ? "text-white" : "text-white/80 hover:text-white")
+                    "flex items-center gap-1 px-1 py-2 text-sm font-bold uppercase tracking-[0.2em] transition-colors rounded-full",
+                    isGroupActive(link.children) ? "text-secondary" : "text-secondary/72 hover:text-secondary"
                   )}
                 >
                   {link.label}
-                  <ChevronDown className="w-3 h-3 opacity-60" />
+                  <ChevronDown className="w-2.5 h-2.5 opacity-60" />
                 </button>
                 <AnimatePresence>
                   {megaOpen === link.label && (
@@ -101,7 +101,7 @@ export default function Navbar() {
                       animate={{ opacity: 1, y: 0 }}
                       exit={{ opacity: 0, y: 6 }}
                       transition={{ duration: 0.22, ease: [0.22, 1, 0.36, 1] }}
-                      className="absolute top-full left-0 mt-3 w-[420px] bg-white rounded-3xl shadow-elevated border border-border p-2"
+                      className="absolute top-full left-0 z-50 mt-3 w-[420px] bg-white rounded-3xl shadow-elevated border border-border p-2"
                     >
                       {link.children.map((child) => (
                         <Link
@@ -128,10 +128,8 @@ export default function Navbar() {
                 key={link.label}
                 to={link.href}
                 className={cn(
-                  "px-3.5 py-2 text-[12px] font-semibold uppercase tracking-[0.12em] transition-colors rounded-full",
-                  scrolled
-                    ? (isActive(link.href) ? "text-foreground" : "text-foreground/70 hover:text-foreground")
-                    : (isActive(link.href) ? "text-white" : "text-white/80 hover:text-white")
+                  "px-1 py-2 text-sm font-bold uppercase tracking-[0.2em] transition-colors rounded-full",
+                  isActive(link.href) ? "text-secondary" : "text-secondary/72 hover:text-secondary"
                 )}
               >
                 {link.label}
@@ -144,18 +142,18 @@ export default function Navbar() {
         <div className="hidden lg:flex items-center gap-3">
           <Link
             to="/contact"
-            className="group inline-flex items-center gap-2 pl-5 pr-1.5 py-1.5 text-[12px] font-semibold uppercase tracking-[0.12em] bg-primary text-primary-foreground rounded-full hover:brightness-105 transition-all"
+            className="group inline-flex min-h-14 items-center gap-3 rounded-full bg-primary py-2 pl-7 pr-2 text-sm font-bold uppercase tracking-[0.16em] text-primary-foreground transition-all hover:brightness-105"
           >
-            Get Started
-            <span className="flex items-center justify-center w-8 h-8 rounded-full bg-secondary text-secondary-foreground transition-transform duration-500 group-hover:rotate-45">
-              <ArrowUpRight className="w-3.5 h-3.5" />
+            Get in Touch
+            <span className="flex h-10 w-10 items-center justify-center rounded-full bg-secondary text-secondary-foreground transition-transform duration-500 group-hover:rotate-45">
+              <ArrowUpRight className="h-4 w-4" />
             </span>
           </Link>
         </div>
 
         {/* Mobile toggle */}
         <button
-          className={cn("lg:hidden p-2", scrolled ? "text-foreground" : "text-white")}
+          className={cn("lg:hidden p-2", "text-secondary")}
           onClick={() => setMobileOpen(!mobileOpen)}
           aria-label="Toggle menu"
         >
@@ -225,3 +223,6 @@ export default function Navbar() {
     </nav>
   );
 }
+
+
+

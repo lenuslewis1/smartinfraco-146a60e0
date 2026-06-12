@@ -1,6 +1,5 @@
 import { LucideIcon, ArrowUpRight } from "lucide-react";
 import { motion } from "framer-motion";
-import GridBackdrop from "@/components/ui-system/GridBackdrop";
 
 interface ServiceCardProps {
   icon: LucideIcon;
@@ -18,31 +17,26 @@ export default function ServiceCard({ icon: Icon, title, description, features, 
       initial={{ opacity: 0, y: 24 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-60px" }}
-      transition={{ duration: 0.7, ease, delay: index * 0.06 }}
-      className="group relative overflow-hidden border border-hairline bg-card transition-all duration-500 hover:border-primary/40 hover:-translate-y-1 hover:shadow-[var(--glow-primary)]"
+      transition={{ duration: 0.7, ease, delay: index * 0.05 }}
+      className="group h-full rounded-[24px] bg-white p-6 transition-transform duration-500 hover:-translate-y-1"
     >
-      <div className="absolute inset-0 bg-gradient-mesh opacity-40 group-hover:opacity-80 transition-opacity duration-700" />
-      <GridBackdrop variant="lines" className="opacity-20" />
-      <div className="relative p-7 lg:p-8">
-        <div className="flex items-start justify-between mb-6">
-          <div className="w-11 h-11 glass flex items-center justify-center">
-            <Icon className="w-5 h-5 text-secondary" />
-          </div>
-          <ArrowUpRight className="w-5 h-5 text-muted-foreground opacity-50 group-hover:opacity-100 group-hover:text-secondary transition-all duration-500 group-hover:translate-x-1 group-hover:-translate-y-1" />
+      <div className="flex items-start justify-between">
+        <div className="flex h-12 w-12 items-center justify-center rounded-full bg-primary text-primary-foreground">
+          <Icon className="h-5 w-5" />
         </div>
-        <h3 className="font-display text-xl text-foreground leading-tight">{title}</h3>
-        <p className="mt-3 text-sm text-muted-foreground leading-relaxed">{description}</p>
-        {features && features.length > 0 && (
-          <ul className="mt-5 space-y-2">
-            {features.map((f) => (
-              <li key={f} className="flex items-start gap-2 text-xs text-muted-foreground">
-                <span className="w-1 h-1 mt-1.5 rounded-full bg-secondary shrink-0" />
-                {f}
-              </li>
-            ))}
-          </ul>
-        )}
+        <ArrowUpRight className="h-5 w-5 text-muted-foreground transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
       </div>
+      <h3 className="mt-10 font-display text-2xl font-medium leading-tight text-foreground">{title}</h3>
+      <p className="mt-3 text-sm leading-6 text-muted-foreground">{description}</p>
+      {features && features.length > 0 && (
+        <ul className="mt-8 flex flex-wrap gap-2">
+          {features.map((f) => (
+            <li key={f} className="rounded-full bg-slate-100 px-3 py-1.5 font-mono text-[10px] uppercase tracking-[0.12em] text-foreground/70">
+              {f}
+            </li>
+          ))}
+        </ul>
+      )}
     </motion.div>
   );
 }
