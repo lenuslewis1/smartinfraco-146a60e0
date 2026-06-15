@@ -4,7 +4,6 @@ import {
 } from "lucide-react";
 import Layout from "@/components/layout/Layout";
 import PageHero from "@/components/shared/PageHero";
-import CtaBand from "@/components/shared/CtaBand";
 import Eyebrow from "@/components/ui-system/Eyebrow";
 import GridBackdrop from "@/components/ui-system/GridBackdrop";
 import GlassCard from "@/components/ui-system/GlassCard";
@@ -44,6 +43,65 @@ const dcServices = [
   { icon: MonitorCheck, title: "Monitoring as a Service (MaaS)", description: "24×7 monitoring of various levels of IT assets with proactive and reactive measures, including early detection alerts against cyber threats, vulnerabilities detection, and resource utilisation management." },
   { icon: Database,     title: "Backup as a Service (BaaS)", description: "Offsite data storage through regular data transfer from on-premises to data centre. Protect sensitive government, business, or personal data from loss associated with user error, hacking, or disasters." },
   { icon: Lock,         title: "Security Services",          description: "Multi-layered security including VPS audit & hardening, IPS/IDS protections, web application vulnerability assessments, SIEM tools, and gateway anti-virus security services with deep packet inspection." },
+];
+
+const detailedDcServices = [
+  {
+    icon: Server,
+    title: "Rack Colocation",
+    tagline: "Premium rack hosting and colocation.",
+    description: "House physical server hardware and storage in resilient facilities with redundant network, clean power, cooling, physical security, 24/7 support and service monitoring.",
+    highlights: ["Redundant ISP links", "Largest modern rack space", "Top-tier rack access security"],
+  },
+  {
+    icon: HardDrive,
+    title: "Virtual Private Server",
+    tagline: "Quick access, powered to scale.",
+    description: "High-performance physical servers are virtualised so government and enterprise clients can access flexible, controlled, multi-tenant infrastructure over the network.",
+    highlights: ["Flexible virtual resources", "Higher performance control", "Shared infrastructure efficiency"],
+  },
+  {
+    icon: Globe,
+    title: "Web Hosting",
+    tagline: "Dedicated website hosting on a cost-sharing basis.",
+    description: "Host institutional websites in a shared web server environment that spreads cost across hosted packages while maintaining dependable service standards.",
+    highlights: ["Shared WHM control panel", "Flexible cPanel access", "99.9% guaranteed uptime"],
+  },
+  {
+    icon: Database,
+    title: "Domain Registration",
+    tagline: "Give your organisation a digital presence.",
+    description: "Acquire and manage domain names through NITA's gov.gh registrar capability, with general naming requirements and institution-specific rules for eligible public bodies.",
+    highlights: ["gov.gh domain guidance", "DNS management", "nic.gh domain search"],
+  },
+  {
+    icon: HardDrive,
+    title: "Storage as a Service",
+    tagline: "Flexible local storage with security and cost savings.",
+    description: "Use Smart Infraco's data centre and cloud storage resources instead of building private storage infrastructure, especially where data must remain hosted in Ghana.",
+    highlights: ["Local data protection", "Storage and backup support", "Cost-efficient capacity"],
+  },
+  {
+    icon: MonitorCheck,
+    title: "Monitoring as a Service",
+    tagline: "All-round surveillance across every touch point.",
+    description: "24/7 monitoring for IT assets with proactive and reactive measures, early cyber-threat alerts, vulnerability detection and resource-utilisation management.",
+    highlights: ["NOC customer support", "Performance monitoring", "Prompt system alerts"],
+  },
+  {
+    icon: Database,
+    title: "Backup as a Service",
+    tagline: "Offsite data storage to reduce loss risk.",
+    description: "Regularly transfer data from on-premises environments into the data centre to protect government, business and personal information from user error, hacking or disaster.",
+    highlights: ["File-server backup model", "Sensitive data protection", "Managed maintenance"],
+  },
+  {
+    icon: Lock,
+    title: "Security Services",
+    tagline: "Multi-layered security for maximum protection.",
+    description: "Protect hosted infrastructure through VPS audit and hardening, IPS/IDS defence, vulnerability assessment, SIEM monitoring, gateway anti-virus and deep packet inspection.",
+    highlights: ["SOC event handling", "DDoS traffic protection", "Pen-test recommendations"],
+  },
 ];
 
 export default function DataCentresPage() {
@@ -106,15 +164,15 @@ export default function DataCentresPage() {
             </h2>
           </Reveal>
 
-          <RevealGroup className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-px bg-hairline border border-hairline">
+          <RevealGroup className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {features.map((f) => (
-              <RevealItem key={f.label} className="bg-dark">
-                <div className="group p-7 lg:p-8 h-full transition-colors hover:bg-card">
-                  <div className="w-11 h-11 glass flex items-center justify-center mb-5">
-                    <f.icon className="w-5 h-5 text-secondary" />
+              <RevealItem key={f.label}>
+                <div className="group h-full border border-white/12 bg-white/[0.06] p-7 transition duration-300 hover:border-primary/55 hover:bg-white lg:p-8">
+                  <div className="mb-5 flex h-11 w-11 items-center justify-center border border-white/14 bg-white/10 transition duration-300 group-hover:border-secondary/20 group-hover:bg-secondary/8">
+                    <f.icon className="h-5 w-5 text-primary transition duration-300 group-hover:text-secondary" />
                   </div>
-                  <h3 className="font-display text-base text-dark-foreground">{f.label}</h3>
-                  <p className="mt-2 text-sm text-dark-foreground/65 leading-relaxed">{f.desc}</p>
+                  <h3 className="font-display text-base font-medium text-white transition duration-300 group-hover:text-secondary">{f.label}</h3>
+                  <p className="mt-2 text-sm leading-relaxed text-white/68 transition duration-300 group-hover:text-secondary/72">{f.desc}</p>
                 </div>
               </RevealItem>
             ))}
@@ -135,15 +193,23 @@ export default function DataCentresPage() {
             </p>
           </Reveal>
 
-          <RevealGroup className="grid md:grid-cols-2 lg:grid-cols-4 gap-px bg-hairline border border-hairline">
-            {dcServices.map((s) => (
-              <RevealItem key={s.title} className="bg-background">
-                <div className="group h-full p-6 lg:p-7 transition-colors hover:bg-card">
-                  <div className="w-10 h-10 glass flex items-center justify-center mb-5">
-                    <s.icon className="w-5 h-5 text-secondary" />
+          <RevealGroup className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
+            {detailedDcServices.map((s) => (
+              <RevealItem key={s.title}>
+                <div className="group flex h-full flex-col border border-hairline bg-white p-6 shadow-[0_14px_50px_hsl(225_50%_12%_/_0.08)] transition duration-300 hover:-translate-y-1 hover:border-secondary/35 hover:shadow-[0_22px_70px_hsl(225_50%_12%_/_0.14)] lg:p-7">
+                  <div className="mb-5 flex h-10 w-10 items-center justify-center border border-secondary/15 bg-secondary/5">
+                    <s.icon className="h-5 w-5 text-secondary" />
                   </div>
-                  <h3 className="font-display text-sm text-foreground">{s.title}</h3>
-                  <p className="mt-2 text-xs text-muted-foreground leading-relaxed">{s.description}</p>
+                  <h3 className="font-display text-lg font-semibold leading-tight text-foreground">{s.title}</h3>
+                  <p className="mt-2 text-xs font-semibold uppercase tracking-[0.14em] text-secondary/70">{s.tagline}</p>
+                  <p className="mt-4 text-sm leading-7 text-muted-foreground">{s.description}</p>
+                  <div className="mt-6 flex flex-wrap gap-2">
+                    {s.highlights.map((highlight) => (
+                      <span key={highlight} className="border border-secondary/15 bg-secondary/5 px-3 py-1.5 text-[11px] font-semibold leading-none text-secondary">
+                        {highlight}
+                      </span>
+                    ))}
+                  </div>
                 </div>
               </RevealItem>
             ))}
@@ -151,14 +217,6 @@ export default function DataCentresPage() {
         </div>
       </section>
 
-      <CtaBand
-        eyebrow="Step inside"
-        title={<>Tour our <span className="text-gradient-aurora">Tier III</span> facility.</>}
-        description="Schedule a visit to see our Accra data centre in person and meet the engineering team."
-        primaryLabel="Book a Tour"
-        secondaryLabel="Explore Cloud"
-        secondaryTo="/cloud-services"
-      />
     </Layout>
   );
 }

@@ -1,7 +1,6 @@
 import { Network, Globe, Zap, ArrowRight, Radio, Cable } from "lucide-react";
 import Layout from "@/components/layout/Layout";
 import PageHero from "@/components/shared/PageHero";
-import CtaBand from "@/components/shared/CtaBand";
 import Eyebrow from "@/components/ui-system/Eyebrow";
 import GridBackdrop from "@/components/ui-system/GridBackdrop";
 import GlassCard from "@/components/ui-system/GlassCard";
@@ -140,15 +139,15 @@ export default function ConnectivityPage() {
             </h2>
           </Reveal>
 
-          <RevealGroup className="grid md:grid-cols-2 lg:grid-cols-3 gap-px bg-hairline border border-hairline">
+          <RevealGroup className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
             {highlights.map(([label, desc]) => (
-              <RevealItem key={label} className="bg-dark">
-                <GlassCard hoverable={false} className="p-7 lg:p-8 h-full bg-transparent border-0">
+              <RevealItem key={label}>
+                <GlassCard hoverable={false} className="h-full border border-white/25 bg-white/90 p-7 shadow-[0_18px_70px_hsl(0_0%_0%_/_0.18)] transition duration-300 hover:border-primary/70 hover:bg-white lg:p-8">
                   <div className="flex items-start gap-3">
-                    <span className="w-1.5 h-1.5 rounded-full bg-secondary mt-2 shrink-0" />
+                    <span className="mt-2.5 h-2 w-2 shrink-0 bg-primary" />
                     <div>
-                      <div className="font-display text-base text-dark-foreground">{label}</div>
-                      <div className="mt-2 text-sm text-dark-foreground/65 leading-relaxed">{desc}</div>
+                      <div className="font-display text-lg font-semibold leading-snug text-secondary">{label}</div>
+                      <div className="mt-3 text-[15px] leading-7 text-secondary/74">{desc}</div>
                     </div>
                   </div>
                 </GlassCard>
@@ -158,14 +157,6 @@ export default function ConnectivityPage() {
         </div>
       </section>
 
-      <CtaBand
-        eyebrow="Need a network solution?"
-        title={<>Engineer a bespoke network <span className="text-gradient-aurora">with us</span>.</>}
-        description="Our network engineering team can design a solution that maps to your scale, geography and SLA targets."
-        primaryLabel="Request a Quote"
-        secondaryLabel="View Data Centres"
-        secondaryTo="/data-centres"
-      />
     </Layout>
   );
 }

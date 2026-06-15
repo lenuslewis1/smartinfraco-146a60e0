@@ -3,7 +3,6 @@ import {
 } from "lucide-react";
 import Layout from "@/components/layout/Layout";
 import PageHero from "@/components/shared/PageHero";
-import CtaBand from "@/components/shared/CtaBand";
 import ServiceCard from "@/components/shared/ServiceCard";
 import Eyebrow from "@/components/ui-system/Eyebrow";
 import GridBackdrop from "@/components/ui-system/GridBackdrop";
@@ -88,14 +87,6 @@ export default function CloudServicesPage() {
         </div>
       </section>
 
-      <CtaBand
-        eyebrow="Migrate with confidence"
-        title={<>Move to <span className="text-gradient-aurora">Smart Infraco Cloud</span>.</>}
-        description="Our cloud architects will design a migration plan tailored to your enterprise needs."
-        primaryLabel="Talk to an Expert"
-        secondaryLabel="View Data Centres"
-        secondaryTo="/data-centres"
-      />
     </Layout>
   );
 }

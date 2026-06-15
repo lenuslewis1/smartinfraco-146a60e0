@@ -7,7 +7,6 @@ import {
   ShieldCheck,
 } from "lucide-react";
 import Layout from "@/components/layout/Layout";
-import CtaBand from "@/components/shared/CtaBand";
 import Eyebrow from "@/components/ui-system/Eyebrow";
 import AnimatedCounter from "@/components/ui-system/AnimatedCounter";
 import MagneticButton from "@/components/ui-system/MagneticButton";
@@ -232,13 +231,6 @@ export default function AboutPage() {
           </Reveal>
         </div>
       </section>
-
-      <CtaBand
-        eyebrow="Partner with us"
-        title={<>Build on infrastructure designed for <span className="text-gradient-aurora">Ghana's digital economy</span>.</>}
-        description="Speak with Smart Infraco about fibre, cloud, data centre and support services that match your scale, risk and geography."
-        primaryLabel="Get in Touch"
-      />
 
     </Layout>
   );

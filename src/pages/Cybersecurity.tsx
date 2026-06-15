@@ -1,7 +1,6 @@
 import { Shield, Lock, Eye, AlertTriangle, Server, Users } from "lucide-react";
 import Layout from "@/components/layout/Layout";
 import PageHero from "@/components/shared/PageHero";
-import CtaBand from "@/components/shared/CtaBand";
 import ServiceCard from "@/components/shared/ServiceCard";
 import Eyebrow from "@/components/ui-system/Eyebrow";
 import GridBackdrop from "@/components/ui-system/GridBackdrop";
@@ -93,14 +92,6 @@ export default function CybersecurityPage() {
         </div>
       </section>
 
-      <CtaBand
-        eyebrow="Harden your posture"
-        title={<>Talk to our <span className="text-gradient-aurora">security team</span>.</>}
-        description="A short conversation to understand your risk profile and design the right security stack."
-        primaryLabel="Book an Assessment"
-        secondaryLabel="Explore Connectivity"
-        secondaryTo="/connectivity"
-      />
     </Layout>
   );
 }
