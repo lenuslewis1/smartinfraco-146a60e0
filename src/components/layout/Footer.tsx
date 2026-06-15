@@ -71,7 +71,7 @@ export default function Footer() {
                 </a>
                 <Link to="/contact" className="group flex items-center gap-4 text-base font-medium text-white/82 transition-colors hover:text-primary">
                   <MapPin className="h-4 w-4 shrink-0 text-primary" />
-                  HR9F+XM6, 2nd Soula Street, Accra
+                  Peter Ala Adjetey Ave, Accra
                 </Link>
               </div>
 

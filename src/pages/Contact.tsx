@@ -13,6 +13,11 @@ import contactHero from "@/assets/contact-header-building.jpg";
 const inputClass =
   "w-full bg-transparent border-0 border-b border-hairline text-foreground text-sm py-3 placeholder:text-muted-foreground/60 focus:outline-none focus:border-secondary transition-colors";
 
+const officeAddress = "Peter Ala Adjetey Ave, Accra";
+const googleMapsQuery = encodeURIComponent(officeAddress);
+const googleMapsUrl = `https://www.google.com/maps/search/?api=1&query=${googleMapsQuery}`;
+const googleMapsEmbedUrl = `https://www.google.com/maps?q=${googleMapsQuery}&output=embed`;
+
 export default function ContactPage() {
   const { toast } = useToast();
   const [loading, setLoading] = useState(false);
@@ -36,13 +41,15 @@ export default function ContactPage() {
       await navigator.clipboard.writeText(val);
       setCopied(val);
       setTimeout(() => setCopied(null), 1600);
-    } catch {/* noop */}
+    } catch {
+      // Clipboard access can be unavailable in some embedded browsers.
+    }
   };
 
   const contactRows = [
-    { icon: Mail,  label: "Email",   value: "info@smartinfraco.com",      href: "mailto:info@smartinfraco.com" },
-    { icon: Phone, label: "Phone",   value: "030 277 1425",                href: "tel:+233302771425" },
-    { icon: MapPin,label: "Address", value: "HR9F+XM6, 2nd Soula Street, Accra", href: undefined },
+    { icon: Mail, label: "Email", value: "info@smartinfraco.com", href: "mailto:info@smartinfraco.com" },
+    { icon: Phone, label: "Phone", value: "030 277 1425", href: "tel:+233302771425" },
+    { icon: MapPin, label: "Address", value: officeAddress, href: googleMapsUrl },
   ];
 
   return (
@@ -50,7 +57,7 @@ export default function ContactPage() {
       <PageHero
         eyebrow="Contact"
         title="Let's design what comes next."
-        description="Get in touch with our team to discuss your infrastructure requirements — connectivity, data centres, cloud or cybersecurity."
+        description="Get in touch with our team to discuss your infrastructure requirements - connectivity, data centres, cloud or cybersecurity."
         bgImage={contactHero}
       />
 
@@ -58,12 +65,11 @@ export default function ContactPage() {
         <GridBackdrop variant="dots" className="opacity-40" />
         <div className="relative container-wide">
           <div className="grid lg:grid-cols-12 gap-12">
-            {/* Left — editorial + contact methods */}
             <div className="lg:col-span-5">
               <Reveal>
                 <Eyebrow>Direct lines</Eyebrow>
                 <h2 className="font-display mt-5 text-display-lg text-foreground">
-                  Talk to a real engineer.
+                  Get in touch with us.
                 </h2>
                 <p className="mt-5 text-base text-muted-foreground leading-relaxed max-w-md">
                   No bots, no queues. Reach out and a member of our network, cloud or security team will respond within one business day.
@@ -78,7 +84,8 @@ export default function ContactPage() {
                       <li key={row.label}>
                         <Wrapper
                           href={row.href}
-                          onClick={!row.href ? undefined : undefined}
+                          target={row.label === "Address" ? "_blank" : undefined}
+                          rel={row.label === "Address" ? "noreferrer" : undefined}
                           className="group relative flex items-center justify-between gap-4 py-5 border-b border-hairline cursor-pointer transition-colors hover:border-secondary/40"
                         >
                           <div className="flex items-center gap-4">
@@ -111,7 +118,6 @@ export default function ContactPage() {
               </Reveal>
             </div>
 
-            {/* Right — glass form */}
             <Reveal delay={0.15} className="lg:col-span-7">
               <GlassCard hoverable={false} className="p-8 lg:p-12 bg-card">
                 <Eyebrow tone="primary">Start a conversation</Eyebrow>
@@ -133,7 +139,7 @@ export default function ContactPage() {
                   <div className="sm:col-span-2">
                     <label className="block text-[10px] uppercase tracking-[0.22em] text-muted-foreground mb-1">Service Interest</label>
                     <select className={inputClass} defaultValue="">
-                      <option value="" disabled>Select a service…</option>
+                      <option value="" disabled>Select a service...</option>
                       <option className="bg-card">Fibre Connectivity</option>
                       <option className="bg-card">Data Centre Services</option>
                       <option className="bg-card">Cloud & Managed Services</option>
@@ -145,9 +151,11 @@ export default function ContactPage() {
                   <div className="sm:col-span-2">
                     <label className="block text-[10px] uppercase tracking-[0.22em] text-muted-foreground mb-1">Message</label>
                     <textarea
-                      required maxLength={2000} rows={4}
+                      required
+                      maxLength={2000}
+                      rows={4}
                       className={`${inputClass} resize-none`}
-                      placeholder="Tell us about your requirements…"
+                      placeholder="Tell us about your requirements..."
                     />
                   </div>
 
@@ -163,7 +171,7 @@ export default function ContactPage() {
                       ) : loading ? (
                         <>
                           <span className="w-4 h-4 border-2 border-primary-foreground/40 border-t-primary-foreground rounded-full animate-spin" />
-                          Sending…
+                          Sending...
                         </>
                       ) : (
                         <>
@@ -180,7 +188,6 @@ export default function ContactPage() {
         </div>
       </section>
 
-      {/* Stylized location panel */}
       <section className="relative bg-dark overflow-hidden border-t border-hairline">
         <GridBackdrop variant="lines" className="opacity-30" />
         <div className="relative container-wide py-20">
@@ -188,37 +195,32 @@ export default function ContactPage() {
             <Reveal className="lg:col-span-5">
               <Eyebrow>Our location</Eyebrow>
               <h2 className="font-display mt-5 text-display-lg text-dark-foreground">
-                Headquartered in Accra.
+                Visit us in Labone.
               </h2>
               <p className="mt-5 text-base text-dark-foreground/70 max-w-md leading-relaxed">
-                Operations across all 10 regions — fibre, PoPs and data centres engineered for continental-scale delivery.
+                Visit Smart Infraco around Peter Ala Adjetey Avenue in Accra, or open the route directly in Google Maps.
               </p>
+              <a
+                href={googleMapsUrl}
+                target="_blank"
+                rel="noreferrer"
+                className="mt-8 inline-flex items-center gap-3 border border-white/18 px-5 py-3 text-sm font-medium text-dark-foreground transition-colors hover:border-primary hover:text-primary"
+              >
+                <MapPin className="h-4 w-4" />
+                Open in Google Maps
+              </a>
             </Reveal>
 
             <Reveal delay={0.15} className="lg:col-span-7">
-              <div className="relative aspect-[16/9] glass overflow-hidden">
-                {/* coordinate grid */}
-                <div className="absolute inset-0 grid-backdrop opacity-50" />
-                {/* faint Ghana shape */}
-                <svg viewBox="0 0 800 450" className="absolute inset-0 w-full h-full" preserveAspectRatio="xMidYMid meet">
-                  <path
-                    d="M260,60 L420,40 L470,90 L500,160 L560,210 L620,300 L640,360 L600,410 L470,420 L380,420 L260,360 L240,260 L220,180 L240,120 Z"
-                    fill="hsl(var(--primary) / 0.05)"
-                    stroke="hsl(var(--primary) / 0.25)"
-                    strokeWidth="1"
-                  />
-                  {/* Accra pin */}
-                  <g>
-                    <circle cx="540" cy="370" r="40" fill="hsl(var(--secondary) / 0.12)" />
-                    <circle cx="540" cy="370" r="20" fill="hsl(var(--secondary) / 0.25)" />
-                    <circle cx="540" cy="370" r="6"  fill="hsl(var(--secondary))" />
-                  </g>
-                  <text x="555" y="365" fill="hsl(var(--dark-foreground))" fontSize="13" fontFamily="'Space Grotesk', sans-serif" letterSpacing="0.08em">ACCRA · HQ</text>
-                  <text x="555" y="382" fill="hsl(var(--dark-foreground) / 0.5)" fontSize="10" fontFamily="'Space Grotesk', sans-serif" letterSpacing="0.18em">5.6037° N · 0.1870° W</text>
-                </svg>
-                {/* corner labels */}
-                <div className="absolute top-4 left-4 text-[10px] uppercase tracking-[0.22em] text-muted-foreground">GHA · 01</div>
-                <div className="absolute top-4 right-4 text-[10px] uppercase tracking-[0.22em] text-muted-foreground flex items-center gap-2"><span className="pulse-dot" /> Live</div>
+              <div className="relative aspect-[16/10] overflow-hidden border border-white/12 bg-white shadow-elevated">
+                <iframe
+                  title="Smart Infraco location on Google Maps"
+                  src={googleMapsEmbedUrl}
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  allowFullScreen
+                  className="h-full w-full"
+                />
               </div>
             </Reveal>
           </div>

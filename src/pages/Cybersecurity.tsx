@@ -82,9 +82,9 @@ export default function CybersecurityPage() {
             ].map((s) => (
               <RevealItem key={s.step} className="bg-dark">
                 <div className="group p-8 lg:p-10 h-full transition-colors hover:bg-card">
-                  <div className="font-display text-xs uppercase tracking-[0.22em] text-secondary">{s.step}</div>
-                  <h3 className="font-display mt-4 text-2xl text-dark-foreground">{s.title}</h3>
-                  <p className="mt-3 text-sm text-dark-foreground/65 leading-relaxed">{s.desc}</p>
+                  <div className="font-display text-xs uppercase tracking-[0.22em] text-primary transition-colors group-hover:text-secondary">{s.step}</div>
+                  <h3 className="font-display mt-4 text-2xl text-dark-foreground transition-colors group-hover:text-foreground">{s.title}</h3>
+                  <p className="mt-3 text-sm text-dark-foreground/75 leading-relaxed transition-colors group-hover:text-muted-foreground">{s.desc}</p>
                 </div>
               </RevealItem>
             ))}

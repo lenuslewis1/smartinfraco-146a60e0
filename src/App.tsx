@@ -12,6 +12,7 @@ import Cybersecurity from "./pages/Cybersecurity";
 import Contact from "./pages/Contact";
 import News from "./pages/News";
 import Articles from "./pages/Articles";
+import ArticleDetail from "./pages/ArticleDetail";
 import Videos from "./pages/Videos";
 import Events from "./pages/Events";
 import NotFound from "./pages/NotFound";
@@ -34,6 +35,7 @@ const App = () => (
           <Route path="/contact" element={<Contact />} />
           <Route path="/news" element={<News />} />
           <Route path="/articles" element={<Articles />} />
+          <Route path="/articles/:slug" element={<ArticleDetail />} />
           <Route path="/videos" element={<Videos />} />
           <Route path="/events" element={<Events />} />
           <Route path="*" element={<NotFound />} />

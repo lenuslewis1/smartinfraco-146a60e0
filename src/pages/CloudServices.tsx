@@ -75,11 +75,11 @@ export default function CloudServicesPage() {
             {benefits.map((b) => (
               <RevealItem key={b.label} className="bg-dark">
                 <div className="group p-8 lg:p-10 h-full transition-colors hover:bg-card">
-                  <div className="w-12 h-12 glass flex items-center justify-center mb-6">
-                    <b.icon className="w-5 h-5 text-secondary" />
+                  <div className="w-12 h-12 glass flex items-center justify-center mb-6 transition-colors group-hover:border-secondary/15 group-hover:bg-muted">
+                    <b.icon className="w-5 h-5 text-secondary transition-colors group-hover:text-secondary" />
                   </div>
-                  <h3 className="font-display text-lg text-dark-foreground">{b.label}</h3>
-                  <p className="mt-3 text-sm text-dark-foreground/70 leading-relaxed">{b.desc}</p>
+                  <h3 className="font-display text-lg text-dark-foreground transition-colors group-hover:text-foreground">{b.label}</h3>
+                  <p className="mt-3 text-sm text-dark-foreground/70 leading-relaxed transition-colors group-hover:text-muted-foreground">{b.desc}</p>
                 </div>
               </RevealItem>
             ))}

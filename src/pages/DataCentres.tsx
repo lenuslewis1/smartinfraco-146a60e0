@@ -167,12 +167,12 @@ export default function DataCentresPage() {
           <RevealGroup className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {features.map((f) => (
               <RevealItem key={f.label}>
-                <div className="group h-full border border-white/12 bg-white/[0.06] p-7 transition duration-300 hover:border-primary/55 hover:bg-white lg:p-8">
-                  <div className="mb-5 flex h-11 w-11 items-center justify-center border border-white/14 bg-white/10 transition duration-300 group-hover:border-secondary/20 group-hover:bg-secondary/8">
-                    <f.icon className="h-5 w-5 text-primary transition duration-300 group-hover:text-secondary" />
+                <div className="group h-full border border-white/18 bg-white/[0.09] p-7 transition duration-300 hover:border-primary/55 hover:bg-white/[0.14] lg:p-8">
+                  <div className="mb-5 flex h-11 w-11 items-center justify-center border border-white/22 bg-white/12 transition duration-300 group-hover:border-primary/55 group-hover:bg-primary/10">
+                    <f.icon className="h-5 w-5 text-primary transition duration-300" />
                   </div>
-                  <h3 className="font-display text-base font-medium text-white transition duration-300 group-hover:text-secondary">{f.label}</h3>
-                  <p className="mt-2 text-sm leading-relaxed text-white/68 transition duration-300 group-hover:text-secondary/72">{f.desc}</p>
+                  <h3 className="font-display text-base font-medium text-white transition duration-300">{f.label}</h3>
+                  <p className="mt-2 text-sm leading-relaxed text-slate-200 transition duration-300 group-hover:text-white">{f.desc}</p>
                 </div>
               </RevealItem>
             ))}

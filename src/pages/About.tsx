@@ -16,7 +16,7 @@ import dataCentreBg from "@/assets/datacenter-bg.jpg";
 import connectivityHero from "@/assets/connectivity-hero.jpg";
 
 const stats = [
-  { value: 1010, suffix: " km", label: "Eastern corridor fibre backbone" },
+  { value: 1000, suffix: " km", label: "Eastern corridor fibre backbone" },
   { value: 10, suffix: "+", label: "regions reached through national infrastructure" },
   { value: 24, suffix: "/7", label: "support for critical operations" },
 ];
@@ -35,7 +35,7 @@ const operatingModel = [
   {
     icon: Building2,
     title: "Public-private enablement",
-    text: "The commercial wing of NITA, extending national infrastructure capacity to private enterprises as well as public services.",
+    text: "Extending national infrastructure capacity to private enterprises as well as public services.",
   },
 ];
 
@@ -78,7 +78,7 @@ export default function AboutPage() {
             <Reveal delay={0.16} className="group border border-white/20 bg-white/10 p-6 backdrop-blur-xl transition duration-500 hover:-translate-y-2 hover:border-primary/70 hover:bg-white/16 hover:shadow-[0_24px_80px_hsl(95_82%_55%_/_0.18)]">
               <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-primary">National role</p>
               <p className="mt-5 text-2xl font-medium leading-snug">
-                The commercial wing of NITA, extending government-built fibre capacity into reliable services for the wider market.
+                Extending government-built fibre capacity into reliable services for the wider market.
               </p>
               <div className="mt-8 grid grid-cols-3 gap-px bg-white/18">
                 {stats.map((stat) => (
@@ -219,7 +219,7 @@ export default function AboutPage() {
           </Reveal>
           <Reveal delay={0.1} className="space-y-6 bg-secondary/72 p-8 backdrop-blur-md transition duration-500 hover:-translate-y-2 hover:bg-secondary/86 hover:shadow-[0_24px_80px_hsl(225_50%_12%_/_0.24)] lg:p-10">
             <p className="text-base leading-8 text-white/82">
-              Ghana's digitalisation progress has driven a rising demand for high-quality, affordable, and equally available internet service. As the commercial wing of NITA, Smart Infraco has the responsibility of ensuring that all public and private enterprises alike have equal access to, and enjoy the full benefit of, the nation's best-of-breed fibre infrastructure.
+              Ghana's digitalisation progress has driven a rising demand for high-quality, affordable, and equally available internet service. Smart Infraco helps public and private enterprises alike access and benefit from the nation's best-of-breed fibre infrastructure.
             </p>
             <p className="text-base leading-8 text-white/82">
               Through our world-class, innovative, and reliable services, Smart Infraco enables businesses and government agencies to run all their critical business-applications on the network, to derive maximum output.
