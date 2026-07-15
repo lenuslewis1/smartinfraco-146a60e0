@@ -56,7 +56,7 @@ export default function ContactPage() {
     <Layout>
       <PageHero
         eyebrow="Contact"
-        title="Let's design what comes next."
+        title="Lets Grow your business together"
         description="Get in touch with our team to discuss your infrastructure requirements - connectivity, data centres, cloud or cybersecurity."
         bgImage={contactHero}
       />

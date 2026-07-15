@@ -16,7 +16,9 @@ const media = [
   { label: "News",     href: "/news",     desc: "Latest updates and press releases" },
   { label: "Articles", href: "/articles", desc: "Insights and thought leadership" },
   { label: "Videos",   href: "/videos",   desc: "Presentations and showcases" },
-  { label: "Events",   href: "/events",   desc: "Conferences and summits" },
+  { label: "Events & CSR", href: "/events", desc: "Events and community impact" },
+  { label: "Webinars", href: "/webinars", desc: "Expert conversations and briefings" },
+  { label: "Awards & Recognition", href: "/awards", desc: "Milestones and industry recognition" },
 ];
 
 const navLinks = [

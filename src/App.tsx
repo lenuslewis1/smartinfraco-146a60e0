@@ -15,6 +15,9 @@ import Articles from "./pages/Articles";
 import ArticleDetail from "./pages/ArticleDetail";
 import Videos from "./pages/Videos";
 import Events from "./pages/Events";
+import Awards from "./pages/Awards";
+import Webinars from "./pages/Webinars";
+import WebinarDetail from "./pages/WebinarDetail";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -38,6 +41,9 @@ const App = () => (
           <Route path="/articles/:slug" element={<ArticleDetail />} />
           <Route path="/videos" element={<Videos />} />
           <Route path="/events" element={<Events />} />
+          <Route path="/awards" element={<Awards />} />
+          <Route path="/webinars" element={<Webinars />} />
+          <Route path="/webinars/:slug" element={<WebinarDetail />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>

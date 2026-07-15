@@ -1,5 +1,4 @@
 import {
-  ArrowUpRight,
   Building2,
   Check,
   FileCheck,
@@ -13,18 +12,17 @@ import MagneticButton from "@/components/ui-system/MagneticButton";
 import { Reveal, RevealGroup, RevealItem } from "@/components/ui-system/RevealOnScroll";
 import aboutHero from "@/assets/about-hero.jpg";
 import dataCentreBg from "@/assets/datacenter-bg.jpg";
-import connectivityHero from "@/assets/connectivity-hero.jpg";
 
 const stats = [
   { value: 1000, suffix: " km", label: "Eastern corridor fibre backbone" },
-  { value: 10, suffix: "+", label: "regions reached through national infrastructure" },
+  { value: 2, suffix: "", label: "Tier II (Kumasi) and Tier III (Accra)" },
   { value: 24, suffix: "/7", label: "support for critical operations" },
 ];
 
 const operatingModel = [
   {
     icon: Network,
-    title: "Neutral-access infrastructure",
+    title: "Access-Neutral  infrastructure",
     text: "A shared foundation for government, carriers, enterprises and service providers that need dependable national reach.",
   },
   {
@@ -67,7 +65,7 @@ export default function AboutPage() {
                 Ghana's digital infrastructure partner for public and enterprise growth.
               </h1>
               <p className="mt-7 max-w-3xl text-base font-medium leading-7 text-white/82 lg:text-xl lg:leading-8">
-                Smart Infraco commercialises and strengthens national digital infrastructure, giving organisations access to resilient fibre, data centre, cloud and support capabilities built for Ghana's digitalisation agenda.
+                Smart Infraco operates the national digital infrastructure, giving organisations access to resilient fibre, data centre, cloud and support capabilities built for Ghana's digitalisation agenda.
               </p>
               <div className="mt-9 flex flex-wrap gap-4">
                 <MagneticButton to="/contact" variant="primary">Start a conversation</MagneticButton>
@@ -95,8 +93,8 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="bg-white py-24 lg:py-32">
-        <div className="mx-auto grid w-full max-w-[1500px] gap-14 px-5 sm:px-8 lg:grid-cols-[0.95fr_1.05fr] lg:px-12">
+      <section className="relative overflow-hidden bg-white py-24 lg:py-32">
+        <div className="relative mx-auto grid w-full max-w-[1500px] gap-14 px-5 sm:px-8 lg:grid-cols-[0.95fr_1.05fr] lg:px-12">
           <Reveal>
             <Eyebrow tone="muted">Company overview</Eyebrow>
             <h2 className="mt-5 font-display text-[clamp(2.25rem,4.6vw,5.4rem)] font-semibold leading-[0.96] text-secondary">
@@ -106,7 +104,8 @@ export default function AboutPage() {
 
           <Reveal delay={0.08} className="space-y-6 text-base leading-8 text-slate-600 lg:text-lg">
             <p>
-              The Government of Ghana's 1,010-km Eastern corridor fibre cable was originally built to digitalise government administration and amplify economic activity across the eastern side of the country.
+              The Government of Ghana's 1,000-km Eastern corridor fibre was originally built to digitalise government administration and amplify economic activity across the eastern side of the country.
+
             </p>
             <p>
               Smart Infraco adds the commercial systems, technical support and service operations needed to make that infrastructure work for public institutions and private enterprises alike.
@@ -117,14 +116,14 @@ export default function AboutPage() {
           </Reveal>
         </div>
 
-        <div className="mx-auto mt-16 grid w-full max-w-[1500px] gap-5 px-5 sm:px-8 lg:grid-cols-[1.15fr_0.85fr] lg:px-12">
+        <div className="relative mx-auto mt-16 grid w-full max-w-[1500px] gap-5 px-5 sm:px-8 lg:grid-cols-[1.15fr_0.85fr] lg:px-12">
           <Reveal className="relative min-h-[520px] overflow-hidden bg-slate-100">
             <img src={aboutHero} alt="Ghana skyline" className="absolute inset-0 h-full w-full object-cover" />
             <div className="absolute inset-0 bg-gradient-to-t from-secondary/88 via-secondary/20 to-transparent" />
             <div className="absolute bottom-0 left-0 max-w-md p-8">
               <p className="font-mono text-xs uppercase tracking-[0.18em] text-white/62">National footprint</p>
               <h3 className="mt-4 font-display text-4xl font-semibold leading-tight text-white">
-                Backbone capacity for Ghana's next stage of digitalisation.
+                Backbone capacity for Ghana's Digital Economy.
               </h3>
             </div>
           </Reveal>
@@ -154,23 +153,22 @@ export default function AboutPage() {
             </h2>
           </Reveal>
 
-          <div className="mt-14 grid gap-10 lg:grid-cols-[0.95fr_1.05fr]">
-            <Reveal className="border border-white/16 p-8 transition duration-500 hover:-translate-y-2 hover:border-primary/70 hover:bg-white/8 hover:shadow-[0_24px_80px_hsl(0_0%_0%_/_0.24)] lg:p-10">
-              <p className="text-base leading-8 text-white/78 lg:text-lg">
-                Smart Infraco provides infrastructure access to accelerate service delivery on the current 3G/4G networks and make the nation ready for 5G. We provide an open neutral-access digital infrastructure that facilitates best-in-class voice and data service for all businesses and consumers.
+          <Reveal className="mt-14 max-w-5xl border border-primary bg-primary p-8 text-primary-foreground transition duration-500 hover:-translate-y-2 hover:brightness-105 hover:shadow-[0_24px_80px_hsl(95_82%_35%_/_0.24)] lg:p-10">
+            <div className="space-y-6">
+              <p className="text-base leading-8 text-primary-foreground/82 lg:text-lg">
+                Smart Infraco provides an open neutral-access digital infrastructure that facilitates best-in-class voice and data service for all businesses and consumers.
               </p>
-            </Reveal>
-            <Reveal delay={0.1} className="bg-primary p-8 text-primary-foreground transition duration-500 hover:-translate-y-2 hover:brightness-105 hover:shadow-[0_24px_80px_hsl(95_82%_35%_/_0.24)] lg:p-10">
-              <p className="text-base leading-8 lg:text-lg">
-                Our purpose is not only to accelerate the growth and transformation of Ghana's telecoms sector, but also to ensure equal access to the robust infrastructure solutions that enable private players to digitalise and monetise their goals.
+              <p className="text-base leading-8 text-primary-foreground/82 lg:text-lg">
+                Our purpose is to accelerate the growth and transformation of Ghana’s telecoms sector while ensuring equal access to the robust infrastructure solutions that enable public and private institutions to digitalise and monetise their goals.
+
               </p>
-            </Reveal>
-          </div>
+            </div>
+          </Reveal>
         </div>
       </section>
 
-      <section className="bg-white py-24 lg:py-32">
-        <div className="mx-auto grid w-full max-w-[1500px] gap-5 px-5 sm:px-8 lg:grid-cols-2 lg:px-12">
+      <section className="relative overflow-hidden bg-white py-24 lg:py-32">
+        <div className="relative mx-auto grid w-full max-w-[1500px] gap-5 px-5 sm:px-8 lg:grid-cols-2 lg:px-12">
           <Reveal className="group relative min-h-[560px] overflow-hidden bg-secondary text-white transition duration-500 hover:-translate-y-2 hover:shadow-[0_24px_80px_hsl(225_50%_12%_/_0.22)]">
             <img src={dataCentreBg} alt="" className="absolute inset-0 h-full w-full object-cover opacity-74 transition duration-700 group-hover:scale-105" />
             <div className="absolute inset-0 bg-gradient-to-t from-secondary via-secondary/42 to-transparent" />
@@ -204,30 +202,6 @@ export default function AboutPage() {
                 Smart Infraco combines infrastructure ownership, carrier-neutral access and operational support so customers can plan services around clear standards and a single accountable partner.
               </p>
             </div>
-          </Reveal>
-        </div>
-      </section>
-
-      <section className="relative overflow-hidden bg-[hsl(206_70%_50%)] py-24 text-white lg:py-32">
-        <img src={connectivityHero} alt="" className="absolute inset-0 h-full w-full object-cover opacity-20" />
-        <div className="relative mx-auto grid w-full max-w-[1500px] gap-12 px-5 sm:px-8 lg:grid-cols-[0.95fr_1.05fr] lg:items-end lg:px-12">
-          <Reveal>
-            <Eyebrow tone="accent">Public-private partnerships</Eyebrow>
-            <h2 className="mt-6 font-display text-[clamp(2.5rem,5vw,6rem)] font-semibold leading-[0.96]">
-              Enabling high-quality public-private partnerships
-            </h2>
-          </Reveal>
-          <Reveal delay={0.1} className="space-y-6 bg-secondary/72 p-8 backdrop-blur-md transition duration-500 hover:-translate-y-2 hover:bg-secondary/86 hover:shadow-[0_24px_80px_hsl(225_50%_12%_/_0.24)] lg:p-10">
-            <p className="text-base leading-8 text-white/82">
-              Ghana's digitalisation progress has driven a rising demand for high-quality, affordable, and equally available internet service. Smart Infraco helps public and private enterprises alike access and benefit from the nation's best-of-breed fibre infrastructure.
-            </p>
-            <p className="text-base leading-8 text-white/82">
-              Through our world-class, innovative, and reliable services, Smart Infraco enables businesses and government agencies to run all their critical business-applications on the network, to derive maximum output.
-            </p>
-            <MagneticButton to="/contact" variant="primary" className="mt-8">
-              Talk to Smart Infraco
-              <ArrowUpRight className="h-4 w-4" />
-            </MagneticButton>
           </Reveal>
         </div>
       </section>

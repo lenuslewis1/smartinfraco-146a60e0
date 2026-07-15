@@ -45,12 +45,32 @@ import testimonial2 from "@/assets/testimonial-2.jpg";
 import testimonial3 from "@/assets/testimonial-3.jpg";
 import testimonial4 from "@/assets/testimonial-4.jpg";
 import whyDefault from "@/assets/why-default.jpg";
+import ghanaRepublic from "@/assets/customers/ghana-republic.png";
+import gfza from "@/assets/customers/gfza.jpg";
+import devtraco from "@/assets/customers/devtraco.png";
+import broadspectrum from "@/assets/customers/broadspectrum-digital-payments.jpeg";
+import ghanaPolice from "@/assets/customers/ghana-police.jpg";
+import ghanaArmedForces from "@/assets/customers/ghana-armed-forces.png";
+import ministryForeignAffairs from "@/assets/customers/ministry-foreign-affairs.png";
+import ghanaImmigrationService from "@/assets/customers/ghana-immigration-service.jpg";
+import judicialServiceGhana from "@/assets/customers/judicial-service-ghana.jpg";
+import ghanaCivilAviationAuthority from "@/assets/customers/ghana-civil-aviation-authority.jpg";
+import vodafoneBusiness from "@/assets/customers/vodafone-business.png";
+import dolphin from "@/assets/customers/dolphin.png";
+import via from "@/assets/customers/via.webp";
+import nationalPetroleumAuthority from "@/assets/customers/national-petroleum-authority.webp";
+import gepa from "@/assets/customers/gepa.png";
+import electoralCommissionGhana from "@/assets/customers/electoral-commission-ghana.png";
+import youthEmploymentAgency from "@/assets/customers/youth-employment-agency.jpeg";
+import gifec from "@/assets/customers/gifec.jpeg";
+import publicProcurementAuthority from "@/assets/customers/public-procurement-authority.jpeg";
 
 const ease = [0.22, 1, 0.36, 1] as const;
 const heroHeadlines = [
-  "Data Centre leader in Ghana",
-  "Cloud Services Leader in Ghana",
-  "Connectivity services leader in Ghana",
+
+  "Indigenous cloud services",
+  "Tier 3 data centre services",
+  "Dedicated internet services",
 ];
 const longestHeroHeadline = heroHeadlines.reduce((longest, current) =>
   current.length > longest.length ? current : longest
@@ -81,6 +101,25 @@ const customers = [
     name: "NGIC",
     src: "https://www.ngicgh.com/icon.svg",
   },
+  { name: "Republic of Ghana", src: ghanaRepublic },
+  { name: "Ghana Free Zones Authority", src: gfza },
+  { name: "Devtraco Group", src: devtraco },
+  { name: "Broadspectrum Digital Payments", src: broadspectrum },
+  { name: "Ghana Police Service", src: ghanaPolice },
+  { name: "Ghana Armed Forces", src: ghanaArmedForces },
+  { name: "Ministry of Foreign Affairs", src: ministryForeignAffairs },
+  { name: "Ghana Immigration Service", src: ghanaImmigrationService },
+  { name: "Judicial Service of Ghana", src: judicialServiceGhana },
+  { name: "Ghana Civil Aviation Authority", src: ghanaCivilAviationAuthority },
+  { name: "Vodafone Business", src: vodafoneBusiness },
+  { name: "Dolphin", src: dolphin },
+  { name: "VIA", src: via },
+  { name: "National Petroleum Authority", src: nationalPetroleumAuthority },
+  { name: "Ghana Export Promotion Authority", src: gepa },
+  { name: "Electoral Commission Ghana", src: electoralCommissionGhana },
+  { name: "Youth Employment Agency", src: youthEmploymentAgency },
+  { name: "GIFEC", src: gifec },
+  { name: "Public Procurement Authority", src: publicProcurementAuthority },
 ];
 
 function TypewriterHeroText() {
@@ -169,7 +208,7 @@ function Hero() {
             >
               <TypewriterHeroText />
               <p className="mt-4 max-w-3xl text-pretty text-sm font-medium leading-6 text-white/90 sm:text-lg sm:leading-8 lg:mt-7 lg:text-2xl lg:leading-9">
-                Smart Infraco powers Ghana's digital backbone - secure, scalable national infrastructure for government and enterprise.
+                Smart Infraco powers Ghana's digital backbone - secure, scalable national infrastructure for public and private institutions.
               </p>
               <div className="mt-6 flex flex-wrap items-center gap-3 lg:mt-9 lg:gap-4">
                 <MagneticButton to="/connectivity" variant="dark" className="min-h-12 pl-6 text-xs font-bold tracking-[0.12em] lg:min-h-16 lg:pl-9 lg:text-base">
@@ -197,7 +236,7 @@ function CustomerLogoStrip() {
               src={customer.src}
               alt={`${customer.name} logo`}
               loading="lazy"
-              className="h-9 w-auto max-w-[140px] shrink-0 object-contain grayscale transition duration-300 hover:grayscale-0 hover:opacity-100 lg:h-11"
+              className="h-11 w-auto max-w-[170px] shrink-0 object-contain grayscale transition duration-300 hover:grayscale-0 hover:opacity-100 lg:h-14 lg:max-w-[190px]"
             />
           ))}
         </div>
@@ -217,7 +256,8 @@ function AboutBento() {
           </div>
           <h2 className="mt-5 font-display text-[clamp(2rem,3.35vw,3.35rem)] font-medium leading-[1.05] tracking-[-0.02em] text-secondary">
             A national technology partner<br className="hidden lg:block" />
-            dedicated to building{" "}
+            accelerating digital transformation through   
+{" "}
             <span className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-primary text-secondary align-middle md:h-9 md:w-9">
               <Zap className="h-4 w-4" />
             </span>{" "}
@@ -238,7 +278,7 @@ function AboutBento() {
               </div>
               <p className="font-mono text-[10px] font-bold uppercase tracking-[0.24em] text-white/90 transition duration-500 group-hover:text-primary-foreground/70">Customers</p>
               <div className="mt-5 font-display text-[clamp(2.65rem,4vw,3.55rem)] font-semibold leading-none tracking-[-0.04em] tabular-nums">
-                <AnimatedCounter to={300} suffix="+" />
+                <AnimatedCounter to={300} duration={3.2} suffix="+" />
               </div>
               <p className="mt-5 max-w-xs text-sm leading-6 text-white/78 transition duration-500 group-hover:text-primary-foreground/75">
                 Customers served across Ghana in both the public and private sectors.
@@ -250,7 +290,7 @@ function AboutBento() {
             <div className="group flex min-h-[225px] flex-col justify-center rounded-[24px] border border-slate-300 bg-white p-7 text-secondary shadow-[0_24px_70px_hsl(215_45%_22%_/_0.06)] transition duration-500 hover:-translate-y-2 hover:border-primary hover:bg-secondary hover:text-white hover:shadow-[0_28px_80px_hsl(215_45%_22%_/_0.18)]">
               <p className="font-mono text-[10px] font-bold uppercase tracking-[0.24em] text-slate-500 transition duration-500 group-hover:text-primary">Network availability</p>
               <div className="mt-5 font-display text-[clamp(2.65rem,4vw,3.55rem)] font-semibold leading-none tracking-[-0.04em] tabular-nums">
-                <AnimatedCounter to={99.99} decimals={2} suffix="%" />
+                <AnimatedCounter to={99.99} duration={3.2} decimals={2} suffix="%" />
               </div>
               <p className="mt-5 max-w-xs text-sm leading-6 text-slate-600 transition duration-500 group-hover:text-white/72">
                 "Smart Infraco completely reshaped how we operate. Resilient, secure and engineered for our scale."
@@ -263,7 +303,7 @@ function AboutBento() {
               <Network className="absolute right-6 top-6 h-5 w-5 transition duration-500 group-hover:scale-125 group-hover:rotate-6" />
               <p className="font-mono text-[10px] font-bold uppercase tracking-[0.24em]">Fibre backbone</p>
               <div className="mt-5 font-display text-[clamp(2.65rem,4vw,3.55rem)] font-semibold leading-none tracking-[-0.04em] tabular-nums">
-                <AnimatedCounter to={1000} suffix="+ Km" />
+                <AnimatedCounter to={1000} duration={3.2} suffix="+ Km" />
               </div>
               <p className="mt-5 max-w-xs text-sm leading-6 text-secondary/78 transition duration-500 group-hover:text-secondary/90">
                 National fibre backbone reaching every region - engineered for sub-millisecond intra-Ghana latency.
@@ -277,7 +317,7 @@ function AboutBento() {
             <div className="group flex min-h-[205px] flex-col justify-center rounded-[24px] bg-secondary p-7 text-white transition duration-500 hover:-translate-y-2 hover:bg-[hsl(206_70%_50%)] hover:shadow-[0_28px_80px_hsl(206_70%_28%_/_0.22)] lg:p-8">
               <p className="font-mono text-[10px] font-bold uppercase tracking-[0.24em] text-white/55 transition duration-500 group-hover:text-primary">Active connections</p>
               <div className="mt-5 font-display text-[clamp(2.65rem,4vw,3.55rem)] font-semibold leading-none tracking-[-0.04em] tabular-nums">
-                <AnimatedCounter to={48} suffix="+ PoPs" />
+                <AnimatedCounter to={48} duration={3.2} suffix="+ PoPs" />
               </div>
               <p className="mt-5 max-w-sm text-sm leading-6 text-white/68 transition duration-500 group-hover:text-white/82">
                 Points of presence distributed across Ghana for low-latency access.
@@ -304,7 +344,7 @@ function AboutBento() {
 
 function ServicesThree() {
   const services = [
-    { title: "Connectivity", desc: "National fibre, metro rings, dark fibre and dedicated internet access up to 100 Gbps.", img: serviceConnectivityCustom, href: "/connectivity", icon: Network },
+    { title: "Connectivity", desc: "Metro fibre, dark fibre and dedicated internet backed by a 100 Gbps backbone", img: serviceConnectivityCustom, href: "/connectivity", icon: Network },
     { title: "Data Centres", desc: "Carrier-neutral colocation and local hosting designed for uptime, security and control.", img: serviceDataCenterCustom, href: "/data-centres", icon: Server },
     { title: "Cloud", desc: "Sovereign cloud, managed storage and backup services delivered from local infrastructure.", img: serviceCloudCustom, href: "/cloud-services", icon: Cloud },
     { title: "Cybersecurity", desc: "Threat monitoring, network protection and response support for critical enterprise systems.", img: serviceCyberCustom, href: "/cybersecurity", icon: Shield },
@@ -316,7 +356,7 @@ function ServicesThree() {
         <Reveal className="mx-auto max-w-2xl text-center">
           <Eyebrow tone="muted" className="justify-center">Solutions</Eyebrow>
           <h2 className="mt-4 font-display text-[clamp(2rem,3.2vw,3.25rem)] font-medium leading-[1.08] text-foreground">
-            The core infrastructure stack, delivered through one operating window.
+            Robust infrastructure delivered through one operating window. 
           </h2>
         </Reveal>
 
@@ -509,6 +549,17 @@ function IndustriesWeServe() {
           <h2 className="mt-6 font-display text-display-xl font-medium text-white">
             Critical sectors need infrastructure that stays accountable under pressure.
           </h2>
+          <div className="mt-8 flex flex-wrap gap-3">
+            {["Continuity", "Scale", "Support"].map((item) => (
+              <span
+                key={item}
+                className="inline-flex items-center gap-2 border border-white/24 bg-white/12 px-4 py-2 font-mono text-xs uppercase tracking-[0.14em] text-white backdrop-blur-md"
+              >
+                <Check className="h-4 w-4 text-primary" />
+                {item}
+              </span>
+            ))}
+          </div>
         </Reveal>
 
       </div>
@@ -520,19 +571,11 @@ function IndustriesWeServe() {
               <article
                 key={`${industry.name}-${index}`}
                 aria-hidden={index >= industries.length}
-                className="flex min-h-[340px] w-[290px] shrink-0 flex-col bg-primary/95 p-7 text-primary-foreground shadow-2xl shadow-secondary/20 backdrop-blur-sm sm:w-[340px] lg:w-[390px]"
-              >
-                <industry.icon className="h-6 w-6" />
-                <h3 className="mt-10 font-display text-2xl font-medium leading-tight">{industry.name}</h3>
-                <p className="mt-3 text-sm leading-6 text-primary-foreground/75">{industry.blurb}</p>
-                <ul className="mt-auto space-y-3 pt-8 font-mono text-xs uppercase tracking-[0.14em]">
-                  {["Continuity", "Scale", "Support"].map((item) => (
-                    <li key={item} className="flex items-center gap-2">
-                      <Check className="h-4 w-4" />
-                      {item}
-                    </li>
-                  ))}
-                </ul>
+                className="flex min-h-[260px] w-[290px] shrink-0 flex-col bg-primary/95 p-7 text-primary-foreground shadow-2xl shadow-secondary/20 backdrop-blur-sm sm:w-[340px] lg:min-h-[280px] lg:w-[390px]"
+                >
+                  <industry.icon className="h-6 w-6" />
+                  <h3 className="mt-8 font-display text-2xl font-medium leading-tight">{industry.name}</h3>
+                  <p className="mt-3 text-sm leading-6 text-primary-foreground/75">{industry.blurb}</p>
               </article>
             ))}
           </div>
@@ -587,8 +630,8 @@ function Testimonials() {
         <Reveal>
           <div className="relative mx-auto max-w-5xl">
             <h2 className="font-display text-[clamp(2.5rem,5vw,4.2rem)] leading-[1.1] tracking-tight text-center">
-              <span className="font-light text-white">Impactful </span>
-              <span className="font-medium text-primary">Successes</span>
+              <span className="font-light text-white">Customer </span>
+              <span className="font-medium text-primary">Experience</span>
             </h2>
 
             <div className="mt-16 grid grid-cols-1 md:grid-cols-[auto_1fr_auto] items-center gap-8 lg:gap-16">
@@ -705,6 +748,18 @@ function BlogStrip() {
       img: svcStorage,
       date: { month: "May", day: "28", year: "2026" }
     },
+    {
+      title: "Building stronger defences with managed security",
+      category: "Cybersecurity, SOC",
+      img: serviceCyberCustom,
+      date: { month: "May", day: "21", year: "2026" }
+    },
+    {
+      title: "What resilient data centre operations require",
+      category: "Data Centres, Operations",
+      img: serviceDataCenterCustom,
+      date: { month: "May", day: "16", year: "2026" }
+    },
   ];
 
   return (
@@ -713,7 +768,7 @@ function BlogStrip() {
         <Reveal className="mb-14 flex flex-wrap items-end justify-between gap-6">
           <div>
             <Eyebrow tone="muted">Insights</Eyebrow>
-            <h2 className="mt-6 font-display text-display-lg font-medium text-foreground">Latest thinking for resilient operations.</h2>
+            <h2 className="mt-6 font-display text-display-lg font-medium text-foreground">Insights for smarter digital infrastructure.</h2>
           </div>
           <Link to="/articles" className="inline-flex h-12 items-center gap-2 rounded-full bg-secondary py-2 pl-6 pr-3 font-mono text-xs uppercase tracking-[0.16em] text-secondary-foreground">
             View all
@@ -723,9 +778,9 @@ function BlogStrip() {
           </Link>
         </Reveal>
 
-        <RevealGroup className="grid grid-cols-1 gap-8 md:grid-cols-3">
+        <RevealGroup className="relative left-1/2 flex w-screen -translate-x-1/2 gap-6 overflow-x-auto px-6 pb-4 xl:justify-center xl:overflow-visible">
           {posts.map((post) => (
-            <RevealItem key={post.title} className="flex">
+            <RevealItem key={post.title} className="flex w-[350px] shrink-0 lg:w-[360px]">
               <Link 
                 to="/articles" 
                 className="group flex flex-col w-full bg-white rounded-[24px] overflow-hidden border border-slate-200/40 shadow-sm transition-all duration-300 hover:shadow-lg hover:-translate-y-1"
