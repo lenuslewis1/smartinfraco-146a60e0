@@ -24,17 +24,17 @@ export default function WebinarsPage() {
           <Reveal>
             <Eyebrow>Featured webinar</Eyebrow>
             <h2 className="mt-6 max-w-4xl font-display text-display-xl font-medium text-white">
-              Watch technical briefings and infrastructure conversations.
+              Explore Smart Infraco's webinar archive.
             </h2>
             <p className="mt-7 max-w-2xl text-sm leading-7 text-white/60">
-              Browse webinars by topic, open each session for more details, and follow the YouTube link to watch the full recording.
+              Browse past webinars by topic and open each session for its panel, focus and key takeaways.
             </p>
           </Reveal>
 
           <Reveal className="mt-14">
             <Link to={`/webinars/${featured.slug}`} className="group grid overflow-hidden border border-white/15 bg-secondary transition-colors duration-500 hover:bg-primary lg:grid-cols-12">
               <div className="relative aspect-[16/10] overflow-hidden bg-secondary lg:col-span-7 lg:aspect-auto">
-                <img src={featured.image} alt="" className="h-full w-full object-cover transition duration-700 group-hover:scale-105" />
+                <img src={featured.image} alt="" className="h-full w-full object-contain transition duration-700 group-hover:scale-105" />
                 <div className="absolute inset-0 bg-gradient-to-t from-secondary/72 via-secondary/12 to-transparent transition-opacity group-hover:opacity-50" />
                 <div className="absolute bottom-5 left-5 inline-flex items-center gap-2 bg-primary px-4 py-3 font-mono text-[10px] uppercase tracking-[0.16em] text-secondary">
                   <PlayCircle className="h-4 w-4" />
@@ -48,7 +48,7 @@ export default function WebinarsPage() {
                 </h3>
                 <p className="mt-5 text-sm leading-7 text-white/62 transition-colors group-hover:text-secondary/75">{featured.excerpt}</p>
                 <div className="mt-8 grid gap-3 text-xs text-white/58 transition-colors group-hover:text-secondary/65">
-                  <span className="flex items-center gap-2"><Clock className="h-3.5 w-3.5" /> {featured.date} · {featured.duration}</span>
+                  <span className="flex items-center gap-2"><Clock className="h-3.5 w-3.5" /> {featured.date} · {featured.status}</span>
                   <span className="flex items-center gap-2"><User className="h-3.5 w-3.5" /> {featured.speaker}</span>
                 </div>
                 <span className="mt-9 inline-flex items-center gap-3 font-mono text-[10px] font-semibold uppercase tracking-[0.16em] text-primary transition-colors group-hover:text-secondary">
@@ -67,14 +67,14 @@ export default function WebinarsPage() {
           <Reveal>
             <Eyebrow>Webinar library</Eyebrow>
             <h2 className="mt-6 max-w-3xl font-display text-display-lg font-medium text-secondary">
-              Open each session like a blog post, then watch on YouTube.
+              Browse each session for its topic, panel and key takeaways.
             </h2>
           </Reveal>
           <RevealGroup className="mt-14 grid gap-px border border-hairline bg-hairline md:grid-cols-2">
             {rest.map((webinar, index) => (
               <RevealItem key={webinar.slug} className="bg-background">
                 <Link to={`/webinars/${webinar.slug}`} className="group relative block h-full overflow-hidden bg-background transition-colors hover:bg-card">
-                  <div className="relative aspect-[16/9] overflow-hidden bg-secondary">
+                  <div className="relative aspect-[4/5] overflow-hidden bg-secondary">
                     <img src={webinar.image} alt="" className="h-full w-full object-cover transition duration-700 group-hover:scale-105" />
                     <div className="absolute inset-0 bg-gradient-to-t from-secondary/58 via-secondary/10 to-transparent opacity-80 transition-opacity group-hover:opacity-45" />
                     <span className="absolute right-5 top-5 font-display text-[10px] uppercase tracking-[0.22em] text-white/80">0{index + 2}</span>
@@ -90,7 +90,7 @@ export default function WebinarsPage() {
                     <p className="mt-4 max-w-md text-sm leading-relaxed text-muted-foreground">{webinar.excerpt}</p>
                     <div className="mt-8 flex flex-wrap items-center justify-between gap-3 text-xs text-muted-foreground">
                       <span>{webinar.date}</span>
-                      <span className="flex items-center gap-1.5"><Clock className="h-3.5 w-3.5" /> {webinar.duration}</span>
+                      <span className="flex items-center gap-1.5"><Clock className="h-3.5 w-3.5" /> {webinar.status}</span>
                     </div>
                   </div>
                 </Link>

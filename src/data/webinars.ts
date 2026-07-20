@@ -1,139 +1,75 @@
-import connectivityHero from "@/assets/connectivity-hero.jpg";
-import serviceCloud from "@/assets/service-cloud-custom.jpg";
-import serviceCyber from "@/assets/service-cyber-custom.jpg";
+import securingGhanasDigitalServices from "@/assets/webinars/securing-ghanas-digital-services.png";
+import technologyForecast from "@/assets/webinars/technology-forecast-2026.png";
+import dataSovereignty from "@/assets/webinars/data-sovereignty-trust.png";
+import digitalFirstBusiness from "@/assets/webinars/digital-first-business.png";
+import cybersecurityDigitalAge from "@/assets/webinars/cybersecurity-digital-age.png";
+import securingConnectivity from "@/assets/webinars/securing-connectivity.png";
+import dataCentresCloud from "@/assets/webinars/data-centres-cloud-solutions.png";
 
-export type WebinarSection = {
-  heading: string;
-  body: string[];
-};
+export type WebinarSection = { heading: string; body: string[] };
 
 export type Webinar = {
-  id: number;
-  slug: string;
-  category: string;
-  title: string;
-  date: string;
-  duration: string;
-  speaker: string;
-  excerpt: string;
-  image: string;
-  youtubeUrl: string;
-  hero: string;
-  sections: WebinarSection[];
-  takeaways: string[];
+  id: number; slug: string; category: string; title: string; date: string; status: string; speaker: string;
+  excerpt: string; image: string; hero: string; sections: WebinarSection[]; takeaways: string[];
 };
 
 export const webinars: Webinar[] = [
   {
-    id: 1,
-    slug: "building-resilient-connectivity-for-public-services",
-    category: "Connectivity",
-    title: "Building resilient connectivity for public services",
-    date: "June 18, 2026",
-    duration: "48 min watch",
-    speaker: "Network Engineering Team",
-    excerpt:
-      "A practical conversation on designing network capacity, route diversity and service continuity for public-sector digital platforms.",
-    image: connectivityHero,
-    youtubeUrl: "https://www.youtube.com/",
-    hero:
-      "How resilient connectivity planning helps institutions keep critical services available across regions, facilities and user groups.",
-    takeaways: [
-      "Route diversity and monitoring are central to dependable public-sector connectivity.",
-      "Service continuity depends on the full path from backbone to last-mile access.",
-      "Clear operating models help teams respond faster when incidents occur.",
-    ],
-    sections: [
-      {
-        heading: "What the session covers",
-        body: [
-          "This webinar explains how public institutions can think about national fibre, metro access, redundancy and service-level design as part of one operating model.",
-          "The discussion focuses on practical decisions: how to plan for uptime, how to monitor critical links, and how to match connectivity design to the services citizens and teams depend on.",
-        ],
-      },
-      {
-        heading: "Who should watch",
-        body: [
-          "The session is useful for CIOs, network managers, programme teams and public-sector leaders responsible for digital service availability.",
-          "It also helps enterprise teams understand how neutral-access infrastructure can support multi-site operations and business continuity.",
-        ],
-      },
-    ],
+    id: 1, slug: "securing-ghanas-digital-services-with-local-infrastructure", category: "Cybersecurity & infrastructure",
+    title: "Securing Ghana's Digital Services with Local Infrastructure", date: "May 29, 2026, 2:00 PM", status: "Past webinar",
+    speaker: "Emmanuel Afari Mpofor, Kelvin Nyameke, Isaac Dankyi-Koranteng and Nana Kwasi Ampem-Darko",
+    excerpt: "A panel on protecting Ghana's digital services through secure, locally grounded infrastructure.", image: securingGhanasDigitalServices,
+    hero: "A Smart Infraco webinar on the role of local infrastructure, cloud systems and cybersecurity in securing Ghana's digital services.",
+    takeaways: ["Local infrastructure is central to digital-service resilience.", "Cybersecurity, cloud and connectivity need to work as one operating model.", "The session brought together perspectives from NITA, Smart Infraco and industry experts."],
+    sections: [{ heading: "Session focus", body: ["The panel examined how local infrastructure can support trusted, resilient digital services across Ghana.", "The discussion connected enterprise architecture, cloud systems, cybersecurity and fraud-risk management."] }, { heading: "Panel", body: ["Emmanuel Afari Mpofor of NITA, Kelvin Nyameke of Smart Infraco, Isaac Dankyi-Koranteng of Hadley Technologies and Nana Kwasi Ampem-Darko joined the session. Ernestina Tawiah moderated."] }],
   },
   {
-    id: 2,
-    slug: "local-cloud-and-data-sovereignty",
-    category: "Cloud",
-    title: "Local cloud and data sovereignty",
-    date: "July 9, 2026",
-    duration: "42 min watch",
-    speaker: "Cloud Architecture Team",
-    excerpt:
-      "A briefing on local hosting, workload control and the business case for keeping sensitive infrastructure closer to users.",
-    image: serviceCloud,
-    youtubeUrl: "https://www.youtube.com/",
-    hero:
-      "A cloud strategy conversation for organisations balancing modernisation, performance, data residency and operational control.",
-    takeaways: [
-      "Data sovereignty is a business, technical and governance decision.",
-      "Local hosting can improve latency and simplify control for sensitive workloads.",
-      "Hybrid cloud planning works best when connectivity, backup and security are designed together.",
-    ],
-    sections: [
-      {
-        heading: "What the session covers",
-        body: [
-          "The webinar walks through the role of local cloud services in regulated and critical environments, including when to keep workloads in-country and how to plan hybrid infrastructure.",
-          "Speakers discuss migration readiness, storage and backup planning, and how operating teams can avoid losing visibility as workloads modernise.",
-        ],
-      },
-      {
-        heading: "Who should watch",
-        body: [
-          "This session is intended for technology leaders, operations teams, compliance stakeholders and organisations planning cloud adoption in Ghana.",
-          "It is also relevant for teams comparing private infrastructure, public cloud and sovereign cloud options.",
-        ],
-      },
-    ],
+    id: 2, slug: "smart-infraco-technology-forecast-2026", category: "Technology strategy",
+    title: "Smart Infraco Technology Forecast 2026: What Organisations Should Prepare For", date: "December 18, 2025, 2:00 PM", status: "Past webinar",
+    speaker: "Maxwell A. Appiah, Robert-Nesta Gemadzie, Rocertha Akoto and Kelvin A. Nyameke",
+    excerpt: "A forward-looking briefing on the technology priorities organisations should prepare for in 2026.", image: technologyForecast,
+    hero: "A practical technology forecast for organisations planning their infrastructure, security and operations for 2026.",
+    takeaways: ["Technology planning requires a joined-up view of facilities, networks, cloud and security.", "Organisations benefit from anticipating operational changes before they become urgent.", "The session brought together perspectives from Smart Infraco, NITA and network-security leadership."],
+    sections: [{ heading: "Session focus", body: ["The webinar explored the technology and infrastructure considerations that organisations should prioritise for 2026.", "It connected practical planning with the realities of facilities, cloud systems, networks and cybersecurity."] }, { heading: "Panel", body: ["Maxwell A. Appiah, Robert-Nesta Gemadzie, Rocertha Akoto and Kelvin A. Nyameke shared their perspectives. Richard Owusu Koramoah moderated."] }],
   },
   {
-    id: 3,
-    slug: "cyber-resilience-for-critical-infrastructure",
-    category: "Cybersecurity",
-    title: "Cyber resilience for critical infrastructure",
-    date: "August 6, 2026",
-    duration: "55 min watch",
-    speaker: "Security Operations Centre",
-    excerpt:
-      "A security operations briefing on monitoring, response playbooks and protection for always-on digital infrastructure.",
-    image: serviceCyber,
-    youtubeUrl: "https://www.youtube.com/",
-    hero:
-      "How organisations can combine people, telemetry and response discipline to improve protection around critical infrastructure.",
-    takeaways: [
-      "Continuous monitoring helps surface threats before they become service incidents.",
-      "Response playbooks turn alerts into repeatable action.",
-      "Security is strongest when integrated with network and hosting operations.",
-    ],
-    sections: [
-      {
-        heading: "What the session covers",
-        body: [
-          "This webinar introduces an operating model for cyber resilience, covering visibility, SIEM workflows, vulnerability management and incident response.",
-          "The session also looks at how infrastructure providers and customer teams can coordinate around monitoring, escalation and remediation.",
-        ],
-      },
-      {
-        heading: "Who should watch",
-        body: [
-          "The discussion is built for security leads, infrastructure teams, risk owners and executives responsible for protecting digital services.",
-          "It is especially relevant for organisations that depend on always-on networks, hosted systems or public-facing digital platforms.",
-        ],
-      },
-    ],
+    id: 3, slug: "data-sovereignty-and-trust", category: "Data sovereignty",
+    title: "Data Sovereignty & Trust: Keeping Ghanaian Data in Ghana", date: "October 31, 2025, 2:00 PM", status: "Past webinar",
+    speaker: "Robert-Nesta Gemadzie, Dela Adjei, Aseye Adzo-maa Nyadzi and Sylvia Gifty Appiah",
+    excerpt: "A discussion on data protection, local accountability and the value of keeping Ghanaian data in Ghana.", image: dataSovereignty,
+    hero: "A webinar on building trust through data sovereignty, protection and locally accountable digital infrastructure.",
+    takeaways: ["Data sovereignty connects infrastructure choices with trust and accountability.", "Data protection requires governance as well as technology.", "The session combined perspectives from NITA, the Students Loan Trust Fund and IGIS."],
+    sections: [{ heading: "Session focus", body: ["The panel examined how organisations can build trust by keeping Ghanaian data secure, protected and locally accountable.", "The conversation addressed data sovereignty alongside data-protection responsibilities."] }, { heading: "Panel", body: ["Robert-Nesta Gemadzie, Dela Adjei, Aseye Adzo-maa Nyadzi and Sylvia Gifty Appiah joined the discussion. Richard Owusu Koramoah moderated."] }],
+  },
+  {
+    id: 4, slug: "building-a-digital-first-business", category: "Digital transformation",
+    title: "Building a Digital-First Business: Scalable, Secure, and Future-Ready IT Solutions", date: "June 20, 2025, 2:00 PM", status: "Past webinar",
+    speaker: "Kwame Anokye, Emmanuel Owusu and Palaksha Swamy", excerpt: "A practical conversation on building scalable, secure IT foundations for a digital-first business.", image: digitalFirstBusiness,
+    hero: "A webinar on the technology choices organisations can make to become more scalable, secure and ready for the future.",
+    takeaways: ["Digital-first operations need a strong technology foundation.", "Scalability and security should be designed together.", "The session brought together telecom, ICT and programme-management perspectives."],
+    sections: [{ heading: "Session focus", body: ["The webinar explored how organisations can build IT solutions that support digital-first growth.", "The discussion focused on the relationship between scale, security and future readiness."] }, { heading: "Panel", body: ["Kwame Anokye of Afriwave Telecom, Emmanuel Owusu of AT Ghana and Palaksha Swamy of Ascend Digital Solutions shared their perspectives. Ernestina Tawiah moderated."] }],
+  },
+  {
+    id: 5, slug: "cybersecurity-in-the-digital-age", category: "Cybersecurity", title: "Cybersecurity in the Digital Age", date: "October 4, 2024, 2:00 PM", status: "Past webinar",
+    speaker: "Samuel Mensah Buabeng, Effie Bonful and Abubakar Issaka", excerpt: "An expert conversation on cybersecurity, risk and practical protection in the digital age.", image: cybersecurityDigitalAge,
+    hero: "A Smart Infraco webinar bringing together cybersecurity and IT-advisory practitioners to discuss digital-age risk.",
+    takeaways: ["Cybersecurity needs both technical and governance expertise.", "Risk management is an ongoing operational responsibility.", "The session combined independent, advisory and association perspectives."],
+    sections: [{ heading: "Session focus", body: ["The webinar explored the cyber risks organisations face as their digital services and operations expand.", "Speakers shared perspectives from IT audit, advisory and cybersecurity leadership."] }, { heading: "Panel", body: ["Samuel Mensah Buabeng, Effie Bonful of KPMG Ghana and Abubakar Issaka of the Cyber Security Expert Association of Ghana joined the discussion. Ernestina Tawiah moderated."] }],
+  },
+  {
+    id: 6, slug: "securing-connectivity-internet-uptime-cloud-hosting", category: "Connectivity & cloud", title: "Securing Connectivity: Internet Uptime & Cloud Hosting", date: "May 31, 2024, 2:00 PM", status: "Past webinar",
+    speaker: "Courage Dogbe, Abdul Razak and Kelvin A. Nyameke", excerpt: "A session on dependable internet uptime and cloud hosting for business continuity.", image: securingConnectivity,
+    hero: "A webinar on how network operations and cloud hosting can support more reliable, resilient connectivity.",
+    takeaways: ["Internet uptime is a core part of business continuity.", "Cloud hosting and network operations should be planned together.", "The session brought together cloud, network and operations leadership."],
+    sections: [{ heading: "Session focus", body: ["The webinar focused on the relationship between connectivity uptime, cloud hosting and dependable business operations.", "Speakers considered the operational practices required to keep critical services available."] }, { heading: "Panel", body: ["Courage Dogbe, Abdul Razak and Kelvin A. Nyameke shared their operational perspectives. Ernestina Tawiah moderated."] }],
+  },
+  {
+    id: 7, slug: "data-centres-and-cloud-solutions", category: "Data centres & cloud", title: "Data Centers and Cloud Solutions: How to Keep Your Data Safe and Secure in a Digital World", date: "July 14, 2023, 2:00 PM", status: "Past webinar",
+    speaker: "Michael Kwablah, Maxwell A. Appiah, Thomas Brien and Alfred Nkrow", excerpt: "A foundational webinar on protecting data through data-centre and cloud solutions.", image: dataCentresCloud,
+    hero: "A Smart Infraco webinar on data-centre and cloud solutions for safeguarding data in a digital world.",
+    takeaways: ["Data protection starts with dependable infrastructure choices.", "Data centres and cloud services support secure digital operations.", "The session brought together Smart Infraco technology, sales, marketing and commercial leadership."],
+    sections: [{ heading: "Session focus", body: ["The webinar addressed how organisations can use data-centre and cloud solutions to keep their data safe and secure.", "It introduced the role of infrastructure in supporting reliable digital services."] }, { heading: "Panel", body: ["Michael Kwablah, Maxwell A. Appiah, Thomas Brien and Alfred Nkrow joined the session, with Thomas Brien serving as moderator."] }],
   },
 ];
 
-export function findWebinarBySlug(slug: string | undefined) {
-  return webinars.find((webinar) => webinar.slug === slug);
-}
+export function findWebinarBySlug(slug: string | undefined) { return webinars.find((webinar) => webinar.slug === slug); }

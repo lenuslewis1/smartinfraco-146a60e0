@@ -17,6 +17,13 @@ const csrPillars = [
   { icon: Leaf, title: "Responsible infrastructure", copy: "Advancing thoughtful, efficient and sustainable approaches to digital growth." },
 ];
 
+const csrHighlight = {
+  title: "Empowering the Next Generation: Ascend Digital's Career Day Visit to Palm University",
+  date: "November 12, 2025",
+  image: "https://ascenddigitalsol.com/wp-content/uploads/2025/11/IMG_7556-1024x685.jpg",
+  url: "https://ascenddigitalsol.com/empowering-the-next-generation-ascend-digitals-career-day-visit-to-palm-university/",
+};
+
 export default function EventsPage() {
   return (
     <Layout>
@@ -38,6 +45,21 @@ export default function EventsPage() {
           <RevealGroup className="mt-16 grid gap-px bg-white/15 md:grid-cols-3">
             {csrPillars.map((pillar) => <RevealItem key={pillar.title} className="bg-secondary"><article className="group h-full p-8 transition-colors duration-300 hover:bg-primary lg:p-10"><pillar.icon className="h-5 w-5 text-primary transition-colors group-hover:text-secondary" /><h3 className="mt-14 font-display text-xl font-semibold text-white transition-colors group-hover:text-secondary">{pillar.title}</h3><p className="mt-4 text-sm leading-7 text-white/55 transition-colors group-hover:text-secondary/70">{pillar.copy}</p><ArrowUpRight className="mt-9 h-4 w-4 text-white/25 transition-all group-hover:translate-x-1 group-hover:-translate-y-1 group-hover:text-secondary" /></article></RevealItem>)}
           </RevealGroup>
+          <Reveal className="mt-16">
+            <article className="overflow-hidden border border-white/15 bg-white/[0.06] lg:grid lg:grid-cols-12">
+              <div className="aspect-[4/3] overflow-hidden bg-primary lg:col-span-5 lg:aspect-auto">
+                <img src={csrHighlight.image} alt="Students and the Ascend Digital team at Palm University Career Day" className="h-full w-full object-cover" />
+              </div>
+              <div className="flex flex-col justify-center p-8 lg:col-span-7 lg:p-12">
+                <Eyebrow tone="primary">CSR highlight</Eyebrow>
+                <div className="mt-5 flex items-center gap-2 text-xs text-white/55"><Calendar className="h-3.5 w-3.5 text-primary" />{csrHighlight.date}</div>
+                <h3 className="mt-6 max-w-3xl font-display text-3xl leading-tight text-white lg:text-4xl">{csrHighlight.title}</h3>
+                <p className="mt-5 max-w-2xl text-sm leading-7 text-white/65">Ascend Digital joined Palm University's Career Day to give students practical insight into the evolving digital landscape, technology career paths and the opportunities created by innovation across Africa.</p>
+                <p className="mt-4 max-w-2xl text-sm leading-7 text-white/65">Through interactive sessions and student project presentations, the initiative created space for questions, practical learning and the next generation of innovators.</p>
+                <a href={csrHighlight.url} target="_blank" rel="noreferrer" className="story-link mt-8 inline-flex items-center gap-2 self-start text-sm text-primary">Read the full story <ArrowUpRight className="h-4 w-4" /></a>
+              </div>
+            </article>
+          </Reveal>
         </div>
       </section>
     </Layout>

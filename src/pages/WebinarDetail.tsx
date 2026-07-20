@@ -1,5 +1,5 @@
 import { Link, useParams } from "react-router-dom";
-import { ArrowLeft, ArrowUpRight, Clock, PlayCircle, Share2, User } from "lucide-react";
+import { ArrowLeft, Clock, Share2, User } from "lucide-react";
 import Layout from "@/components/layout/Layout";
 import Eyebrow from "@/components/ui-system/Eyebrow";
 import GridBackdrop from "@/components/ui-system/GridBackdrop";
@@ -36,7 +36,7 @@ export default function WebinarDetailPage() {
                 <span>{webinar.date}</span>
                 <span className="flex items-center gap-2 normal-case tracking-normal text-white/68">
                   <Clock className="h-4 w-4" />
-                  {webinar.duration}
+                  {webinar.status}
                 </span>
               </div>
               <h1 className="mt-7 font-display text-[clamp(3rem,7vw,7.4rem)] font-semibold leading-[0.94] tracking-normal">
@@ -50,16 +50,6 @@ export default function WebinarDetailPage() {
                   <User className="h-4 w-4" />
                   {webinar.speaker}
                 </span>
-                <span className="h-px w-10 bg-white/25" />
-                <a
-                  href={webinar.youtubeUrl}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="inline-flex items-center gap-2 bg-primary px-5 py-3 font-mono text-[10px] font-semibold uppercase tracking-[0.16em] text-secondary transition hover:bg-white"
-                >
-                  Watch on YouTube
-                  <PlayCircle className="h-4 w-4" />
-                </a>
               </div>
             </Reveal>
           </div>
@@ -96,15 +86,6 @@ export default function WebinarDetailPage() {
                     </li>
                   ))}
                 </ul>
-                <a
-                  href={webinar.youtubeUrl}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="mt-8 inline-flex w-full items-center justify-center gap-2 bg-secondary px-5 py-4 font-mono text-[10px] font-semibold uppercase tracking-[0.16em] text-white transition hover:bg-primary hover:text-secondary"
-                >
-                  Open YouTube video
-                  <ArrowUpRight className="h-4 w-4" />
-                </a>
               </div>
             </aside>
           </div>

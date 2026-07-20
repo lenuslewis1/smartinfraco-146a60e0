@@ -3,40 +3,16 @@ import Layout from "@/components/layout/Layout";
 import PageHero from "@/components/shared/PageHero";
 import Eyebrow from "@/components/ui-system/Eyebrow";
 import { Reveal, RevealGroup, RevealItem } from "@/components/ui-system/RevealOnScroll";
-import ctaInfrastructure from "@/assets/cta-infrastructure.png";
+import awardsShowcase from "@/assets/awards/smart-infraco-awards.png";
 
-type AwardItem = {
-  title: string;
-  year: string;
-  category: string;
-  copy: string;
-  image?: string;
-};
-
-const awardItems: AwardItem[] = [
-  {
-    title: "Award image slot",
-    year: "2026",
-    category: "Recognition",
-    copy:
-      "Add an image file to the assets folder and assign it to this award entry to publish a verified award or recognition.",
-    image: ctaInfrastructure,
-  },
-  {
-    title: "Certification image slot",
-    year: "2026",
-    category: "Certification",
-    copy:
-      "Use this card for certificates, plaques, event photos, trophies or official recognition artwork.",
-  },
-  {
-    title: "Milestone image slot",
-    year: "2026",
-    category: "Milestone",
-    copy:
-      "Additional awards can be added by creating another item in the awardItems array with title, year, category, copy and image.",
-  },
+const previousAwards = [
+  { title: "Innovation in data centre technologies", crop: { x: 101, y: 94, width: 204, height: 259 } },
+  { title: "Excellence in data centre operations", crop: { x: 394, y: 94, width: 205, height: 259 } },
+  { title: "Public Sector Connectivity Services Provider of the Year", crop: { x: 696, y: 94, width: 206, height: 259 } },
+  { title: "Innovative Service Offering Award", crop: { x: 974, y: 90, width: 205, height: 263 } },
 ];
+
+const showcaseWidth = 1298;
 
 const recognitionThemes = [
   { icon: Trophy, title: "Infrastructure leadership", copy: "Recognition of the people, partnerships and platforms advancing Ghana's digital backbone." },
@@ -55,11 +31,11 @@ export default function AwardsPage() {
           <Reveal className="lg:col-span-5">
             <Eyebrow>Recognition archive</Eyebrow>
             <h2 className="mt-6 font-display text-display-xl font-medium text-white">Built through trust. Measured through impact.</h2>
-            <p className="mt-7 max-w-md text-sm leading-7 text-white/60">This archive will bring together Smart Infraco's verified awards, certifications and industry milestones as they are published.</p>
+            <p className="mt-7 max-w-md text-sm leading-7 text-white/60">Smart Infraco has been recognised for innovation, operational excellence and services that strengthen Ghana's digital infrastructure.</p>
           </Reveal>
-          <Reveal className="flex min-h-[360px] flex-col justify-between border border-white/15 p-8 lg:col-span-6 lg:col-start-7 lg:p-12">
-            <Award className="h-9 w-9 text-primary" />
-            <div><p className="font-mono text-[10px] uppercase tracking-[0.2em] text-white/40">Archive update</p><h3 className="mt-5 max-w-xl font-display text-3xl font-semibold leading-tight text-white">Awards and recognitions will be published here as the official archive is updated.</h3></div>
+          <Reveal className="group relative flex items-center overflow-hidden border border-white/15 bg-white lg:col-span-6 lg:col-start-7">
+            <img src={awardsShowcase} alt="Smart Infraco award trophies and recognition summary" className="w-full object-contain transition duration-700 group-hover:scale-[1.02]" />
+            <div className="pointer-events-none absolute inset-0 ring-1 ring-inset ring-white/10" />
           </Reveal>
         </div>
       </section>
@@ -67,42 +43,54 @@ export default function AwardsPage() {
       <section className="bg-white py-24 lg:py-36">
         <div className="container-bleed">
           <Reveal>
-            <Eyebrow>Awards gallery</Eyebrow>
+            <Eyebrow>Previous awards</Eyebrow>
             <h2 className="mt-6 max-w-3xl font-display text-display-lg font-medium text-secondary">
-              Add award images as the recognition archive grows.
+              Recognition for service, innovation and operational excellence.
             </h2>
             <p className="mt-6 max-w-2xl text-sm leading-7 text-muted-foreground">
-              Award cards support photos, plaques, certificates and event imagery. Cards without images show a branded placeholder until the final artwork is available.
+              Smart Infraco has been recognised across data centre technology, connectivity and service delivery.
             </p>
           </Reveal>
-          <RevealGroup className="mt-14 grid gap-px bg-secondary/15 md:grid-cols-2 lg:grid-cols-3">
-            {awardItems.map((item) => (
-              <RevealItem key={`${item.title}-${item.year}`} className="bg-white">
+          <RevealGroup className="mt-14 grid gap-px bg-secondary/15 md:grid-cols-2">
+            {previousAwards.map((award, index) => (
+              <RevealItem key={award.title} className="bg-white">
                 <article className="group h-full overflow-hidden bg-white transition-colors duration-300 hover:bg-primary">
-                  <div className="relative aspect-[4/3] overflow-hidden bg-secondary">
-                    {item.image ? (
-                      <img src={item.image} alt={item.title} className="h-full w-full object-cover transition duration-700 group-hover:scale-105" />
-                    ) : (
-                      <div className="flex h-full w-full items-center justify-center bg-secondary p-8 text-center">
-                        <div>
-                          <Award className="mx-auto h-10 w-10 text-primary" />
-                          <p className="mt-5 font-mono text-[10px] uppercase tracking-[0.2em] text-white/55">Image pending</p>
-                        </div>
-                      </div>
-                    )}
-                    <div className="absolute left-4 top-4 bg-primary px-4 py-3 text-center font-mono text-[10px] uppercase tracking-[0.18em] text-secondary">
-                      {item.year}
-                    </div>
+                  <div className="relative overflow-hidden bg-[#f3f3f1]" style={{ aspectRatio: `${award.crop.width} / ${award.crop.height}` }}>
+                    <img
+                      src={awardsShowcase}
+                      alt={`${award.title} trophy`}
+                      className="absolute max-w-none transition duration-700 group-hover:scale-[1.025]"
+                      style={{
+                        width: `${(showcaseWidth / award.crop.width) * 100}%`,
+                        left: `${(-award.crop.x / award.crop.width) * 100}%`,
+                        top: `${(-award.crop.y / award.crop.height) * 100}%`,
+                        transformOrigin: "center",
+                      }}
+                    />
+                    <span className="absolute right-4 top-4 bg-secondary px-4 py-3 font-mono text-[10px] uppercase tracking-[0.2em] text-white">0{index + 1}</span>
                   </div>
-                  <div className="p-7 lg:p-8">
-                    <Eyebrow>{item.category}</Eyebrow>
-                    <h3 className="mt-5 font-display text-2xl font-semibold text-secondary">{item.title}</h3>
-                    <p className="mt-4 text-sm leading-7 text-muted-foreground transition-colors group-hover:text-secondary/75">{item.copy}</p>
+                  <div className="p-8 lg:p-10">
+                    <div className="flex items-center gap-3">
+                      <Award className="h-5 w-5 text-primary transition-colors group-hover:text-secondary" />
+                      <Eyebrow>Previous award</Eyebrow>
+                    </div>
+                    <h3 className="mt-6 max-w-lg font-display text-2xl font-semibold leading-tight text-secondary">{award.title}</h3>
                   </div>
                 </article>
               </RevealItem>
             ))}
           </RevealGroup>
+
+          <Reveal className="mt-px grid gap-8 bg-secondary p-8 text-white md:grid-cols-[auto_1fr] md:items-center lg:p-12">
+            <div className="flex h-16 w-16 items-center justify-center bg-primary text-secondary">
+              <Trophy className="h-7 w-7" />
+            </div>
+            <div>
+              <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-primary">2024 nomination</p>
+              <h3 className="mt-4 font-display text-3xl font-semibold text-white">Cloud Innovator of the Year</h3>
+              <p className="mt-3 text-sm leading-7 text-white/60">Smart Infraco was nominated for this award in 2024.</p>
+            </div>
+          </Reveal>
         </div>
       </section>
 

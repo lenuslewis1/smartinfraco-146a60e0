@@ -13,7 +13,7 @@ import contactHero from "@/assets/contact-header-building.jpg";
 const inputClass =
   "w-full bg-transparent border-0 border-b border-hairline text-foreground text-sm py-3 placeholder:text-muted-foreground/60 focus:outline-none focus:border-secondary transition-colors";
 
-const officeAddress = "Peter Ala Adjetey Ave, Accra";
+const officeAddress = "Eliakim Building, Peter Ala Adjetey Ave, North Labone, Accra";
 const googleMapsQuery = encodeURIComponent(officeAddress);
 const googleMapsUrl = `https://www.google.com/maps/search/?api=1&query=${googleMapsQuery}`;
 const googleMapsEmbedUrl = `https://www.google.com/maps?q=${googleMapsQuery}&output=embed`;
@@ -198,7 +198,7 @@ export default function ContactPage() {
                 Visit us in Labone.
               </h2>
               <p className="mt-5 text-base text-dark-foreground/70 max-w-md leading-relaxed">
-                Visit Smart Infraco around Peter Ala Adjetey Avenue in Accra, or open the route directly in Google Maps.
+                Visit Smart Infraco at Eliakim Building on Peter Ala Adjetey Avenue in North Labone, Accra, or open the route directly in Google Maps.
               </p>
               <a
                 href={googleMapsUrl}

@@ -14,6 +14,7 @@ import News from "./pages/News";
 import Articles from "./pages/Articles";
 import ArticleDetail from "./pages/ArticleDetail";
 import Videos from "./pages/Videos";
+import Pictures from "./pages/Pictures";
 import Events from "./pages/Events";
 import Awards from "./pages/Awards";
 import Webinars from "./pages/Webinars";
@@ -40,6 +41,7 @@ const App = () => (
           <Route path="/articles" element={<Articles />} />
           <Route path="/articles/:slug" element={<ArticleDetail />} />
           <Route path="/videos" element={<Videos />} />
+          <Route path="/pictures" element={<Pictures />} />
           <Route path="/events" element={<Events />} />
           <Route path="/awards" element={<Awards />} />
           <Route path="/webinars" element={<Webinars />} />

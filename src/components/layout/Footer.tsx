@@ -17,6 +17,8 @@ const columns = [
     links: [
       { label: "About", href: "/about" },
       { label: "Articles", href: "/articles" },
+      { label: "Videos", href: "/videos" },
+      { label: "Pictures", href: "/pictures" },
       { label: "News", href: "/news" },
       { label: "Events & CSR", href: "/events" },
       { label: "Webinars", href: "/webinars" },
@@ -73,7 +75,7 @@ export default function Footer() {
                 </a>
                 <Link to="/contact" className="group flex items-center gap-4 text-base font-medium text-white/82 transition-colors hover:text-primary">
                   <MapPin className="h-4 w-4 shrink-0 text-primary" />
-                  Peter Ala Adjetey Ave, Accra
+                  Eliakim Building, Peter Ala Adjetey Ave, North Labone, Accra
                 </Link>
               </div>
 
