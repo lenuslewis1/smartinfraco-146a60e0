@@ -565,7 +565,29 @@ function IndustriesWeServe() {
       </div>
 
       <Reveal className="relative mt-16 w-full overflow-hidden">
-        <div className="overflow-hidden">
+        <div className="sm:hidden">
+          <div
+            aria-label="Industries we serve carousel"
+            className="flex snap-x snap-mandatory gap-4 overflow-x-auto overscroll-x-contain scroll-px-5 px-5 pb-5 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+          >
+            {industries.map((industry, index) => (
+              <article
+                key={industry.name}
+                className="flex min-h-[260px] w-[calc(100vw-2.5rem)] shrink-0 snap-center snap-always flex-col bg-primary/95 p-7 text-primary-foreground shadow-2xl shadow-secondary/20 backdrop-blur-sm"
+              >
+                <div className="flex items-start justify-between gap-6">
+                  <industry.icon className="h-6 w-6" />
+                  <span className="font-mono text-[10px] uppercase tracking-[0.18em] text-primary-foreground/55">0{index + 1}</span>
+                </div>
+                <h3 className="mt-8 font-display text-2xl font-medium leading-tight">{industry.name}</h3>
+                <p className="mt-3 text-sm leading-6 text-primary-foreground/75">{industry.blurb}</p>
+              </article>
+            ))}
+          </div>
+          <p className="mt-3 text-center font-mono text-[10px] uppercase tracking-[0.18em] text-white/60">Swipe to explore</p>
+        </div>
+
+        <div className="hidden overflow-hidden sm:block">
           <div className="flex w-max animate-industries-scroll gap-5 hover:[animation-play-state:paused]">
             {[...industries, ...industries].map((industry, index) => (
               <article

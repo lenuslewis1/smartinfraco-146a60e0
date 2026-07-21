@@ -16,6 +16,12 @@ const columns = [
     title: "Company",
     links: [
       { label: "About", href: "/about" },
+      { label: "Contact", href: "/contact" },
+    ],
+  },
+  {
+    title: "Media",
+    links: [
       { label: "Articles", href: "/articles" },
       { label: "Videos", href: "/videos" },
       { label: "Pictures", href: "/pictures" },
@@ -23,7 +29,6 @@ const columns = [
       { label: "Events & CSR", href: "/events" },
       { label: "Webinars", href: "/webinars" },
       { label: "Awards & Recognition", href: "/awards" },
-      { label: "Contact", href: "/contact" },
     ],
   },
 ];
@@ -33,7 +38,7 @@ export default function Footer() {
     <footer className="bg-white text-white">
       <div className="bg-secondary">
         <div className="mx-auto flex min-h-[620px] w-full max-w-[1420px] flex-col px-5 py-16 sm:px-8 lg:px-10 lg:pb-9 lg:pt-22">
-          <div className="grid gap-12 lg:grid-cols-[1.15fr_0.95fr_0.95fr_1.25fr] lg:gap-20">
+          <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-[1.2fr_0.72fr_0.72fr_0.95fr_1.3fr] lg:gap-10 xl:gap-14">
             <div className="pt-2">
               <Link to="/" aria-label="Smart Infraco home" className="inline-flex">
                 <img src={footerLogo} alt="Smart Infraco" className="h-[64px] w-[230px] object-cover object-left" />
