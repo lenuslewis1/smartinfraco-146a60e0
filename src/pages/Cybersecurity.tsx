@@ -1,4 +1,4 @@
-import { AlertTriangle, Eye, Lock, Server, Shield, Users } from "lucide-react";
+import { AlertTriangle, Eye, Lock, Server, Shield, ShieldCheck, Users } from "lucide-react";
 import Layout from "@/components/layout/Layout";
 import PageHero from "@/components/shared/PageHero";
 import Eyebrow from "@/components/ui-system/Eyebrow";
@@ -10,6 +10,7 @@ const services = [
   { icon: Lock, title: "Network Security", copy: "Managed firewalls, intrusion prevention and secure access controls across the network." },
   { icon: Eye, title: "Security Operations Centre", copy: "Dedicated analysts providing round-the-clock surveillance, triage and escalation." },
   { icon: AlertTriangle, title: "Vulnerability Management", copy: "Assessment and testing to identify, prioritise and remediate security gaps." },
+  { icon: ShieldCheck, title: "Security Services", copy: "Multi-layered protection against attacks, including security hardening, IPS and IDS, vulnerability assessments, SIEM and gateway anti-virus controls." },
   { icon: Server, title: "Endpoint Protection", copy: "Managed safeguards for devices and servers connected to critical systems." },
   { icon: Users, title: "Security Awareness", copy: "Practical training that helps teams recognise attacks and make safer decisions." },
 ];

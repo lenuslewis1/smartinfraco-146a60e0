@@ -11,7 +11,7 @@ export default function SiteCtaPanel() {
             <img src={ctaInfrastructure} alt="" className="absolute inset-0 h-full w-full object-cover" />
             <div className="absolute inset-0 bg-gradient-to-r from-[hsl(206_70%_35%_/_0.82)] via-[hsl(206_70%_50%_/_0.42)] to-transparent" />
             <div className="relative max-w-[1220px]">
-              <p className="font-mono text-xs uppercase tracking-[0.2em] text-white/80">Trusted by 300+ customers</p>
+              <p className="font-mono text-xs uppercase tracking-[0.2em] text-white/80">Trusted by 400+ customers</p>
               <h2 className="mt-6 font-display text-display-xl font-medium text-white">
                 Build your business on<br className="hidden lg:block" /> infrastructure designed for Ghana's<br className="hidden lg:block" /> critical digital economy.
               </h2>

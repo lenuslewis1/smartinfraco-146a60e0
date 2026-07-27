@@ -1,4 +1,4 @@
-import { Check, Database, Eye, Globe, HardDrive, Server, ShieldCheck } from "lucide-react";
+import { Check, Database, Globe, HardDrive, Server } from "lucide-react";
 import Layout from "@/components/layout/Layout";
 import PageHero from "@/components/shared/PageHero";
 import Eyebrow from "@/components/ui-system/Eyebrow";
@@ -22,19 +22,6 @@ const services = [
     ],
   },
   {
-    icon: Database,
-    title: "Virtual Private Server",
-    kicker: "Quick and easy access, powered to scale up storage",
-    copy:
-      "High-performance physical servers are virtualised so server resources can be made available over a network with strong performance, flexibility and control. End users access the infrastructure and enjoy the same flexibility and control in the virtual environment.",
-    highlights: [
-      "Quick and easy provisioning",
-      "Powered servers with easy-to-scale storage",
-      "High-performance virtualised physical infrastructure",
-      "Flexible multi-tenant cloud hosting service",
-    ],
-  },
-  {
     icon: Globe,
     title: "Web Hosting",
     kicker: "Dedicated website hosting on cost-sharing basis",
@@ -45,19 +32,6 @@ const services = [
       "Flexible customer control panel with cPanel",
       "Reliable 24/7 customer support",
       "99.9% guaranteed uptime",
-    ],
-  },
-  {
-    icon: Globe,
-    title: "Domain Registration",
-    kicker: "Give your organisation a digital presence",
-    copy:
-      "A domain name represents your organisation and enables your services to have a web presence. We help eligible institutions acquire domain names and manage the requirements needed for a credible online identity.",
-    highlights: [
-      "NITA authoritative registrar for gov.gh domain space",
-      "Domain Name Services management",
-      "Domain name search at the Ghana TLD Network Information Centre",
-      "Government naming requirements and registration guidance",
     ],
   },
   {
@@ -74,19 +48,6 @@ const services = [
     ],
   },
   {
-    icon: Eye,
-    title: "Monitoring as a Service",
-    kicker: "All-round surveillance across every touch point",
-    copy:
-      "Monitoring as a Service supports different levels of IT assets for government and enterprise clients. Monitoring is delivered 24/7 with proactive and reactive measures, including cyber-threat alerts, vulnerability detection and resource utilisation management.",
-    highlights: [
-      "Network and system performance monitoring",
-      "Focused visibility across infrastructure and IT environments",
-      "Prompt notification system alerts",
-      "24/7 NOC customer support",
-    ],
-  },
-  {
     icon: Database,
     title: "Back-up as a Service",
     kicker: "Offsite data storage to reduce possible loss",
@@ -99,20 +60,6 @@ const services = [
       "Supports recovery from error, attack or disaster",
     ],
   },
-  {
-    icon: ShieldCheck,
-    title: "Security Services",
-    kicker: "Multi-layered security for maximum protection",
-    copy:
-      "Security services counter and protect against attacks through multiple security mechanisms, including VPS audit and hardening, IPS and IDS protections, vulnerability assessments, SIEM tools and gateway anti-virus security services.",
-    highlights: [
-      "VPS audit and security hardening",
-      "IPS and IDS protections with deep packet inspection",
-      "Web and application vulnerability assessment",
-      "SIEM tools handled by the Security Operation Centre",
-      "Gateway anti-virus protection for WAN interfaces",
-    ],
-  },
 ];
 
 export default function DataCentresPage() {
@@ -121,7 +68,7 @@ export default function DataCentresPage() {
       <PageHero
         eyebrow="Data Centre Solutions"
         title="Secure, resilient data centre services for critical infrastructure."
-        description="Rack colocation, virtual servers, hosting, storage, monitoring, backup and security services delivered from Ghana-based facilities."
+        description="Rack colocation, web hosting, storage and backup services delivered from Ghana-based facilities."
         bgImage={heroImage}
       />
 
@@ -132,7 +79,7 @@ export default function DataCentresPage() {
             <Reveal className="lg:col-span-5">
               <Eyebrow>Data centre scale</Eyebrow>
               <h2 className="mt-6 font-display text-display-xl font-medium text-white">
-                Premium hosting, storage and protection in Ghana.
+                Premium colocation, hosting and storage in Ghana.
               </h2>
               <p className="mt-7 max-w-md text-sm leading-7 text-white/60">
                 Our facility combines rack space, resilient power, cooling, network access and operational support for organisations that need dependable local infrastructure.

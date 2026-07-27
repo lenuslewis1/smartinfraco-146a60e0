@@ -1,4 +1,4 @@
-import { Cloud, Database, HardDrive, MonitorCheck, Server, Settings } from "lucide-react";
+import { Cloud, Database, Globe, HardDrive, MonitorCheck, Server, Settings } from "lucide-react";
 import Layout from "@/components/layout/Layout";
 import PageHero from "@/components/shared/PageHero";
 import Eyebrow from "@/components/ui-system/Eyebrow";
@@ -8,10 +8,11 @@ import serviceCloudImage from "@/assets/service-cloud-custom.jpg";
 
 const services = [
   { icon: Cloud, title: "Hybrid Cloud", copy: "Connect on-premise infrastructure with flexible cloud resources for secure, cost-optimised workloads." },
-  { icon: Server, title: "Virtual Private Servers", copy: "High-performance virtual infrastructure with the control of a dedicated environment." },
+  { icon: Server, title: "Virtual Private Server", copy: "High-performance physical servers are virtualised so server resources can be made available over a network with strong performance, flexibility and control." },
   { icon: Database, title: "Backup as a Service", copy: "Protected offsite copies that reduce the risk of data loss from error, attack or disaster." },
   { icon: HardDrive, title: "Storage as a Service", copy: "Secure, scalable local capacity without the cost of private storage infrastructure." },
-  { icon: MonitorCheck, title: "Monitoring as a Service", copy: "Proactive visibility across IT assets, vulnerabilities and utilisation, day and night." },
+  { icon: Globe, title: "Domain Registration", copy: "Acquire and manage the domain names and requirements needed for a credible online identity." },
+  { icon: MonitorCheck, title: "Monitoring as a Service", copy: "24/7 proactive and reactive monitoring across IT assets, cyber threats, vulnerabilities and resource utilisation." },
   { icon: Settings, title: "Managed IT Infrastructure", copy: "End-to-end management across servers, networking, security and compliance." },
 ];
 

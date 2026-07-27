@@ -32,8 +32,8 @@ const operatingModel = [
   },
   {
     icon: Building2,
-    title: "Public-private enablement",
-    text: "Extending national infrastructure capacity to private enterprises as well as public services.",
+    title: "Economic enablement",
+    text: "Giving businesses the capacity to grow, serve customers and contribute to Ghana's digital economy.",
   },
 ];
 
@@ -98,7 +98,7 @@ export default function AboutPage() {
           <Reveal>
             <Eyebrow tone="muted">Company overview</Eyebrow>
             <h2 className="mt-5 font-display text-[clamp(2.25rem,4.6vw,5.4rem)] font-semibold leading-[0.96] text-secondary">
-              Built to turn national infrastructure into usable capacity.
+              Turning National Infrastructure into Usable Capacity
             </h2>
           </Reveal>
 
@@ -121,7 +121,7 @@ export default function AboutPage() {
             <img src={aboutHero} alt="Ghana skyline" className="absolute inset-0 h-full w-full object-cover" />
             <div className="absolute inset-0 bg-gradient-to-t from-secondary/88 via-secondary/20 to-transparent" />
             <div className="absolute bottom-0 left-0 max-w-md p-8">
-              <p className="font-mono text-xs uppercase tracking-[0.18em] text-white/62">National footprint</p>
+              <p className="font-mono text-xs uppercase tracking-[0.18em] text-primary">National footprint</p>
               <h3 className="mt-4 font-display text-4xl font-semibold leading-tight text-white">
                 Backbone capacity for Ghana's Digital Economy.
               </h3>
@@ -153,12 +153,12 @@ export default function AboutPage() {
             </h2>
           </Reveal>
 
-          <Reveal className="mt-14 max-w-5xl border border-primary bg-primary p-8 text-primary-foreground transition duration-500 hover:-translate-y-2 hover:brightness-105 hover:shadow-[0_24px_80px_hsl(95_82%_35%_/_0.24)] lg:p-10">
+          <Reveal className="mt-14 max-w-5xl border-2 border-primary bg-transparent p-8 text-white transition duration-500 hover:-translate-y-2 hover:bg-primary/10 hover:shadow-[0_24px_80px_hsl(95_82%_35%_/_0.18)] lg:p-10">
             <div className="space-y-6">
-              <p className="text-base leading-8 text-primary-foreground/82 lg:text-lg">
+              <p className="text-base leading-8 text-white/84 lg:text-lg">
                 Smart Infraco provides an open neutral-access digital infrastructure that facilitates best-in-class voice and data service for all businesses and consumers.
               </p>
-              <p className="text-base leading-8 text-primary-foreground/82 lg:text-lg">
+              <p className="text-base leading-8 text-white/84 lg:text-lg">
                 Our purpose is to accelerate the growth and transformation of Ghana’s telecoms sector while ensuring equal access to the robust infrastructure solutions that enable public and private institutions to digitalise and monetise their goals.
 
               </p>

@@ -143,15 +143,15 @@ export default function Navbar() {
 
         {/* Desktop CTA */}
         <div className="hidden lg:flex items-center gap-3">
-          <Link
-            to="/contact"
+          <a
+            href="https://smartinfraco.com/my-account/"
             className="group inline-flex min-h-14 items-center gap-3 rounded-full bg-primary py-2 pl-7 pr-2 text-sm font-bold uppercase tracking-[0.16em] text-primary-foreground transition-all hover:brightness-105"
           >
-            Get in Touch
+            Login
             <span className="flex h-10 w-10 items-center justify-center rounded-full bg-secondary text-secondary-foreground transition-transform duration-500 group-hover:rotate-45">
               <ArrowUpRight className="h-4 w-4" />
             </span>
-          </Link>
+          </a>
         </div>
 
         {/* Mobile toggle */}
@@ -212,13 +212,13 @@ export default function Navbar() {
                   )}
                 </motion.div>
               ))}
-              <Link
-                to="/contact"
+              <a
+                href="https://smartinfraco.com/my-account/"
                 onClick={() => setMobileOpen(false)}
                 className="block mx-1 mt-4 text-center px-5 py-3 text-sm font-semibold bg-primary text-primary-foreground rounded-full"
               >
-                Get in Touch
-              </Link>
+                Login
+              </a>
             </div>
           </motion.div>
         )}

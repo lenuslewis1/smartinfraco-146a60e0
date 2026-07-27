@@ -106,8 +106,6 @@ export default function ConnectivityPage() {
               {[
                 ["100 Gbps", "Available bandwidth"],
                 ["24/7", "Support and monitoring"],
-                ["5", "Undersea cable links"],
-                ["Tier III", "Data centre design"],
               ].map(([value, label]) => (
                 <RevealItem key={label} className="bg-secondary">
                   <div className="p-7 lg:p-9">

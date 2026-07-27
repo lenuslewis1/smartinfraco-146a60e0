@@ -28,16 +28,18 @@ import AnimatedCounter from "@/components/ui-system/AnimatedCounter";
 import MagneticButton from "@/components/ui-system/MagneticButton";
 import { Reveal, RevealGroup, RevealItem } from "@/components/ui-system/RevealOnScroll";
 import heroSmartInfraco from "@/assets/hero-smart-infraco.png";
+import heroInternet from "@/assets/hero-internet.png";
+import heroCloud from "@/assets/hero-cloud.jpg";
 import svcCloud from "@/assets/service-cloud.jpg";
 import svcStorage from "@/assets/service-storage.jpg";
 import svcManaged from "@/assets/service-managed.jpg";
-import serviceConnectivityCustom from "@/assets/service-connectivity-custom.jpg";
+import serviceConnectivityHome from "@/assets/service-connectivity-home.jpg";
 import serviceDataCenterCustom from "@/assets/service-data-center-custom.jpg";
 import serviceCloudCustom from "@/assets/service-cloud-custom.jpg";
 import serviceCyberCustom from "@/assets/service-cyber-custom.jpg";
 import featureSingleWindow from "@/assets/feature-single-window.png";
 import featureReliabilitySecurity from "@/assets/feature-reliability-security.jpg";
-import featureNationalReach from "@/assets/feature-national-reach.jpg";
+import featureNationalReach from "@/assets/feature-national-reach-network.png";
 import featureEnterpriseSupport from "@/assets/feature-enterprise-support.jpg";
 import industriesBackground from "@/assets/industries-background.jpg";
 import testimonial1 from "@/assets/testimonial-1.jpg";
@@ -61,25 +63,25 @@ import via from "@/assets/customers/via.webp";
 import nationalPetroleumAuthority from "@/assets/customers/national-petroleum-authority.webp";
 import gepa from "@/assets/customers/gepa.png";
 import electoralCommissionGhana from "@/assets/customers/electoral-commission-ghana.png";
-import youthEmploymentAgency from "@/assets/customers/youth-employment-agency.jpeg";
 import gifec from "@/assets/customers/gifec.jpeg";
 import publicProcurementAuthority from "@/assets/customers/public-procurement-authority.jpeg";
+import ministryLandsNaturalResources from "@/assets/customers/ministry-lands-natural-resources.png";
 
 const ease = [0.22, 1, 0.36, 1] as const;
-const heroHeadlines = [
-
-  "Indigenous cloud services",
-  "Tier 3 data centre services",
-  "Dedicated internet services",
+const heroSlides = [
+  { headline: "Indigenous cloud services", href: "/cloud-services", image: heroCloud, position: "object-[70%_center]" },
+  { headline: "Tier 3 data centre services", href: "/data-centres", image: heroSmartInfraco, position: "object-[66%_center] md:object-center" },
+  { headline: "Dedicated internet services", href: "/connectivity", image: heroInternet, position: "object-[68%_center]" },
 ];
+const heroHeadlines = heroSlides.map((slide) => slide.headline);
 const longestHeroHeadline = heroHeadlines.reduce((longest, current) =>
   current.length > longest.length ? current : longest
 );
 
 const customers = [
   {
-    name: "Customer",
-    src: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQDDHBXMnJjit5g7j2Tn3vc6ypN39RDdZlxEA&s",
+    name: "Ministry of Lands and Natural Resources",
+    src: ministryLandsNaturalResources,
   },
   {
     name: "MTN Ghana",
@@ -117,12 +119,11 @@ const customers = [
   { name: "National Petroleum Authority", src: nationalPetroleumAuthority },
   { name: "Ghana Export Promotion Authority", src: gepa },
   { name: "Electoral Commission Ghana", src: electoralCommissionGhana },
-  { name: "Youth Employment Agency", src: youthEmploymentAgency },
   { name: "GIFEC", src: gifec },
   { name: "Public Procurement Authority", src: publicProcurementAuthority },
 ];
 
-function TypewriterHeroText() {
+function TypewriterHeroText({ onPhraseChange }: { onPhraseChange: (index: number) => void }) {
   const [phraseIndex, setPhraseIndex] = useState(0);
   const [visibleChars, setVisibleChars] = useState(0);
   const [isDeleting, setIsDeleting] = useState(false);
@@ -131,6 +132,10 @@ function TypewriterHeroText() {
     return window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   }, []);
   const activePhrase = heroHeadlines[phraseIndex];
+
+  useEffect(() => {
+    onPhraseChange(phraseIndex);
+  }, [onPhraseChange, phraseIndex]);
 
   useEffect(() => {
     if (prefersReducedMotion) {
@@ -185,15 +190,32 @@ function TypewriterHeroText() {
 }
 
 function Hero() {
+  const [activeHeroIndex, setActiveHeroIndex] = useState(0);
 
   return (
     <section className="bg-white px-3 py-3 text-white sm:px-5 sm:py-5">
       <div className="relative min-h-[calc(100svh-1.5rem)] overflow-hidden rounded-[2.4rem] bg-secondary sm:min-h-[calc(100svh-2.5rem)] lg:rounded-[3.2rem]">
-        <img
-          src={heroSmartInfraco}
-          alt=""
-          className="absolute inset-0 h-full w-full object-cover object-[66%_center] md:object-center"
-        />
+        {heroSlides.map((slide, index) => (
+          <motion.img
+            key={slide.headline}
+            src={slide.image}
+            alt=""
+            className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-700 ${slide.position} ${
+              index === activeHeroIndex ? "opacity-100" : "opacity-0"
+            }`}
+            initial={{ scale: 1.02, x: 0 }}
+            animate={{
+              opacity: index === activeHeroIndex ? 1 : 0,
+              scale: index === activeHeroIndex ? 1.08 : 1.02,
+              x: index === activeHeroIndex ? -12 : 0,
+            }}
+            transition={{
+              opacity: { duration: 0.7, ease },
+              scale: { duration: 4.8, ease },
+              x: { duration: 4.8, ease },
+            }}
+          />
+        ))}
         <div className="absolute inset-0 bg-[linear-gradient(90deg,hsl(203_92%_42%_/_0.86)_0%,hsl(203_88%_48%_/_0.58)_28%,hsl(203_88%_48%_/_0.18)_52%,transparent_72%)]" />
         <div className="absolute inset-0 bg-gradient-to-t from-secondary/18 via-transparent to-secondary/4" />
         <div className="absolute left-0 top-0 h-full w-[58%] bg-gradient-to-r from-sky-200/18 via-sky-200/8 to-transparent" />
@@ -206,16 +228,17 @@ function Hero() {
               transition={{ duration: 0.8, ease }}
               className="max-w-[980px] text-left"
             >
-              <TypewriterHeroText />
+              <TypewriterHeroText onPhraseChange={setActiveHeroIndex} />
               <p className="mt-4 max-w-3xl text-pretty text-sm font-medium leading-6 text-white/90 sm:text-lg sm:leading-8 lg:mt-7 lg:text-2xl lg:leading-9">
                 Smart Infraco powers Ghana's digital backbone - secure, scalable national infrastructure for public and private institutions.
               </p>
               <div className="mt-6 flex flex-wrap items-center gap-3 lg:mt-9 lg:gap-4">
-                <MagneticButton to="/connectivity" variant="dark" className="min-h-12 pl-6 text-xs font-bold tracking-[0.12em] lg:min-h-16 lg:pl-9 lg:text-base">
-                  View Solutions
-                </MagneticButton>
-                <MagneticButton to="/contact" variant="primary" className="min-h-12 pl-6 text-xs font-bold tracking-[0.12em] lg:min-h-16 lg:pl-9 lg:text-base">
-                  Get Started
+                <MagneticButton
+                  to={heroSlides[activeHeroIndex].href}
+                  variant="dark"
+                  className="min-h-12 pl-6 text-xs font-bold tracking-[0.12em] lg:min-h-16 lg:pl-9 lg:text-base"
+                >
+                  View More
                 </MagneticButton>
               </div>
             </motion.div>
@@ -228,15 +251,23 @@ function Hero() {
 function CustomerLogoStrip() {
   return (
     <section className="overflow-hidden bg-white py-10 lg:py-12">
+      <div className="mx-auto mb-8 w-full max-w-[1500px] px-6 text-center sm:px-10">
+        <h2 className="font-display text-3xl font-semibold tracking-[-0.02em] text-secondary sm:text-4xl">
+          Our Customers
+        </h2>
+      </div>
       <div className="mask-fade-x">
-        <div className="flex w-max animate-marquee items-center gap-14 opacity-85 hover:[animation-play-state:paused] lg:gap-20">
+        <div
+          data-testid="customer-marquee"
+          className="flex w-max animate-marquee-slow items-center gap-14 hover:[animation-play-state:paused] lg:gap-20"
+        >
           {[...customers, ...customers, ...customers].map((customer, index) => (
             <img
               key={`${customer.name}-${index}`}
               src={customer.src}
               alt={`${customer.name} logo`}
               loading="lazy"
-              className="h-11 w-auto max-w-[170px] shrink-0 object-contain grayscale transition duration-300 hover:grayscale-0 hover:opacity-100 lg:h-14 lg:max-w-[190px]"
+              className="h-11 w-auto max-w-[170px] shrink-0 object-contain transition duration-300 hover:scale-105 lg:h-14 lg:max-w-[190px]"
             />
           ))}
         </div>
@@ -278,7 +309,7 @@ function AboutBento() {
               </div>
               <p className="font-mono text-[10px] font-bold uppercase tracking-[0.24em] text-white/90 transition duration-500 group-hover:text-primary-foreground/70">Customers</p>
               <div className="mt-5 font-display text-[clamp(2.65rem,4vw,3.55rem)] font-semibold leading-none tracking-[-0.04em] tabular-nums">
-                <AnimatedCounter to={300} duration={3.2} suffix="+" />
+                <AnimatedCounter to={400} duration={3.2} suffix="+" />
               </div>
               <p className="mt-5 max-w-xs text-sm leading-6 text-white/78 transition duration-500 group-hover:text-primary-foreground/75">
                 Customers served across Ghana in both the public and private sectors.
@@ -290,7 +321,7 @@ function AboutBento() {
             <div className="group flex min-h-[225px] flex-col justify-center rounded-[24px] border border-slate-300 bg-white p-7 text-secondary shadow-[0_24px_70px_hsl(215_45%_22%_/_0.06)] transition duration-500 hover:-translate-y-2 hover:border-primary hover:bg-secondary hover:text-white hover:shadow-[0_28px_80px_hsl(215_45%_22%_/_0.18)]">
               <p className="font-mono text-[10px] font-bold uppercase tracking-[0.24em] text-slate-500 transition duration-500 group-hover:text-primary">Network availability</p>
               <div className="mt-5 font-display text-[clamp(2.65rem,4vw,3.55rem)] font-semibold leading-none tracking-[-0.04em] tabular-nums">
-                <AnimatedCounter to={99.99} duration={3.2} decimals={2} suffix="%" />
+                <AnimatedCounter to={99} duration={3.2} suffix="%" />
               </div>
               <p className="mt-5 max-w-xs text-sm leading-6 text-slate-600 transition duration-500 group-hover:text-white/72">
                 "Smart Infraco completely reshaped how we operate. Resilient, secure and engineered for our scale."
@@ -315,12 +346,12 @@ function AboutBento() {
         <RevealGroup className="mt-5 grid grid-cols-1 gap-5 lg:grid-cols-2">
           <RevealItem>
             <div className="group flex min-h-[205px] flex-col justify-center rounded-[24px] bg-secondary p-7 text-white transition duration-500 hover:-translate-y-2 hover:bg-[hsl(206_70%_50%)] hover:shadow-[0_28px_80px_hsl(206_70%_28%_/_0.22)] lg:p-8">
-              <p className="font-mono text-[10px] font-bold uppercase tracking-[0.24em] text-white/55 transition duration-500 group-hover:text-primary">Active connections</p>
-              <div className="mt-5 font-display text-[clamp(2.65rem,4vw,3.55rem)] font-semibold leading-none tracking-[-0.04em] tabular-nums">
-                <AnimatedCounter to={48} duration={3.2} suffix="+ PoPs" />
-              </div>
+              <p className="font-mono text-[10px] font-bold uppercase tracking-[0.24em] text-white/55 transition duration-500 group-hover:text-primary">Backbone capacity</p>
+              <h3 className="mt-5 font-display text-[clamp(2.65rem,4vw,3.55rem)] font-semibold leading-none tracking-[-0.04em]">
+                <AnimatedCounter to={100} duration={3.2} suffix=" Gbps Backbone" />
+              </h3>
               <p className="mt-5 max-w-sm text-sm leading-6 text-white/68 transition duration-500 group-hover:text-white/82">
-                Points of presence distributed across Ghana for low-latency access.
+                High-capacity national backbone engineered for resilient, low-latency connectivity.
               </p>
             </div>
           </RevealItem>
@@ -332,7 +363,7 @@ function AboutBento() {
                 2 Data Centres
               </h3>
               <p className="mt-5 max-w-md text-sm leading-6 text-white/68 transition duration-500 group-hover:text-primary-foreground/75">
-                Tier II (Kumasi) and Tier III (Accra) - Ghana's most modern colocation facilities.
+                Tier III (Accra) Tier II and (Kumasi) - Ghana's Indigenous Colocation Facility.
               </p>
             </div>
           </RevealItem>
@@ -344,7 +375,7 @@ function AboutBento() {
 
 function ServicesThree() {
   const services = [
-    { title: "Connectivity", desc: "Metro fibre, dark fibre and dedicated internet backed by a 100 Gbps backbone", img: serviceConnectivityCustom, href: "/connectivity", icon: Network },
+    { title: "Connectivity", desc: "Metro fibre and dedicated internet backed by a 100 Gbps backbone", img: serviceConnectivityHome, href: "/connectivity", icon: Network },
     { title: "Data Centres", desc: "Carrier-neutral colocation and local hosting designed for uptime, security and control.", img: serviceDataCenterCustom, href: "/data-centres", icon: Server },
     { title: "Cloud", desc: "Sovereign cloud, managed storage and backup services delivered from local infrastructure.", img: serviceCloudCustom, href: "/cloud-services", icon: Cloud },
     { title: "Cybersecurity", desc: "Threat monitoring, network protection and response support for critical enterprise systems.", img: serviceCyberCustom, href: "/cybersecurity", icon: Shield },
@@ -524,12 +555,12 @@ function ExpertiseGrid() {
 
 function IndustriesWeServe() {
   const industries = [
-    { name: "Government", icon: Landmark, blurb: "Sovereign platforms for ministries, agencies and public services." },
-    { name: "Telecoms & ISPs", icon: Wifi, blurb: "Wholesale fibre, dark fibre, IP transit and carrier infrastructure.", highlighted: true },
-    { name: "Financial Services", icon: Building2, blurb: "Low-latency connectivity and resilient hosting for payment networks." },
-    { name: "Energy & Utilities", icon: Zap, blurb: "Mission-critical links for distributed operations and control systems." },
-    { name: "Enterprise", icon: Server, blurb: "Dedicated internet, cloud and managed services for growing teams." },
-    { name: "Education & Health", icon: Globe, blurb: "High-capacity connectivity for institutions with essential services." },
+    { name: "Government", icon: Landmark, blurb: "Keep citizen-facing systems available and responsive, even at national scale." },
+    { name: "Telecoms & ISPs", icon: Wifi, blurb: "Expand capacity and reach new customers through dependable national interconnection.", highlighted: true },
+    { name: "Financial Services", icon: Building2, blurb: "Protect transaction continuity and customer confidence during peak demand." },
+    { name: "Energy & Utilities", icon: Zap, blurb: "Maintain operational visibility and control across distributed critical assets." },
+    { name: "Enterprise", icon: Server, blurb: "Give teams a dependable digital foundation for growth and uninterrupted operations." },
+    { name: "Education & Health", icon: Globe, blurb: "Keep learning, care and essential records available when they matter most." },
   ];
 
   return (
