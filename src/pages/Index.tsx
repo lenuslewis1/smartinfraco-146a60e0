@@ -29,7 +29,7 @@ import MagneticButton from "@/components/ui-system/MagneticButton";
 import { Reveal, RevealGroup, RevealItem } from "@/components/ui-system/RevealOnScroll";
 import heroSmartInfraco from "@/assets/hero-smart-infraco.png";
 import heroInternet from "@/assets/hero-internet.png";
-import heroCloud from "@/assets/hero-cloud.jpg";
+import heroCloud from "@/assets/hero-cloud.png";
 import svcCloud from "@/assets/service-cloud.jpg";
 import svcStorage from "@/assets/service-storage.jpg";
 import svcManaged from "@/assets/service-managed.jpg";
