@@ -1,0 +1,283 @@
+{
+  "index.html": {
+    "file": "assets/index-CgvpdDfD.js",
+    "name": "index",
+    "src": "index.html",
+    "isEntry": true,
+    "css": [
+      "assets/index-BrBWZV86.css"
+    ],
+    "assets": [
+      "assets/navbar-logo-transparent-D-d3B9-F.png",
+      "assets/footer-logo-BkynVrgR.png",
+      "assets/cta-infrastructure-DzjFot1A.png",
+      "assets/hero-smart-infraco-BHlm_K5W.png",
+      "assets/hero-internet-DaqSzzd9.png",
+      "assets/hero-cloud-Cdvx4xZE.jpg",
+      "assets/service-cloud-CbAVSnjP.jpg",
+      "assets/service-storage-G5v2NbFp.jpg",
+      "assets/service-managed-osx5tVQw.jpg",
+      "assets/service-connectivity-home-Wyu00kVq.jpg",
+      "assets/service-data-center-custom-C3JvIa65.jpg",
+      "assets/service-cloud-custom-DCC5q7vj.jpg",
+      "assets/service-cyber-custom-BwEQv5Ag.jpg",
+      "assets/feature-single-window-DFcB5z8R.png",
+      "assets/feature-reliability-security-BO_i9tR0.jpg",
+      "assets/feature-national-reach-network-DpB900Am.png",
+      "assets/feature-enterprise-support-CzNMUWed.jpg",
+      "assets/industries-background-B2NBrint.jpg",
+      "assets/why-default-fcrvoJkX.jpg",
+      "assets/ghana-republic-DPtUK2kn.png",
+      "assets/gfza-C_NNYwx5.jpg",
+      "assets/devtraco-Dn7wKRqo.png",
+      "assets/broadspectrum-digital-payments-DKBES54G.jpeg",
+      "assets/ghana-police-B8PnObVi.jpg",
+      "assets/ghana-armed-forces-ChAPtVZN.png",
+      "assets/ministry-foreign-affairs-BD22Arws.png",
+      "assets/ghana-immigration-service-CtjGZvap.jpg",
+      "assets/judicial-service-ghana-7Ay-4xqK.jpg",
+      "assets/ghana-civil-aviation-authority-DXc-n_Et.jpg",
+      "assets/vodafone-business-E6ePl384.png",
+      "assets/dolphin-Di31Qlma.png",
+      "assets/via-CArgTUEX.webp",
+      "assets/national-petroleum-authority-D0H5tBcp.webp",
+      "assets/gepa-DcUaaqSx.png",
+      "assets/electoral-commission-ghana-rAXh-EcJ.png",
+      "assets/gifec-D2R37wkg.jpeg",
+      "assets/public-procurement-authority-C5mcQfTu.jpeg",
+      "assets/ministry-lands-natural-resources-BZDExQyt.png",
+      "assets/about-hero-CY703nM6.jpg",
+      "assets/datacenter-bg-ZtobYCj-.jpg",
+      "assets/hero-sky-Dil6rwdS.jpg",
+      "assets/connectivity-hero-BjvjI-BE.jpg",
+      "assets/service-connectivity-custom-B8l8sNDu.jpg",
+      "assets/cloud-bg-BRRjnuCm.jpg",
+      "assets/contact-header-building-BLMAnPOD.jpg",
+      "assets/ghana-network-map-hsLtqIcX.jpg",
+      "assets/smart-infraco-awards-OeD4tcn6.png",
+      "assets/securing-ghanas-digital-services-BVv0iO6O.png",
+      "assets/technology-forecast-2026-rmumyTRT.png",
+      "assets/data-sovereignty-trust-C16heYI7.png",
+      "assets/digital-first-business-BSC_XOOO.png",
+      "assets/cybersecurity-digital-age-Dv7c04aB.png",
+      "assets/securing-connectivity-PR2I13FK.png",
+      "assets/data-centres-cloud-solutions-BS1_CPdA.png"
+    ]
+  },
+  "src/assets/about-hero.jpg": {
+    "file": "assets/about-hero-CY703nM6.jpg",
+    "src": "src/assets/about-hero.jpg"
+  },
+  "src/assets/awards/smart-infraco-awards.png": {
+    "file": "assets/smart-infraco-awards-OeD4tcn6.png",
+    "src": "src/assets/awards/smart-infraco-awards.png"
+  },
+  "src/assets/cloud-bg.jpg": {
+    "file": "assets/cloud-bg-BRRjnuCm.jpg",
+    "src": "src/assets/cloud-bg.jpg"
+  },
+  "src/assets/connectivity-hero.jpg": {
+    "file": "assets/connectivity-hero-BjvjI-BE.jpg",
+    "src": "src/assets/connectivity-hero.jpg"
+  },
+  "src/assets/contact-header-building.jpg": {
+    "file": "assets/contact-header-building-BLMAnPOD.jpg",
+    "src": "src/assets/contact-header-building.jpg"
+  },
+  "src/assets/cta-infrastructure.png": {
+    "file": "assets/cta-infrastructure-DzjFot1A.png",
+    "src": "src/assets/cta-infrastructure.png"
+  },
+  "src/assets/customers/broadspectrum-digital-payments.jpeg": {
+    "file": "assets/broadspectrum-digital-payments-DKBES54G.jpeg",
+    "src": "src/assets/customers/broadspectrum-digital-payments.jpeg"
+  },
+  "src/assets/customers/devtraco.png": {
+    "file": "assets/devtraco-Dn7wKRqo.png",
+    "src": "src/assets/customers/devtraco.png"
+  },
+  "src/assets/customers/dolphin.png": {
+    "file": "assets/dolphin-Di31Qlma.png",
+    "src": "src/assets/customers/dolphin.png"
+  },
+  "src/assets/customers/electoral-commission-ghana.png": {
+    "file": "assets/electoral-commission-ghana-rAXh-EcJ.png",
+    "src": "src/assets/customers/electoral-commission-ghana.png"
+  },
+  "src/assets/customers/gepa.png": {
+    "file": "assets/gepa-DcUaaqSx.png",
+    "src": "src/assets/customers/gepa.png"
+  },
+  "src/assets/customers/gfza.jpg": {
+    "file": "assets/gfza-C_NNYwx5.jpg",
+    "src": "src/assets/customers/gfza.jpg"
+  },
+  "src/assets/customers/ghana-armed-forces.png": {
+    "file": "assets/ghana-armed-forces-ChAPtVZN.png",
+    "src": "src/assets/customers/ghana-armed-forces.png"
+  },
+  "src/assets/customers/ghana-civil-aviation-authority.jpg": {
+    "file": "assets/ghana-civil-aviation-authority-DXc-n_Et.jpg",
+    "src": "src/assets/customers/ghana-civil-aviation-authority.jpg"
+  },
+  "src/assets/customers/ghana-immigration-service.jpg": {
+    "file": "assets/ghana-immigration-service-CtjGZvap.jpg",
+    "src": "src/assets/customers/ghana-immigration-service.jpg"
+  },
+  "src/assets/customers/ghana-police.jpg": {
+    "file": "assets/ghana-police-B8PnObVi.jpg",
+    "src": "src/assets/customers/ghana-police.jpg"
+  },
+  "src/assets/customers/ghana-republic.png": {
+    "file": "assets/ghana-republic-DPtUK2kn.png",
+    "src": "src/assets/customers/ghana-republic.png"
+  },
+  "src/assets/customers/gifec.jpeg": {
+    "file": "assets/gifec-D2R37wkg.jpeg",
+    "src": "src/assets/customers/gifec.jpeg"
+  },
+  "src/assets/customers/judicial-service-ghana.jpg": {
+    "file": "assets/judicial-service-ghana-7Ay-4xqK.jpg",
+    "src": "src/assets/customers/judicial-service-ghana.jpg"
+  },
+  "src/assets/customers/ministry-foreign-affairs.png": {
+    "file": "assets/ministry-foreign-affairs-BD22Arws.png",
+    "src": "src/assets/customers/ministry-foreign-affairs.png"
+  },
+  "src/assets/customers/ministry-lands-natural-resources.png": {
+    "file": "assets/ministry-lands-natural-resources-BZDExQyt.png",
+    "src": "src/assets/customers/ministry-lands-natural-resources.png"
+  },
+  "src/assets/customers/national-petroleum-authority.webp": {
+    "file": "assets/national-petroleum-authority-D0H5tBcp.webp",
+    "src": "src/assets/customers/national-petroleum-authority.webp"
+  },
+  "src/assets/customers/public-procurement-authority.jpeg": {
+    "file": "assets/public-procurement-authority-C5mcQfTu.jpeg",
+    "src": "src/assets/customers/public-procurement-authority.jpeg"
+  },
+  "src/assets/customers/via.webp": {
+    "file": "assets/via-CArgTUEX.webp",
+    "src": "src/assets/customers/via.webp"
+  },
+  "src/assets/customers/vodafone-business.png": {
+    "file": "assets/vodafone-business-E6ePl384.png",
+    "src": "src/assets/customers/vodafone-business.png"
+  },
+  "src/assets/datacenter-bg.jpg": {
+    "file": "assets/datacenter-bg-ZtobYCj-.jpg",
+    "src": "src/assets/datacenter-bg.jpg"
+  },
+  "src/assets/feature-enterprise-support.jpg": {
+    "file": "assets/feature-enterprise-support-CzNMUWed.jpg",
+    "src": "src/assets/feature-enterprise-support.jpg"
+  },
+  "src/assets/feature-national-reach-network.png": {
+    "file": "assets/feature-national-reach-network-DpB900Am.png",
+    "src": "src/assets/feature-national-reach-network.png"
+  },
+  "src/assets/feature-reliability-security.jpg": {
+    "file": "assets/feature-reliability-security-BO_i9tR0.jpg",
+    "src": "src/assets/feature-reliability-security.jpg"
+  },
+  "src/assets/feature-single-window.png": {
+    "file": "assets/feature-single-window-DFcB5z8R.png",
+    "src": "src/assets/feature-single-window.png"
+  },
+  "src/assets/footer-logo.png": {
+    "file": "assets/footer-logo-BkynVrgR.png",
+    "src": "src/assets/footer-logo.png"
+  },
+  "src/assets/ghana-network-map.jpg": {
+    "file": "assets/ghana-network-map-hsLtqIcX.jpg",
+    "src": "src/assets/ghana-network-map.jpg"
+  },
+  "src/assets/hero-cloud.jpg": {
+    "file": "assets/hero-cloud-Cdvx4xZE.jpg",
+    "src": "src/assets/hero-cloud.jpg"
+  },
+  "src/assets/hero-internet.png": {
+    "file": "assets/hero-internet-DaqSzzd9.png",
+    "src": "src/assets/hero-internet.png"
+  },
+  "src/assets/hero-sky.jpg": {
+    "file": "assets/hero-sky-Dil6rwdS.jpg",
+    "src": "src/assets/hero-sky.jpg"
+  },
+  "src/assets/hero-smart-infraco.png": {
+    "file": "assets/hero-smart-infraco-BHlm_K5W.png",
+    "src": "src/assets/hero-smart-infraco.png"
+  },
+  "src/assets/industries-background.jpg": {
+    "file": "assets/industries-background-B2NBrint.jpg",
+    "src": "src/assets/industries-background.jpg"
+  },
+  "src/assets/navbar-logo-transparent.png": {
+    "file": "assets/navbar-logo-transparent-D-d3B9-F.png",
+    "src": "src/assets/navbar-logo-transparent.png"
+  },
+  "src/assets/service-cloud-custom.jpg": {
+    "file": "assets/service-cloud-custom-DCC5q7vj.jpg",
+    "src": "src/assets/service-cloud-custom.jpg"
+  },
+  "src/assets/service-cloud.jpg": {
+    "file": "assets/service-cloud-CbAVSnjP.jpg",
+    "src": "src/assets/service-cloud.jpg"
+  },
+  "src/assets/service-connectivity-custom.jpg": {
+    "file": "assets/service-connectivity-custom-B8l8sNDu.jpg",
+    "src": "src/assets/service-connectivity-custom.jpg"
+  },
+  "src/assets/service-connectivity-home.jpg": {
+    "file": "assets/service-connectivity-home-Wyu00kVq.jpg",
+    "src": "src/assets/service-connectivity-home.jpg"
+  },
+  "src/assets/service-cyber-custom.jpg": {
+    "file": "assets/service-cyber-custom-BwEQv5Ag.jpg",
+    "src": "src/assets/service-cyber-custom.jpg"
+  },
+  "src/assets/service-data-center-custom.jpg": {
+    "file": "assets/service-data-center-custom-C3JvIa65.jpg",
+    "src": "src/assets/service-data-center-custom.jpg"
+  },
+  "src/assets/service-managed.jpg": {
+    "file": "assets/service-managed-osx5tVQw.jpg",
+    "src": "src/assets/service-managed.jpg"
+  },
+  "src/assets/service-storage.jpg": {
+    "file": "assets/service-storage-G5v2NbFp.jpg",
+    "src": "src/assets/service-storage.jpg"
+  },
+  "src/assets/webinars/cybersecurity-digital-age.png": {
+    "file": "assets/cybersecurity-digital-age-Dv7c04aB.png",
+    "src": "src/assets/webinars/cybersecurity-digital-age.png"
+  },
+  "src/assets/webinars/data-centres-cloud-solutions.png": {
+    "file": "assets/data-centres-cloud-solutions-BS1_CPdA.png",
+    "src": "src/assets/webinars/data-centres-cloud-solutions.png"
+  },
+  "src/assets/webinars/data-sovereignty-trust.png": {
+    "file": "assets/data-sovereignty-trust-C16heYI7.png",
+    "src": "src/assets/webinars/data-sovereignty-trust.png"
+  },
+  "src/assets/webinars/digital-first-business.png": {
+    "file": "assets/digital-first-business-BSC_XOOO.png",
+    "src": "src/assets/webinars/digital-first-business.png"
+  },
+  "src/assets/webinars/securing-connectivity.png": {
+    "file": "assets/securing-connectivity-PR2I13FK.png",
+    "src": "src/assets/webinars/securing-connectivity.png"
+  },
+  "src/assets/webinars/securing-ghanas-digital-services.png": {
+    "file": "assets/securing-ghanas-digital-services-BVv0iO6O.png",
+    "src": "src/assets/webinars/securing-ghanas-digital-services.png"
+  },
+  "src/assets/webinars/technology-forecast-2026.png": {
+    "file": "assets/technology-forecast-2026-rmumyTRT.png",
+    "src": "src/assets/webinars/technology-forecast-2026.png"
+  },
+  "src/assets/why-default.jpg": {
+    "file": "assets/why-default-fcrvoJkX.jpg",
+    "src": "src/assets/why-default.jpg"
+  }
+}

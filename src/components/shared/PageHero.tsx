@@ -8,17 +8,19 @@ interface PageHeroProps {
   description: string;
   bgImage?: string;
   eyebrow?: string;
+  imagePosition?: string;
 }
 
 const ease = [0.22, 1, 0.36, 1] as const;
 
-export default function PageHero({ title, description, bgImage, eyebrow }: PageHeroProps) {
+export default function PageHero({ title, description, bgImage, eyebrow, imagePosition }: PageHeroProps) {
   return (
     <section className="relative min-h-[78vh] overflow-hidden bg-secondary text-white">
       <img
         src={bgImage || heroSky}
         alt=""
         className="absolute inset-0 h-full w-full object-cover"
+        style={{ objectPosition: imagePosition }}
         loading="eager"
       />
       <div className="absolute inset-0 bg-black/25" />

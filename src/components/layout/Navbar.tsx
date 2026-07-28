@@ -10,6 +10,7 @@ const solutions = [
   { label: "Data Centres",       href: "/data-centres",  desc: "Tier III Accra · Tier II Kumasi" },
   { label: "Cloud & Managed",    href: "/cloud-services",desc: "Hybrid Cloud, VPS, BaaS, STaaS" },
   { label: "Cybersecurity",      href: "/cybersecurity", desc: "SOC, threat detection, network security" },
+  { label: "Software Development", href: "/software-development", desc: "Web, mobile and enterprise applications" },
 ];
 
 const media = [

@@ -1,0 +1,31 @@
+/*
+Theme Name: Smart Infraco
+Theme URI: https://smartinfraco.com/
+Author: Smart Infraco
+Author URI: https://smartinfraco.com/
+Description: The official Smart Infraco website theme, preserving the complete responsive React design and page experience.
+Version: 1.0.0
+Requires at least: 6.0
+Tested up to: 6.8
+Requires PHP: 7.4
+Text Domain: smart-infraco
+*/
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+
+#smart-infraco-app {
+	min-height: 100vh;
+}
+
+.smart-infraco-loading {
+	display: grid;
+	min-height: 100vh;
+	place-items: center;
+	background: #031b33;
+	color: #ffffff;
+	font: 600 1rem/1.5 system-ui, sans-serif;
+}

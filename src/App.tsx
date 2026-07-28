@@ -9,6 +9,7 @@ import Connectivity from "./pages/Connectivity";
 import DataCentres from "./pages/DataCentres";
 import CloudServices from "./pages/CloudServices";
 import Cybersecurity from "./pages/Cybersecurity";
+import SoftwareDevelopment from "./pages/SoftwareDevelopment";
 import Contact from "./pages/Contact";
 import News from "./pages/News";
 import Articles from "./pages/Articles";
@@ -36,6 +37,7 @@ const App = () => (
           <Route path="/data-centres" element={<DataCentres />} />
           <Route path="/cloud-services" element={<CloudServices />} />
           <Route path="/cybersecurity" element={<Cybersecurity />} />
+          <Route path="/software-development" element={<SoftwareDevelopment />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/news" element={<News />} />
           <Route path="/articles" element={<Articles />} />

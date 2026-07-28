@@ -10,6 +10,7 @@ const columns = [
       { label: "Data Centres", href: "/data-centres" },
       { label: "Cloud Services", href: "/cloud-services" },
       { label: "Cybersecurity", href: "/cybersecurity" },
+      { label: "Software Development", href: "/software-development" },
     ],
   },
   {

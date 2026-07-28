@@ -47,6 +47,9 @@ import testimonial2 from "@/assets/testimonial-2.jpg";
 import testimonial3 from "@/assets/testimonial-3.jpg";
 import testimonial4 from "@/assets/testimonial-4.jpg";
 import whyDefault from "@/assets/why-default.jpg";
+import appMockup from "@/assets/app-mockup.png";
+import appStoreBadge from "@/assets/app-store-badge.png";
+import googlePlayBadge from "@/assets/google-play-badge.png";
 import ghanaRepublic from "@/assets/customers/ghana-republic.png";
 import gfza from "@/assets/customers/gfza.jpg";
 import devtraco from "@/assets/customers/devtraco.png";
@@ -553,6 +556,75 @@ function ExpertiseGrid() {
   );
 }
 
+function MobileAppSection() {
+  const appBenefits = ["View and manage subscriptions", "Send service enquiries", "Stay updated on your account"];
+
+  return (
+    <section className="relative overflow-hidden bg-secondary py-20 text-white lg:py-28">
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_12%_78%,hsl(206_70%_50%_/_0.42),transparent_34%),radial-gradient(circle_at_86%_20%,hsl(95_82%_55%_/_0.2),transparent_27%)]" />
+      <div className="container-wide relative grid items-center gap-12 lg:grid-cols-[0.92fr_1.08fr] lg:gap-20">
+        <Reveal className="order-2 max-w-xl lg:order-1">
+          <Eyebrow tone="accent">MYSMARTINFRACO APP</Eyebrow>
+          <h2 className="mt-6 font-display text-[clamp(2.35rem,4.8vw,4.5rem)] font-medium leading-[0.98] tracking-[-0.035em] text-white">
+            Your services,<br />
+            <span className="text-primary">in your pocket.</span>
+          </h2>
+          <p className="mt-6 max-w-lg text-base leading-7 text-white/72 lg:text-lg lg:leading-8">
+            Access your Smart Infraco services anytime, anywhere, and manage your account with ease.
+          </p>
+
+          <ul className="mt-8 space-y-3">
+            {appBenefits.map((benefit) => (
+              <li key={benefit} className="flex items-center gap-3 text-sm text-white/86">
+                <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-primary text-primary-foreground">
+                  <Check className="h-3.5 w-3.5" />
+                </span>
+                {benefit}
+              </li>
+            ))}
+          </ul>
+
+          <div className="mt-10 flex flex-wrap items-center gap-3">
+            <a
+              href="https://play.google.com/store/apps/details?id=com.mysmartinfraco&hl=en"
+              target="_blank"
+              rel="noreferrer"
+              aria-label="Download MySmartInfraco from Google Play"
+              className="block w-[190px] transition duration-300 hover:-translate-y-1 hover:brightness-110 sm:w-[220px]"
+            >
+              <img src={googlePlayBadge} alt="Get it on Google Play" className="h-auto w-full" />
+            </a>
+            <a
+              href="https://apps.apple.com/gh/app/mysmartinfraco/id6747730615?platform=iphone"
+              target="_blank"
+              rel="noreferrer"
+              aria-label="Download MySmartInfraco from the App Store"
+              className="block w-[190px] transition duration-300 hover:-translate-y-1 hover:brightness-110 sm:w-[220px]"
+            >
+              <img src={appStoreBadge} alt="Available on the App Store" className="h-auto w-full" />
+            </a>
+          </div>
+        </Reveal>
+
+        <Reveal className="order-1 flex min-h-[440px] items-center justify-center sm:min-h-[520px] lg:order-2 lg:min-h-[590px]">
+          <motion.div
+            animate={{ y: [0, -14, 0], rotate: [-1.5, 1, -1.5] }}
+            transition={{ duration: 7, ease: "easeInOut", repeat: Infinity }}
+            className="relative h-[410px] w-[310px] sm:h-[500px] sm:w-[380px] lg:h-[585px] lg:w-[445px]"
+          >
+            <div className="absolute inset-[11%_3%_5%_7%] bg-primary/24 blur-3xl" />
+            <img
+              src={appMockup}
+              alt="MySmartInfraco mobile app showing account and network information"
+              className="relative h-full w-full object-contain mix-blend-multiply drop-shadow-[0_34px_34px_rgba(0,0,0,0.45)]"
+            />
+          </motion.div>
+        </Reveal>
+      </div>
+    </section>
+  );
+}
+
 function IndustriesWeServe() {
   const industries = [
     { name: "Government", icon: Landmark, blurb: "Keep citizen-facing systems available and responsive, even at national scale." },
@@ -885,6 +957,7 @@ export default function HomePage() {
       <AboutBento />
       <ServicesThree />
       <ExpertiseGrid />
+      <MobileAppSection />
       <IndustriesWeServe />
       <Testimonials />
       <BlogStrip />
