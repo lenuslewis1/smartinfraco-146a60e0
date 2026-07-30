@@ -3,7 +3,7 @@ import Layout from "@/components/layout/Layout";
 import PageHero from "@/components/shared/PageHero";
 import Eyebrow from "@/components/ui-system/Eyebrow";
 import { Reveal, RevealGroup, RevealItem } from "@/components/ui-system/RevealOnScroll";
-import heroImage from "@/assets/hero-sky.jpg";
+import heroImage from "@/assets/hero-cloud.png";
 import serviceCloudImage from "@/assets/service-cloud-custom.jpg";
 
 const services = [
@@ -19,7 +19,7 @@ const services = [
 export default function CloudServicesPage() {
   return (
     <Layout>
-      <PageHero eyebrow="Cloud & Managed Services" title="Your cloud. Closer, clearer, fully managed." description="Sovereign cloud infrastructure and expert operations for organisations modernising without giving up control." bgImage={heroImage} imagePosition="center bottom" />
+      <PageHero eyebrow="Cloud & Managed Services" title="Your cloud. Closer, clearer, fully managed." description="Sovereign cloud infrastructure and expert operations for organisations modernising without giving up control." bgImage={heroImage} imagePosition="70% center" />
 
       <section className="relative overflow-hidden bg-secondary py-24 text-white lg:py-36">
         <div className="absolute inset-0 opacity-[0.12] [background-image:linear-gradient(hsl(0_0%_100%_/_0.2)_1px,transparent_1px),linear-gradient(90deg,hsl(0_0%_100%_/_0.2)_1px,transparent_1px)] [background-size:64px_64px]" />

@@ -10,7 +10,7 @@ import Layout from "@/components/layout/Layout";
 import PageHero from "@/components/shared/PageHero";
 import Eyebrow from "@/components/ui-system/Eyebrow";
 import { Reveal, RevealGroup, RevealItem } from "@/components/ui-system/RevealOnScroll";
-import heroImage from "@/assets/connectivity-hero.jpg";
+import heroImage from "@/assets/hero-internet.png";
 import serviceConnectivityImage from "@/assets/service-connectivity-custom.jpg";
 
 const services = [
@@ -87,6 +87,7 @@ export default function ConnectivityPage() {
         title="Intelligent network solutions for public and private enterprises."
         description="Dedicated internet, MPLS VPN, dark fibre and network colocation services engineered for secure, scalable connectivity."
         bgImage={heroImage}
+        imagePosition="68% center"
       />
 
       <section className="relative overflow-hidden bg-secondary py-24 text-white lg:py-36">

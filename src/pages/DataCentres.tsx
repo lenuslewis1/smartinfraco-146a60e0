@@ -3,7 +3,7 @@ import Layout from "@/components/layout/Layout";
 import PageHero from "@/components/shared/PageHero";
 import Eyebrow from "@/components/ui-system/Eyebrow";
 import { Reveal, RevealGroup, RevealItem } from "@/components/ui-system/RevealOnScroll";
-import heroImage from "@/assets/datacenter-bg.jpg";
+import heroImage from "@/assets/hero-smart-infraco.png";
 import serviceDataCentreImage from "@/assets/service-data-center-custom.jpg";
 
 const services = [
@@ -70,6 +70,7 @@ export default function DataCentresPage() {
         title="Secure, resilient data centre services for critical infrastructure."
         description="Rack colocation, web hosting, storage and backup services delivered from Ghana-based facilities."
         bgImage={heroImage}
+        imagePosition="center"
       />
 
       <section className="relative overflow-hidden bg-secondary py-24 text-white lg:py-36">

@@ -1,8 +1,7 @@
 import { useEffect, useMemo, useState } from "react";
 import { Link } from "react-router-dom";
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import {
-  ArrowRight,
   ArrowUpRight,
   BarChart3,
   Building2,
@@ -37,6 +36,9 @@ import serviceConnectivityHome from "@/assets/service-connectivity-home.jpg";
 import serviceDataCenterCustom from "@/assets/service-data-center-custom.jpg";
 import serviceCloudCustom from "@/assets/service-cloud-custom.jpg";
 import serviceCyberCustom from "@/assets/service-cyber-custom.jpg";
+import homeSolutionDataCentres from "@/assets/home-solution-data-centres.jpg";
+import homeSolutionCloud from "@/assets/home-solution-cloud.jpg";
+import homeSolutionCybersecurity from "@/assets/home-solution-cybersecurity.png";
 import featureSingleWindow from "@/assets/feature-single-window.png";
 import featureReliabilitySecurity from "@/assets/feature-reliability-security.jpg";
 import featureNationalReach from "@/assets/feature-national-reach-network.png";
@@ -75,6 +77,7 @@ const heroSlides = [
   { headline: "Indigenous cloud services", href: "/cloud-services", image: heroCloud, position: "object-[70%_center]" },
   { headline: "Tier 3 data centre services", href: "/data-centres", image: heroSmartInfraco, position: "object-[66%_center] md:object-center" },
   { headline: "Dedicated internet services", href: "/connectivity", image: heroInternet, position: "object-[68%_center]" },
+  { headline: "Cybersecurity services", href: "/cybersecurity", image: homeSolutionCybersecurity, position: "object-center" },
 ];
 const heroHeadlines = heroSlides.map((slide) => slide.headline);
 const longestHeroHeadline = heroHeadlines.reduce((longest, current) =>
@@ -126,8 +129,13 @@ const customers = [
   { name: "Public Procurement Authority", src: publicProcurementAuthority },
 ];
 
-function TypewriterHeroText({ onPhraseChange }: { onPhraseChange: (index: number) => void }) {
-  const [phraseIndex, setPhraseIndex] = useState(0);
+function TypewriterHeroText({
+  phraseIndex,
+  onPhraseChange,
+}: {
+  phraseIndex: number;
+  onPhraseChange: (index: number) => void;
+}) {
   const [visibleChars, setVisibleChars] = useState(0);
   const [isDeleting, setIsDeleting] = useState(false);
   const prefersReducedMotion = useMemo(() => {
@@ -137,8 +145,9 @@ function TypewriterHeroText({ onPhraseChange }: { onPhraseChange: (index: number
   const activePhrase = heroHeadlines[phraseIndex];
 
   useEffect(() => {
-    onPhraseChange(phraseIndex);
-  }, [onPhraseChange, phraseIndex]);
+    setVisibleChars(prefersReducedMotion ? activePhrase.length : 0);
+    setIsDeleting(false);
+  }, [activePhrase.length, phraseIndex, prefersReducedMotion]);
 
   useEffect(() => {
     if (prefersReducedMotion) {
@@ -158,7 +167,7 @@ function TypewriterHeroText({ onPhraseChange }: { onPhraseChange: (index: number
 
       if (isFullyDeleted) {
         setIsDeleting(false);
-        setPhraseIndex((current) => (current + 1) % heroHeadlines.length);
+        onPhraseChange((phraseIndex + 1) % heroHeadlines.length);
         return;
       }
 
@@ -166,7 +175,7 @@ function TypewriterHeroText({ onPhraseChange }: { onPhraseChange: (index: number
     }, delay);
 
     return () => window.clearTimeout(timeout);
-  }, [activePhrase.length, isDeleting, prefersReducedMotion, visibleChars]);
+  }, [activePhrase.length, isDeleting, onPhraseChange, phraseIndex, prefersReducedMotion, visibleChars]);
 
   const visiblePhrase = activePhrase.slice(0, visibleChars);
   const highlightStart = Math.max(0, visiblePhrase.lastIndexOf(" in Ghana"));
@@ -231,20 +240,43 @@ function Hero() {
               transition={{ duration: 0.8, ease }}
               className="max-w-[980px] text-left"
             >
-              <TypewriterHeroText onPhraseChange={setActiveHeroIndex} />
+              <TypewriterHeroText phraseIndex={activeHeroIndex} onPhraseChange={setActiveHeroIndex} />
               <p className="mt-4 max-w-3xl text-pretty text-sm font-medium leading-6 text-white/90 sm:text-lg sm:leading-8 lg:mt-7 lg:text-2xl lg:leading-9">
                 Smart Infraco powers Ghana's digital backbone - secure, scalable national infrastructure for public and private institutions.
               </p>
               <div className="mt-6 flex flex-wrap items-center gap-3 lg:mt-9 lg:gap-4">
                 <MagneticButton
                   to={heroSlides[activeHeroIndex].href}
-                  variant="dark"
+                  variant="primary"
                   className="min-h-12 pl-6 text-xs font-bold tracking-[0.12em] lg:min-h-16 lg:pl-9 lg:text-base"
                 >
                   View More
                 </MagneticButton>
               </div>
             </motion.div>
+          </div>
+        </div>
+        <div className="absolute inset-x-0 bottom-4 z-20 sm:bottom-6 lg:bottom-12">
+          <div className="mx-auto w-full px-6 sm:px-10 lg:px-24">
+            <div
+              className="mx-auto flex w-full max-w-[1500px] items-center gap-2"
+              aria-label="Hero carousel slides"
+            >
+              {heroSlides.map((slide, index) => (
+                <button
+                  key={slide.headline}
+                  type="button"
+                  onClick={() => setActiveHeroIndex(index)}
+                  className={`h-2 rounded-full border border-white/45 transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-secondary ${
+                    index === activeHeroIndex
+                      ? "w-9 bg-primary"
+                      : "w-2 bg-white/45 hover:bg-white/80"
+                  }`}
+                  aria-label={`Show slide ${index + 1}: ${slide.headline}`}
+                  aria-current={index === activeHeroIndex ? "true" : undefined}
+                />
+              ))}
+            </div>
           </div>
         </div>
       </div>
@@ -351,10 +383,10 @@ function AboutBento() {
             <div className="group flex min-h-[205px] flex-col justify-center rounded-[24px] bg-secondary p-7 text-white transition duration-500 hover:-translate-y-2 hover:bg-[hsl(206_70%_50%)] hover:shadow-[0_28px_80px_hsl(206_70%_28%_/_0.22)] lg:p-8">
               <p className="font-mono text-[10px] font-bold uppercase tracking-[0.24em] text-white/55 transition duration-500 group-hover:text-primary">Backbone capacity</p>
               <h3 className="mt-5 font-display text-[clamp(2.65rem,4vw,3.55rem)] font-semibold leading-none tracking-[-0.04em]">
-                <AnimatedCounter to={100} duration={3.2} suffix=" Gbps Backbone" />
+                <AnimatedCounter to={346} duration={3.2} suffix="Km Metro Fibre" />
               </h3>
               <p className="mt-5 max-w-sm text-sm leading-6 text-white/68 transition duration-500 group-hover:text-white/82">
-                High-capacity national backbone engineered for resilient, low-latency connectivity.
+                346 km of metro fibre supporting resilient, low-latency connectivity.
               </p>
             </div>
           </RevealItem>
@@ -377,11 +409,12 @@ function AboutBento() {
 }
 
 function ServicesThree() {
+  const prefersReducedMotion = useReducedMotion();
   const services = [
     { title: "Connectivity", desc: "Metro fibre and dedicated internet backed by a 100 Gbps backbone", img: serviceConnectivityHome, href: "/connectivity", icon: Network },
-    { title: "Data Centres", desc: "Carrier-neutral colocation and local hosting designed for uptime, security and control.", img: serviceDataCenterCustom, href: "/data-centres", icon: Server },
-    { title: "Cloud", desc: "Sovereign cloud, managed storage and backup services delivered from local infrastructure.", img: serviceCloudCustom, href: "/cloud-services", icon: Cloud },
-    { title: "Cybersecurity", desc: "Threat monitoring, network protection and response support for critical enterprise systems.", img: serviceCyberCustom, href: "/cybersecurity", icon: Shield },
+    { title: "Data Centres", desc: "Carrier-neutral colocation and local hosting designed for uptime, security and control.", img: homeSolutionDataCentres, href: "/data-centres", icon: Server },
+    { title: "Cloud", desc: "Sovereign cloud, managed storage and backup services delivered from local infrastructure.", img: homeSolutionCloud, href: "/cloud-services", icon: Cloud },
+    { title: "Cybersecurity", desc: "Threat monitoring, network protection and response support for critical enterprise systems.", img: homeSolutionCybersecurity, href: "/cybersecurity", icon: Shield },
   ];
 
   return (
@@ -398,7 +431,23 @@ function ServicesThree() {
           {services.map((service, index) => (
             <RevealItem key={service.title}>
               <Link to={service.href} className="group relative block min-h-[500px] overflow-hidden rounded-[24px] bg-secondary text-white transition-transform duration-500 hover:-translate-y-1">
-                <img src={service.img} alt={service.title} className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" />
+                <motion.img
+                  src={service.img}
+                  alt={service.title}
+                  className="absolute inset-0 h-full w-full object-cover will-change-transform"
+                  animate={prefersReducedMotion ? undefined : {
+                    scale: [1.03, 1.09, 1.03],
+                    x: [0, index % 2 === 0 ? -8 : 8, 0],
+                    y: [0, -5, 0],
+                  }}
+                  whileHover={prefersReducedMotion ? undefined : { scale: 1.13 }}
+                  transition={prefersReducedMotion ? undefined : {
+                    duration: 12 + index,
+                    repeat: Infinity,
+                    ease: "easeInOut",
+                    delay: index * 0.45,
+                  }}
+                />
                 <div className="absolute inset-0 bg-[linear-gradient(180deg,hsl(220_50%_8%_/_0.32)_0%,hsl(220_50%_8%_/_0.24)_38%,hsl(220_50%_8%_/_0.88)_100%)]" />
                 <div className="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-secondary via-secondary/82 to-transparent" />
                 <div className="absolute left-5 top-5 flex h-10 w-10 items-center justify-center rounded-full bg-primary text-primary-foreground">
@@ -712,25 +761,20 @@ function IndustriesWeServe() {
 
 function Testimonials() {
   const quotes = [
-    { 
-      name: "Public Sector Client", 
-      role: "Director of IT", 
-      quote: "Smart Infraco gave us a clearer path to <strong>resilient, local infrastructure</strong> and <strong>dependable support</strong> that transformed our operations." 
+    {
+      name: "Devtraco Group",
+      role: "Head of IT",
+      quote: "Our experience with Smart Infraco has been positive. Their customer service team communicates proactively and often alerts us before we notice a service interruption. That responsiveness gives us confidence in the partnership."
     },
-    { 
-      name: "Financial Services Client", 
-      role: "Head of Technology", 
-      quote: "Their network and data centre services <strong>improved uptime planning</strong> across our critical operations and gave us <strong>confidence in our infrastructure</strong>." 
+    {
+      name: "Office of the Attorney General and Ministry of Justice",
+      role: "IT Administrator",
+      quote: "We have had a good experience with Smart Infraco’s internet and web-hosting services. The services have performed well, and we are satisfied with the support received."
     },
-    { 
-      name: "Telecom Partner", 
-      role: "Chief Technology Officer", 
-      quote: "The single-window model <strong>reduced operational complexity</strong> while giving us <strong>national reach</strong> and <strong>reliable connectivity</strong>." 
-    },
-    { 
-      name: "Enterprise Client", 
-      role: "Operations Lead", 
-      quote: "We needed <strong>accountability, security and scale</strong>. Smart Infraco delivered all three with <strong>consistent, enterprise-grade support</strong>." 
+    {
+      name: "GoldBod",
+      role: "IT Head",
+      quote: "We are highly satisfied with the internet, website and SSL services provided by Smart Infraco. The services have supported our operations effectively, and our overall experience has been positive."
     },
   ];
 
