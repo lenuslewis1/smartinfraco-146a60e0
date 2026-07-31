@@ -1,4 +1,5 @@
 import {
+  ArrowUpRight,
   Building2,
   Check,
   FileCheck,
@@ -12,6 +13,7 @@ import MagneticButton from "@/components/ui-system/MagneticButton";
 import { Reveal, RevealGroup, RevealItem } from "@/components/ui-system/RevealOnScroll";
 import aboutHero from "@/assets/about-hero.jpg";
 import dataCentreBg from "@/assets/datacenter-bg.jpg";
+import nationalNetwork from "@/assets/feature-national-reach-network.png";
 
 const stats = [
   { value: 1000, suffix: " km", label: "Eastern corridor fibre backbone" },
@@ -44,6 +46,24 @@ const valuePromises = [
   "International standard practices",
   "Competitive pricing",
   "Great socio-economic impact",
+];
+
+const partnershipPoints = [
+  {
+    icon: Network,
+    title: "Operate and maintain",
+    text: "Technical operations, maintenance and targeted upgrades help keep national fibre and data centre infrastructure dependable.",
+  },
+  {
+    icon: Building2,
+    title: "Extend access",
+    text: "Commercial and service-delivery capability makes available capacity accessible to public institutions, service providers and private enterprises.",
+  },
+  {
+    icon: ShieldCheck,
+    title: "Support national priorities",
+    text: "Joint planning aligns infrastructure expansion, commercial growth and secure digital services with Ghana's national ICT objectives.",
+  },
 ];
 
 export default function AboutPage() {
@@ -141,6 +161,63 @@ export default function AboutPage() {
               </RevealItem>
             ))}
           </RevealGroup>
+        </div>
+      </section>
+
+      <section className="relative overflow-hidden bg-slate-100 py-24 lg:py-32">
+        <div className="mx-auto grid w-full max-w-[1500px] items-stretch gap-14 px-5 sm:px-8 lg:grid-cols-[1.02fr_0.98fr] lg:px-12">
+          <div>
+            <Reveal>
+              <Eyebrow tone="muted">Strategic partnership</Eyebrow>
+              <h2 className="mt-5 font-display text-[clamp(2.4rem,5vw,5.8rem)] font-semibold leading-[0.96] text-secondary">
+                Smart Infraco - NITA Partnership
+              </h2>
+              <p className="mt-7 max-w-2xl text-base leading-8 text-slate-600 lg:text-lg">
+                Smart Infraco works with the National Information Technology Agency (NITA) to operate, maintain and commercialise capacity across Ghana's government-owned digital infrastructure, including the Eastern Corridor fibre network and national data centre facilities.
+              </p>
+            </Reveal>
+
+            <RevealGroup className="mt-12 border-t border-secondary/15">
+              {partnershipPoints.map((point) => (
+                <RevealItem key={point.title}>
+                  <article className="group grid grid-cols-[3rem_1fr] gap-5 border-b border-secondary/15 py-7 transition-colors duration-300 hover:bg-white lg:px-5">
+                    <point.icon className="mt-1 h-5 w-5 text-primary transition-transform duration-300 group-hover:translate-x-1" />
+                    <div>
+                      <h3 className="font-display text-2xl font-semibold text-secondary">{point.title}</h3>
+                      <p className="mt-3 max-w-xl text-sm leading-7 text-slate-600">{point.text}</p>
+                    </div>
+                  </article>
+                </RevealItem>
+              ))}
+            </RevealGroup>
+
+            <Reveal className="mt-9">
+              <a
+                href="https://nita.gov.gh/"
+                target="_blank"
+                rel="noreferrer"
+                className="group inline-flex items-center gap-3 font-mono text-[11px] font-bold uppercase tracking-[0.16em] text-secondary transition-colors hover:text-primary"
+              >
+                Visit NITA
+                <ArrowUpRight className="h-4 w-4 transition-transform duration-300 group-hover:-translate-y-1 group-hover:translate-x-1" />
+              </a>
+            </Reveal>
+          </div>
+
+          <Reveal className="group relative min-h-[560px] overflow-hidden bg-secondary">
+            <img
+              src={nationalNetwork}
+              alt="Illustration of connected digital infrastructure across Ghana"
+              className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-secondary/86 via-secondary/12 to-transparent" />
+            <div className="absolute bottom-0 left-0 right-0 p-8 lg:p-10">
+              <p className="font-mono text-xs uppercase tracking-[0.18em] text-primary">Shared national infrastructure</p>
+              <p className="mt-4 max-w-md font-display text-3xl font-semibold leading-tight text-white">
+                Turning public digital assets into reliable capacity for government and enterprise.
+              </p>
+            </div>
+          </Reveal>
         </div>
       </section>
 

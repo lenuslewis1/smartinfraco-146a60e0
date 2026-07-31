@@ -52,25 +52,6 @@ import whyDefault from "@/assets/why-default.jpg";
 import appMockup from "@/assets/app-mockup.png";
 import appStoreBadge from "@/assets/app-store-badge.png";
 import googlePlayBadge from "@/assets/google-play-badge.png";
-import ghanaRepublic from "@/assets/customers/ghana-republic.png";
-import gfza from "@/assets/customers/gfza.jpg";
-import devtraco from "@/assets/customers/devtraco.png";
-import broadspectrum from "@/assets/customers/broadspectrum-digital-payments.jpeg";
-import ghanaPolice from "@/assets/customers/ghana-police.jpg";
-import ghanaArmedForces from "@/assets/customers/ghana-armed-forces.png";
-import ministryForeignAffairs from "@/assets/customers/ministry-foreign-affairs.png";
-import ghanaImmigrationService from "@/assets/customers/ghana-immigration-service.jpg";
-import judicialServiceGhana from "@/assets/customers/judicial-service-ghana.jpg";
-import ghanaCivilAviationAuthority from "@/assets/customers/ghana-civil-aviation-authority.jpg";
-import vodafoneBusiness from "@/assets/customers/vodafone-business.png";
-import dolphin from "@/assets/customers/dolphin.png";
-import via from "@/assets/customers/via.webp";
-import nationalPetroleumAuthority from "@/assets/customers/national-petroleum-authority.webp";
-import gepa from "@/assets/customers/gepa.png";
-import electoralCommissionGhana from "@/assets/customers/electoral-commission-ghana.png";
-import gifec from "@/assets/customers/gifec.jpeg";
-import publicProcurementAuthority from "@/assets/customers/public-procurement-authority.jpeg";
-import ministryLandsNaturalResources from "@/assets/customers/ministry-lands-natural-resources.png";
 
 const ease = [0.22, 1, 0.36, 1] as const;
 const heroSlides = [
@@ -83,51 +64,6 @@ const heroHeadlines = heroSlides.map((slide) => slide.headline);
 const longestHeroHeadline = heroHeadlines.reduce((longest, current) =>
   current.length > longest.length ? current : longest
 );
-
-const customers = [
-  {
-    name: "Ministry of Lands and Natural Resources",
-    src: ministryLandsNaturalResources,
-  },
-  {
-    name: "MTN Ghana",
-    src: "https://mtn.com.gh/wp-content/themes/mtn-vivid-wp/public/img/mtn-logo-footer.svg",
-  },
-  {
-    name: "Orange",
-    src: "https://logos-world.net/wp-content/uploads/2021/09/Orange-Emblem.png",
-  },
-  {
-    name: "Telecel Ghana",
-    src: "https://www.telecel.com.gh/img/Telecel-Icon-Red.png",
-  },
-  {
-    name: "Afriwave Telecom",
-    src: "https://www.afriwavetelecom.com/assets/afriwave123.png",
-  },
-  {
-    name: "NGIC",
-    src: "https://www.ngicgh.com/icon.svg",
-  },
-  { name: "Republic of Ghana", src: ghanaRepublic },
-  { name: "Ghana Free Zones Authority", src: gfza },
-  { name: "Devtraco Group", src: devtraco },
-  { name: "Broadspectrum Digital Payments", src: broadspectrum },
-  { name: "Ghana Police Service", src: ghanaPolice },
-  { name: "Ghana Armed Forces", src: ghanaArmedForces },
-  { name: "Ministry of Foreign Affairs", src: ministryForeignAffairs },
-  { name: "Ghana Immigration Service", src: ghanaImmigrationService },
-  { name: "Judicial Service of Ghana", src: judicialServiceGhana },
-  { name: "Ghana Civil Aviation Authority", src: ghanaCivilAviationAuthority },
-  { name: "Vodafone Business", src: vodafoneBusiness },
-  { name: "Dolphin", src: dolphin },
-  { name: "VIA", src: via },
-  { name: "National Petroleum Authority", src: nationalPetroleumAuthority },
-  { name: "Ghana Export Promotion Authority", src: gepa },
-  { name: "Electoral Commission Ghana", src: electoralCommissionGhana },
-  { name: "GIFEC", src: gifec },
-  { name: "Public Procurement Authority", src: publicProcurementAuthority },
-];
 
 function TypewriterHeroText({
   phraseIndex,
@@ -283,34 +219,6 @@ function Hero() {
     </section>
   );
 }
-function CustomerLogoStrip() {
-  return (
-    <section className="overflow-hidden bg-white py-10 lg:py-12">
-      <div className="mx-auto mb-8 w-full max-w-[1500px] px-6 text-center sm:px-10">
-        <h2 className="font-display text-3xl font-semibold tracking-[-0.02em] text-secondary sm:text-4xl">
-          Our Customers
-        </h2>
-      </div>
-      <div className="mask-fade-x">
-        <div
-          data-testid="customer-marquee"
-          className="flex w-max animate-marquee-slow items-center gap-14 hover:[animation-play-state:paused] lg:gap-20"
-        >
-          {[...customers, ...customers, ...customers].map((customer, index) => (
-            <img
-              key={`${customer.name}-${index}`}
-              src={customer.src}
-              alt={`${customer.name} logo`}
-              loading="lazy"
-              className="h-11 w-auto max-w-[170px] shrink-0 object-contain transition duration-300 hover:scale-105 lg:h-14 lg:max-w-[190px]"
-            />
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
-
 function AboutBento() {
   return (
     <section className="bg-[#f4f7fa] py-16 lg:py-20">
@@ -997,7 +905,6 @@ export default function HomePage() {
   return (
     <Layout>
       <Hero />
-      <CustomerLogoStrip />
       <AboutBento />
       <ServicesThree />
       <ExpertiseGrid />
