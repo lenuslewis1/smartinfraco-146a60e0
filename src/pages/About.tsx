@@ -1,16 +1,13 @@
 import {
   ArrowUpRight,
-  Building2,
   Check,
   FileCheck,
-  Network,
-  ShieldCheck,
 } from "lucide-react";
 import Layout from "@/components/layout/Layout";
 import Eyebrow from "@/components/ui-system/Eyebrow";
 import AnimatedCounter from "@/components/ui-system/AnimatedCounter";
 import MagneticButton from "@/components/ui-system/MagneticButton";
-import { Reveal, RevealGroup, RevealItem } from "@/components/ui-system/RevealOnScroll";
+import { Reveal } from "@/components/ui-system/RevealOnScroll";
 import aboutHero from "@/assets/about-hero.jpg";
 import dataCentreBg from "@/assets/datacenter-bg.jpg";
 import nationalNetwork from "@/assets/feature-national-reach-network.png";
@@ -21,24 +18,6 @@ const stats = [
   { value: 24, suffix: "/7", label: "support for critical operations" },
 ];
 
-const operatingModel = [
-  {
-    icon: Network,
-    title: "Access-Neutral  infrastructure",
-    text: "A shared foundation for government, carriers, enterprises and service providers that need dependable national reach.",
-  },
-  {
-    icon: ShieldCheck,
-    title: "Operational resilience",
-    text: "High-grade systems, technical support and secure facilities designed for services that cannot afford interruption.",
-  },
-  {
-    icon: Building2,
-    title: "Economic enablement",
-    text: "Giving businesses the capacity to grow, serve customers and contribute to Ghana's digital economy.",
-  },
-];
-
 const valuePromises = [
   "Access to unparalleled and equitable infrastructure",
   "Robust local and global technical support",
@@ -46,24 +25,6 @@ const valuePromises = [
   "International standard practices",
   "Competitive pricing",
   "Great socio-economic impact",
-];
-
-const partnershipPoints = [
-  {
-    icon: Network,
-    title: "Operate and maintain",
-    text: "Technical operations, maintenance and targeted upgrades help keep national fibre and data centre infrastructure dependable.",
-  },
-  {
-    icon: Building2,
-    title: "Extend access",
-    text: "Commercial and service-delivery capability makes available capacity accessible to public institutions, service providers and private enterprises.",
-  },
-  {
-    icon: ShieldCheck,
-    title: "Support national priorities",
-    text: "Joint planning aligns infrastructure expansion, commercial growth and secure digital services with Ghana's national ICT objectives.",
-  },
 ];
 
 export default function AboutPage() {
@@ -136,111 +97,117 @@ export default function AboutPage() {
           </Reveal>
         </div>
 
-        <div className="relative mx-auto mt-16 grid w-full max-w-[1500px] gap-5 px-5 sm:px-8 lg:grid-cols-[1.15fr_0.85fr] lg:px-12">
-          <Reveal className="relative min-h-[520px] overflow-hidden bg-slate-100">
-            <img src={aboutHero} alt="Ghana skyline" className="absolute inset-0 h-full w-full object-cover" />
-            <div className="absolute inset-0 bg-gradient-to-t from-secondary/88 via-secondary/20 to-transparent" />
-            <div className="absolute bottom-0 left-0 max-w-md p-8">
-              <p className="font-mono text-xs uppercase tracking-[0.18em] text-primary">National footprint</p>
-              <h3 className="mt-4 font-display text-4xl font-semibold leading-tight text-white">
-                Backbone capacity for Ghana's Digital Economy.
-              </h3>
+        <div className="relative mx-auto mt-16 grid w-full max-w-[1500px] overflow-hidden px-5 sm:px-8 lg:grid-cols-[0.92fr_1.08fr] lg:px-12">
+          <Reveal className="group relative min-h-[430px] overflow-hidden bg-secondary lg:min-h-[620px]">
+            <img src={aboutHero} alt="Ghana skyline" className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" />
+            <div className="absolute inset-0 bg-gradient-to-t from-secondary via-secondary/26 to-transparent" />
+            <div className="absolute inset-x-0 bottom-0 p-8 lg:p-11">
+              <p className="font-mono text-xs uppercase tracking-[0.18em] text-primary">Purpose</p>
+              <h2 className="mt-5 max-w-xl font-display text-[clamp(2.4rem,4.4vw,5rem)] font-semibold leading-[0.98] text-white">
+                Smart Infraco - Our purpose
+              </h2>
             </div>
           </Reveal>
 
-          <RevealGroup className="grid gap-5">
-            {operatingModel.map((item) => (
-              <RevealItem key={item.title}>
-                <div className="group flex min-h-[160px] gap-5 bg-[hsl(206_70%_50%)] p-7 text-white transition duration-500 hover:-translate-y-2 hover:bg-primary hover:text-primary-foreground hover:shadow-[0_22px_60px_hsl(206_70%_28%_/_0.22)]">
-                  <item.icon className="mt-1 h-6 w-6 shrink-0 text-primary transition duration-500 group-hover:translate-x-1 group-hover:-translate-y-1 group-hover:text-primary-foreground" />
-                  <div>
-                    <h3 className="font-display text-2xl font-medium">{item.title}</h3>
-                    <p className="mt-3 text-sm leading-6 text-white/72 transition duration-500 group-hover:text-primary-foreground/75">{item.text}</p>
-                  </div>
-                </div>
-              </RevealItem>
-            ))}
-          </RevealGroup>
+          <Reveal delay={0.08} className="flex flex-col justify-between bg-secondary p-8 text-white lg:p-12 xl:p-16">
+            <div>
+              <p className="font-display text-[clamp(1.8rem,3vw,3.4rem)] font-medium leading-[1.08] text-white">
+                Open, neutral-access infrastructure for a more connected Ghana.
+              </p>
+              <div className="mt-10 space-y-7 border-t border-white/18 pt-9">
+                <p className="text-base leading-8 text-white/78 lg:text-lg lg:leading-9">
+                  Smart Infraco provides an open neutral-access digital infrastructure that facilitates best-in-class voice and data service for all businesses and consumers.
+                </p>
+                <p className="text-base leading-8 text-white/78 lg:text-lg lg:leading-9">
+                  Our purpose is to accelerate the growth and transformation of Ghana’s telecoms sector while ensuring equal access to the robust infrastructure solutions that enable public and private institutions to digitalise and monetise their goals.
+                </p>
+              </div>
+            </div>
+            <div className="mt-12 h-1 w-24 bg-primary" />
+          </Reveal>
         </div>
       </section>
 
-      <section className="relative overflow-hidden bg-slate-100 py-24 lg:py-32">
-        <div className="mx-auto grid w-full max-w-[1500px] items-stretch gap-14 px-5 sm:px-8 lg:grid-cols-[1.02fr_0.98fr] lg:px-12">
-          <div>
-            <Reveal>
-              <Eyebrow tone="muted">Strategic partnership</Eyebrow>
-              <h2 className="mt-5 font-display text-[clamp(2.4rem,5vw,5.8rem)] font-semibold leading-[0.96] text-secondary">
+      <section className="relative overflow-hidden bg-secondary py-24 text-white lg:py-32">
+        <div className="absolute inset-0 opacity-[0.08] [background-image:linear-gradient(hsl(0_0%_100%_/_0.22)_1px,transparent_1px),linear-gradient(90deg,hsl(0_0%_100%_/_0.22)_1px,transparent_1px)] [background-size:72px_72px]" />
+        <div className="relative mx-auto w-full max-w-[1500px] px-5 sm:px-8 lg:px-12">
+          <div className="grid gap-10 lg:grid-cols-12 lg:items-end">
+            <Reveal className="lg:col-span-6">
+              <Eyebrow tone="accent">Strategic partnership</Eyebrow>
+              <h2 className="mt-6 max-w-4xl font-display text-[clamp(2.65rem,5.6vw,6.4rem)] font-semibold leading-[0.94] text-white">
                 Smart Infraco - NITA Partnership
               </h2>
-              <p className="mt-7 max-w-2xl text-base leading-8 text-slate-600 lg:text-lg">
-                Smart Infraco works with the National Information Technology Agency (NITA) to operate, maintain and commercialise capacity across Ghana's government-owned digital infrastructure, including the Eastern Corridor fibre network and national data centre facilities.
-              </p>
             </Reveal>
-
-            <RevealGroup className="mt-12 border-t border-secondary/15">
-              {partnershipPoints.map((point) => (
-                <RevealItem key={point.title}>
-                  <article className="group grid grid-cols-[3rem_1fr] gap-5 border-b border-secondary/15 py-7 transition-colors duration-300 hover:bg-white lg:px-5">
-                    <point.icon className="mt-1 h-5 w-5 text-primary transition-transform duration-300 group-hover:translate-x-1" />
-                    <div>
-                      <h3 className="font-display text-2xl font-semibold text-secondary">{point.title}</h3>
-                      <p className="mt-3 max-w-xl text-sm leading-7 text-slate-600">{point.text}</p>
-                    </div>
-                  </article>
-                </RevealItem>
-              ))}
-            </RevealGroup>
-
-            <Reveal className="mt-9">
-              <a
-                href="https://nita.gov.gh/"
-                target="_blank"
-                rel="noreferrer"
-                className="group inline-flex items-center gap-3 font-mono text-[11px] font-bold uppercase tracking-[0.16em] text-secondary transition-colors hover:text-primary"
-              >
-                Visit NITA
-                <ArrowUpRight className="h-4 w-4 transition-transform duration-300 group-hover:-translate-y-1 group-hover:translate-x-1" />
-              </a>
+            <Reveal delay={0.08} className="lg:col-span-5 lg:col-start-8">
+              <p className="text-lg font-medium leading-8 text-white/82 lg:text-xl lg:leading-9">
+                Smart Infraco is the technical partner of the National Information Technology Agency (NITA) with the mandate to operate, maintain and commercialise Ghana's state-owned digital infrastructure, which includes the Eastern Corridor fibre network, national data centres in Accra and Kumasi, and the national cloud infrastructure (G-Cloud).
+              </p>
             </Reveal>
           </div>
 
-          <Reveal className="group relative min-h-[560px] overflow-hidden bg-secondary">
-            <img
-              src={nationalNetwork}
-              alt="Illustration of connected digital infrastructure across Ghana"
-              className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-secondary/86 via-secondary/12 to-transparent" />
-            <div className="absolute bottom-0 left-0 right-0 p-8 lg:p-10">
-              <p className="font-mono text-xs uppercase tracking-[0.18em] text-primary">Shared national infrastructure</p>
-              <p className="mt-4 max-w-md font-display text-3xl font-semibold leading-tight text-white">
-                Turning public digital assets into reliable capacity for government and enterprise.
-              </p>
+          <div className="mt-16 grid gap-10 lg:grid-cols-12 lg:items-stretch">
+            <Reveal className="group relative min-h-[380px] overflow-hidden bg-[#071223] sm:min-h-[480px] lg:col-span-5 lg:min-h-[620px]">
+              <img
+                src={nationalNetwork}
+                alt="Illustration of connected digital infrastructure across Ghana"
+                className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-secondary via-secondary/12 to-transparent" />
+              <div className="absolute inset-x-0 bottom-0 p-7 sm:p-9 lg:p-10">
+                <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-primary">Technical partnership</p>
+                <div className="mt-5 flex items-center gap-4 font-display text-2xl font-semibold text-white sm:text-3xl">
+                  <span>Smart Infraco</span>
+                  <span className="text-primary">×</span>
+                  <span>NITA</span>
+                </div>
+              </div>
+            </Reveal>
+
+            <div className="flex flex-col justify-between lg:col-span-6 lg:col-start-7">
+              <div className="space-y-8">
+                <Reveal>
+                  <p className="text-base leading-8 text-white/72 lg:text-lg lg:leading-9">
+                    The Government of Ghana’s (GoG) 1010-Km Eastern corridor fibre cable was originally built to digitalise the government administration across the nation, and to amplify economic activity in the Eastern side of the country. It however lacked the required technical systems and support infrastructure to make it as effective as possible.
+                  </p>
+                </Reveal>
+                <Reveal delay={0.08} className="border-t border-white/18 pt-8">
+                  <p className="text-base leading-8 text-white/72 lg:text-lg lg:leading-9">
+                    By acting as the commercial wing of NITA, with high-grade systems and support infrastructure, Smart Infraco has enabled the robust, effective and world-class infrastructure that we have today. It is built with the additional capacity and technical support system to meet all of the government’s needs, and to extend it to private enterprises as well.
+                  </p>
+                </Reveal>
+              </div>
+
+              <Reveal className="mt-10 border-t border-white/18 pt-8">
+                <a
+                  href="https://nita.gov.gh/"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="group inline-flex items-center gap-3 font-mono text-[11px] font-bold uppercase tracking-[0.16em] text-primary transition-colors hover:text-white"
+                >
+                  Visit NITA
+                  <ArrowUpRight className="h-4 w-4 transition-transform duration-300 group-hover:-translate-y-1 group-hover:translate-x-1" />
+                </a>
+              </Reveal>
             </div>
-          </Reveal>
-        </div>
-      </section>
+          </div>
 
-      <section className="bg-secondary py-24 text-white lg:py-32">
-        <div className="mx-auto w-full max-w-[1500px] px-5 sm:px-8 lg:px-12">
-          <Reveal className="max-w-5xl">
-            <Eyebrow tone="accent">Purpose</Eyebrow>
-            <h2 className="mt-6 font-display text-[clamp(2.4rem,5vw,5.8rem)] font-semibold leading-[0.98]">
-              Smart Infraco - Our purpose
-            </h2>
-          </Reveal>
-
-          <Reveal className="mt-14 max-w-5xl border-2 border-primary bg-transparent p-8 text-white transition duration-500 hover:-translate-y-2 hover:bg-primary/10 hover:shadow-[0_24px_80px_hsl(95_82%_35%_/_0.18)] lg:p-10">
-            <div className="space-y-6">
-              <p className="text-base leading-8 text-white/84 lg:text-lg">
-                Smart Infraco provides an open neutral-access digital infrastructure that facilitates best-in-class voice and data service for all businesses and consumers.
-              </p>
-              <p className="text-base leading-8 text-white/84 lg:text-lg">
-                Our purpose is to accelerate the growth and transformation of Ghana’s telecoms sector while ensuring equal access to the robust infrastructure solutions that enable public and private institutions to digitalise and monetise their goals.
-
-              </p>
-            </div>
-          </Reveal>
+          <div className="mt-16 grid overflow-hidden border border-white/18 lg:grid-cols-[0.82fr_1.18fr]">
+            <Reveal className="flex items-end bg-primary p-8 text-primary-foreground lg:p-11">
+              <h3 className="max-w-xl font-display text-[clamp(2rem,3.5vw,4.2rem)] font-semibold leading-[1.02]">
+                Enabling high-quality public-private partnerships
+              </h3>
+            </Reveal>
+            <Reveal delay={0.08} className="bg-white/[0.045] p-8 lg:p-11">
+              <div className="space-y-6 text-base leading-8 text-white/72 lg:text-lg lg:leading-9">
+                <p>
+                  Ghana’s digitalisation progress has driven a rising demand for high-quality, affordable, and equally available internet service. As the commercial wing of NITA, Smart Infraco has the responsibility of ensuring that all public and private enterprises alike have equal access to, and enjoy the full benefit of, the nation’s best-of-breed fibre infrastructure.
+                </p>
+                <p>
+                  Through our world-class, innovative, and reliable services, Smart Infraco enables businesses and government agencies to run all their critical business-applications on the network, to derive maximum output.
+                </p>
+              </div>
+            </Reveal>
+          </div>
         </div>
       </section>
 
