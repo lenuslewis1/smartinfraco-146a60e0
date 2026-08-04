@@ -26,30 +26,30 @@ import Eyebrow from "@/components/ui-system/Eyebrow";
 import AnimatedCounter from "@/components/ui-system/AnimatedCounter";
 import MagneticButton from "@/components/ui-system/MagneticButton";
 import { Reveal, RevealGroup, RevealItem } from "@/components/ui-system/RevealOnScroll";
-import heroSmartInfraco from "@/assets/hero-smart-infraco.png";
-import heroInternet from "@/assets/hero-internet.png";
-import heroCloud from "@/assets/hero-cloud.png";
+import heroSmartInfraco from "@/assets/hero-smart-infraco.webp";
+import heroInternet from "@/assets/hero-internet.webp";
+import heroCloud from "@/assets/hero-cloud.webp";
 import svcCloud from "@/assets/service-cloud.jpg";
 import svcStorage from "@/assets/service-storage.jpg";
 import svcManaged from "@/assets/service-managed.jpg";
-import serviceConnectivityHome from "@/assets/service-connectivity-home.jpg";
-import serviceDataCenterCustom from "@/assets/service-data-center-custom.jpg";
-import serviceCloudCustom from "@/assets/service-cloud-custom.jpg";
-import serviceCyberCustom from "@/assets/service-cyber-custom.jpg";
-import homeSolutionDataCentres from "@/assets/home-solution-data-centres.jpg";
+import serviceConnectivityHome from "@/assets/service-connectivity-home.webp";
+import serviceDataCenterCustom from "@/assets/service-data-center-custom.webp";
+import serviceCloudCustom from "@/assets/service-cloud-custom.webp";
+import serviceCyberCustom from "@/assets/service-cyber-custom.webp";
+import homeSolutionDataCentres from "@/assets/home-solution-data-centres.webp";
 import homeSolutionCloud from "@/assets/home-solution-cloud.jpg";
-import homeSolutionCybersecurity from "@/assets/home-solution-cybersecurity.png";
-import featureSingleWindow from "@/assets/feature-single-window.png";
-import featureReliabilitySecurity from "@/assets/feature-reliability-security.jpg";
-import featureNationalReach from "@/assets/feature-national-reach-network.png";
-import featureEnterpriseSupport from "@/assets/feature-enterprise-support.jpg";
-import industriesBackground from "@/assets/industries-background.jpg";
+import homeSolutionCybersecurity from "@/assets/home-solution-cybersecurity.webp";
+import featureSingleWindow from "@/assets/feature-single-window.webp";
+import featureReliabilitySecurity from "@/assets/feature-reliability-security.webp";
+import featureNationalReach from "@/assets/feature-national-reach-network.webp";
+import featureEnterpriseSupport from "@/assets/feature-enterprise-support.webp";
+import industriesBackground from "@/assets/industries-background.webp";
 import testimonial1 from "@/assets/testimonial-1.jpg";
 import testimonial2 from "@/assets/testimonial-2.jpg";
 import testimonial3 from "@/assets/testimonial-3.jpg";
 import testimonial4 from "@/assets/testimonial-4.jpg";
-import whyDefault from "@/assets/why-default.jpg";
-import appMockup from "@/assets/app-mockup.png";
+import whyDefault from "@/assets/why-default.webp";
+import appMockup from "@/assets/app-mockup.webp";
 import appStoreBadge from "@/assets/app-store-badge.png";
 import googlePlayBadge from "@/assets/google-play-badge.png";
 
@@ -148,6 +148,9 @@ function Hero() {
             key={slide.headline}
             src={slide.image}
             alt=""
+            loading={index === 0 ? "eager" : "lazy"}
+            fetchPriority={index === 0 ? "high" : "low"}
+            decoding="async"
             className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-700 ${slide.position} ${
               index === activeHeroIndex ? "opacity-100" : "opacity-0"
             }`}
@@ -342,6 +345,8 @@ function ServicesThree() {
                 <motion.img
                   src={service.img}
                   alt={service.title}
+                  loading="lazy"
+                  decoding="async"
                   className="absolute inset-0 h-full w-full object-cover will-change-transform"
                   animate={prefersReducedMotion ? undefined : {
                     scale: [1.03, 1.09, 1.03],
@@ -433,6 +438,8 @@ function ExpertiseGrid() {
                 key={activeFeatureImage}
                 src={activeFeatureImage}
                 alt="Smart Infraco service specialist"
+                loading="lazy"
+                decoding="async"
                 initial={{ opacity: 0, scale: 1.04 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.35, ease }}
@@ -549,7 +556,7 @@ function MobileAppSection() {
               aria-label="Download MySmartInfraco from Google Play"
               className="block w-[190px] transition duration-300 hover:-translate-y-1 hover:brightness-110 sm:w-[220px]"
             >
-              <img src={googlePlayBadge} alt="Get it on Google Play" className="h-auto w-full" />
+              <img src={googlePlayBadge} alt="Get it on Google Play" className="h-auto w-full" loading="lazy" decoding="async" />
             </a>
             <a
               href="https://apps.apple.com/gh/app/mysmartinfraco/id6747730615?platform=iphone"
@@ -558,7 +565,7 @@ function MobileAppSection() {
               aria-label="Download MySmartInfraco from the App Store"
               className="block w-[190px] transition duration-300 hover:-translate-y-1 hover:brightness-110 sm:w-[220px]"
             >
-              <img src={appStoreBadge} alt="Available on the App Store" className="h-auto w-full" />
+              <img src={appStoreBadge} alt="Available on the App Store" className="h-auto w-full" loading="lazy" decoding="async" />
             </a>
           </div>
         </Reveal>
@@ -574,6 +581,8 @@ function MobileAppSection() {
               src={appMockup}
               alt="MySmartInfraco mobile app showing account and network information"
               className="relative h-full w-full object-contain mix-blend-multiply drop-shadow-[0_34px_34px_rgba(0,0,0,0.45)]"
+              loading="lazy"
+              decoding="async"
             />
           </motion.div>
         </Reveal>
@@ -599,6 +608,8 @@ function IndustriesWeServe() {
         alt=""
         aria-hidden="true"
         className="absolute inset-0 h-full w-full object-cover"
+        loading="lazy"
+        decoding="async"
       />
       <div className="absolute inset-0 bg-[linear-gradient(90deg,hsl(206_70%_31%_/_0.92),hsl(206_70%_50%_/_0.78))]" />
       <div className="absolute inset-0 bg-secondary/35" />
@@ -867,6 +878,8 @@ function BlogStrip() {
                     src={post.img} 
                     alt={post.title} 
                     className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" 
+                    loading="lazy"
+                    decoding="async"
                   />
                   {/* Floating Date Badge */}
                   <div className="absolute right-5 top-5 z-10 flex h-14 w-14 flex-col items-center justify-center rounded-full bg-white shadow-[0_4px_12px_rgba(0,0,0,0.08)]">

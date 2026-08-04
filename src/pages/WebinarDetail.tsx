@@ -21,7 +21,7 @@ export default function WebinarDetailPage() {
     <Layout>
       <article className="relative overflow-hidden bg-background">
         <section className="relative min-h-[92svh] overflow-hidden bg-secondary text-white">
-          <img src={webinar.image} alt="" className="absolute inset-0 h-full w-full object-cover" />
+          <img src={webinar.image} alt="" className="absolute inset-0 h-full w-full object-cover" loading="eager" fetchPriority="high" decoding="async" />
           <div className="absolute inset-0 bg-[linear-gradient(90deg,hsl(225_50%_8%_/_0.94)_0%,hsl(225_50%_8%_/_0.82)_42%,hsl(225_50%_8%_/_0.52)_72%,hsl(225_50%_8%_/_0.34)_100%)]" />
           <GridBackdrop variant="lines" className="opacity-25" />
           <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-background to-transparent" />
@@ -115,7 +115,7 @@ export default function WebinarDetailPage() {
                 className="group overflow-hidden border border-hairline bg-background transition duration-300 hover:-translate-y-1 hover:border-secondary/35 hover:bg-white hover:shadow-[0_18px_60px_hsl(225_50%_12%_/_0.10)]"
               >
                 <div className="relative aspect-[16/10] overflow-hidden bg-secondary">
-                  <img src={item.image} alt="" className="h-full w-full object-cover transition duration-700 group-hover:scale-105" />
+                  <img src={item.image} alt="" className="h-full w-full object-cover transition duration-700 group-hover:scale-105" loading="lazy" decoding="async" />
                 </div>
                 <div className="p-7">
                   <Eyebrow tone="primary">{item.category}</Eyebrow>

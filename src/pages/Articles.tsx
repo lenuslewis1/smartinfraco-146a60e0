@@ -56,7 +56,7 @@ export default function ArticlesPage() {
                 <article className="group h-full overflow-hidden bg-background transition-colors hover:bg-card">
                   <a href={article.url} target="_blank" rel="noreferrer" className="block h-full">
                     <div className="relative aspect-[16/9] overflow-hidden bg-secondary">
-                      <img src={article.image} alt="" className="h-full w-full object-cover transition duration-700 group-hover:scale-105" />
+                      <img src={article.image} alt="" className="h-full w-full object-cover transition duration-700 group-hover:scale-105" loading="lazy" decoding="async" />
                       <div className="absolute inset-0 bg-gradient-to-t from-secondary/58 via-secondary/10 to-transparent opacity-80 transition-opacity group-hover:opacity-45" />
                       <span className="absolute right-5 top-5 font-display text-[10px] uppercase tracking-[0.22em] text-white/80">{String(index + 1).padStart(2, "0")}</span>
                     </div>

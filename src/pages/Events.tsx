@@ -48,7 +48,7 @@ export default function EventsPage() {
           <Reveal className="mt-16">
             <article className="overflow-hidden border border-white/15 bg-white/[0.06] lg:grid lg:grid-cols-12">
               <div className="aspect-[4/3] overflow-hidden bg-primary lg:col-span-5 lg:aspect-auto">
-                <img src={csrHighlight.image} alt="Students and the Ascend Digital team at Palm University Career Day" className="h-full w-full object-cover" />
+                <img src={csrHighlight.image} alt="Students and the Ascend Digital team at Palm University Career Day" className="h-full w-full object-cover" loading="lazy" decoding="async" />
               </div>
               <div className="flex flex-col justify-center p-8 lg:col-span-7 lg:p-12">
                 <Eyebrow tone="primary">CSR highlight</Eyebrow>

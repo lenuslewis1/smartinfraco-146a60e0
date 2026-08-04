@@ -34,7 +34,7 @@ export default function WebinarsPage() {
           <Reveal className="mt-14">
             <Link to={`/webinars/${featured.slug}`} className="group grid overflow-hidden border border-white/15 bg-secondary transition-colors duration-500 hover:bg-primary lg:grid-cols-12">
               <div className="relative aspect-[16/10] overflow-hidden bg-secondary lg:col-span-7 lg:aspect-auto">
-                <img src={featured.image} alt="" className="h-full w-full object-contain transition duration-700 group-hover:scale-105" />
+                <img src={featured.image} alt="" className="h-full w-full object-contain transition duration-700 group-hover:scale-105" loading="lazy" decoding="async" />
                 <div className="absolute inset-0 bg-gradient-to-t from-secondary/72 via-secondary/12 to-transparent transition-opacity group-hover:opacity-50" />
                 <div className="absolute bottom-5 left-5 inline-flex items-center gap-2 bg-primary px-4 py-3 font-mono text-[10px] uppercase tracking-[0.16em] text-secondary">
                   <PlayCircle className="h-4 w-4" />
@@ -75,7 +75,7 @@ export default function WebinarsPage() {
               <RevealItem key={webinar.slug} className="bg-background">
                 <Link to={`/webinars/${webinar.slug}`} className="group relative block h-full overflow-hidden bg-background transition-colors hover:bg-card">
                   <div className="relative aspect-[4/5] overflow-hidden bg-secondary">
-                    <img src={webinar.image} alt="" className="h-full w-full object-cover transition duration-700 group-hover:scale-105" />
+                    <img src={webinar.image} alt="" className="h-full w-full object-cover transition duration-700 group-hover:scale-105" loading="lazy" decoding="async" />
                     <div className="absolute inset-0 bg-gradient-to-t from-secondary/58 via-secondary/10 to-transparent opacity-80 transition-opacity group-hover:opacity-45" />
                     <span className="absolute right-5 top-5 font-display text-[10px] uppercase tracking-[0.22em] text-white/80">0{index + 2}</span>
                   </div>

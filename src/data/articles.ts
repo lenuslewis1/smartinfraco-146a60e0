@@ -1,7 +1,7 @@
 import connectivityHero from "@/assets/connectivity-hero.jpg";
 import cloudBg from "@/assets/cloud-bg.jpg";
 import ghanaNetworkMap from "@/assets/ghana-network-map.jpg";
-import serviceCyber from "@/assets/service-cyber-custom.jpg";
+import serviceCyber from "@/assets/service-cyber-custom.webp";
 
 export type ArticleSection = {
   heading: string;

@@ -25,6 +25,9 @@ export default function ArticleDetailPage() {
             src={article.image}
             alt=""
             className="absolute inset-0 h-full w-full object-cover"
+            loading="eager"
+            fetchPriority="high"
+            decoding="async"
           />
           <div className="absolute inset-0 bg-[linear-gradient(90deg,hsl(225_50%_8%_/_0.94)_0%,hsl(225_50%_8%_/_0.82)_42%,hsl(225_50%_8%_/_0.52)_72%,hsl(225_50%_8%_/_0.34)_100%)]" />
           <GridBackdrop variant="lines" className="opacity-25" />

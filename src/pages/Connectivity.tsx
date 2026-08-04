@@ -10,8 +10,8 @@ import Layout from "@/components/layout/Layout";
 import PageHero from "@/components/shared/PageHero";
 import Eyebrow from "@/components/ui-system/Eyebrow";
 import { Reveal, RevealGroup, RevealItem } from "@/components/ui-system/RevealOnScroll";
-import heroImage from "@/assets/hero-internet.png";
-import serviceConnectivityImage from "@/assets/service-connectivity-custom.jpg";
+import heroImage from "@/assets/hero-internet.webp";
+import serviceConnectivityImage from "@/assets/service-connectivity-custom.webp";
 
 const services = [
   {
@@ -137,11 +137,11 @@ export default function ConnectivityPage() {
       </section>
 
       <section className="relative overflow-hidden bg-white py-24 lg:py-36">
-        <img src={serviceConnectivityImage} alt="" className="absolute inset-0 h-full w-full object-cover opacity-[0.14]" />
+        <img src={serviceConnectivityImage} alt="" className="absolute inset-0 h-full w-full object-cover opacity-[0.14]" loading="lazy" decoding="async" />
         <div className="absolute inset-0 bg-white/88" />
         <div className="container-bleed relative grid gap-16 lg:grid-cols-12">
           <Reveal className="relative overflow-hidden bg-secondary p-8 text-white lg:col-span-4 lg:p-10">
-            <img src={serviceConnectivityImage} alt="" className="absolute inset-0 h-full w-full object-cover opacity-45" />
+            <img src={serviceConnectivityImage} alt="" className="absolute inset-0 h-full w-full object-cover opacity-45" loading="lazy" decoding="async" />
             <div className="absolute inset-0 bg-secondary/78" />
             <div className="relative">
             <Eyebrow>Service highlights</Eyebrow>

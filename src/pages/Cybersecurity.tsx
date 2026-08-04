@@ -3,8 +3,8 @@ import Layout from "@/components/layout/Layout";
 import PageHero from "@/components/shared/PageHero";
 import Eyebrow from "@/components/ui-system/Eyebrow";
 import { Reveal, RevealGroup, RevealItem } from "@/components/ui-system/RevealOnScroll";
-import heroImage from "@/assets/home-solution-cybersecurity.png";
-import serviceCyberImage from "@/assets/service-cyber-custom.jpg";
+import heroImage from "@/assets/home-solution-cybersecurity.webp";
+import serviceCyberImage from "@/assets/service-cyber-custom.webp";
 
 const services = [
   { icon: Shield, title: "Threat Detection & Response", copy: "Continuous monitoring and rapid action against evolving cyber threats." },
@@ -38,10 +38,10 @@ export default function CybersecurityPage() {
       </section>
 
       <section className="relative overflow-hidden bg-white py-24 lg:py-36">
-        <img src={serviceCyberImage} alt="" className="absolute inset-0 h-full w-full object-cover opacity-[0.14]" />
+        <img src={serviceCyberImage} alt="" className="absolute inset-0 h-full w-full object-cover opacity-[0.14]" loading="lazy" decoding="async" />
         <div className="absolute inset-0 bg-white/88" />
         <div className="container-bleed relative grid gap-16 lg:grid-cols-12">
-          <Reveal className="relative overflow-hidden bg-secondary p-8 text-white lg:col-span-4 lg:p-10"><img src={serviceCyberImage} alt="" className="absolute inset-0 h-full w-full object-cover opacity-45" /><div className="absolute inset-0 bg-secondary/78" /><div className="relative"><Eyebrow>Operating model</Eyebrow><h2 className="mt-6 font-display text-display-lg font-medium text-white">Cyber resilience is a cycle, not a product.</h2></div></Reveal>
+          <Reveal className="relative overflow-hidden bg-secondary p-8 text-white lg:col-span-4 lg:p-10"><img src={serviceCyberImage} alt="" className="absolute inset-0 h-full w-full object-cover opacity-45" loading="lazy" decoding="async" /><div className="absolute inset-0 bg-secondary/78" /><div className="relative"><Eyebrow>Operating model</Eyebrow><h2 className="mt-6 font-display text-display-lg font-medium text-white">Cyber resilience is a cycle, not a product.</h2></div></Reveal>
           <RevealGroup className="border-t border-secondary/15 lg:col-span-7 lg:col-start-6">
             {[{ n: "01", title: "Detect", copy: "SIEM, IDS/IPS and SOC analytics surface anomalies across the estate in real time." }, { n: "02", title: "Respond", copy: "Playbook-driven containment and structured incident management turn alerts into action." }, { n: "03", title: "Adapt", copy: "Threat intelligence and posture reviews continuously strengthen critical controls." }].map((step) => <RevealItem key={step.n}><article className="group grid grid-cols-[3rem_1fr] gap-5 border-b border-secondary/15 px-7 py-9 transition-colors duration-300 hover:bg-primary hover:text-secondary lg:px-8"><span className="font-mono text-[10px] text-secondary/40 transition-colors group-hover:text-secondary/60">{step.n}</span><div><h3 className="font-display text-3xl font-semibold text-secondary">{step.title}</h3><p className="mt-4 max-w-xl text-sm leading-7 text-muted-foreground transition-colors group-hover:text-secondary/75">{step.copy}</p></div></article></RevealItem>)}
           </RevealGroup>

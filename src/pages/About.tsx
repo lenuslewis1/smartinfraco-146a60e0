@@ -8,9 +8,9 @@ import Eyebrow from "@/components/ui-system/Eyebrow";
 import AnimatedCounter from "@/components/ui-system/AnimatedCounter";
 import MagneticButton from "@/components/ui-system/MagneticButton";
 import { Reveal } from "@/components/ui-system/RevealOnScroll";
-import aboutHero from "@/assets/about-hero.jpg";
+import aboutHero from "@/assets/about-hero.webp";
 import dataCentreBg from "@/assets/datacenter-bg.jpg";
-import nationalNetwork from "@/assets/feature-national-reach-network.png";
+import nationalNetwork from "@/assets/feature-national-reach-network.webp";
 
 const stats = [
   { value: 1000, suffix: " km", label: "Eastern corridor fibre backbone" },
@@ -35,6 +35,9 @@ export default function AboutPage() {
           src={aboutHero}
           alt=""
           className="absolute inset-0 h-full w-full object-cover"
+          loading="eager"
+          fetchPriority="high"
+          decoding="async"
         />
         <div className="absolute inset-0 bg-[linear-gradient(90deg,hsl(225_50%_8%_/_0.92)_0%,hsl(225_50%_8%_/_0.78)_34%,hsl(206_70%_50%_/_0.26)_66%,transparent_100%)]" />
         <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-secondary to-transparent" />
@@ -99,7 +102,7 @@ export default function AboutPage() {
 
         <div className="relative mx-auto mt-16 grid w-full max-w-[1500px] overflow-hidden px-5 sm:px-8 lg:grid-cols-[0.92fr_1.08fr] lg:px-12">
           <Reveal className="group relative min-h-[430px] overflow-hidden bg-secondary lg:min-h-[620px]">
-            <img src={aboutHero} alt="Ghana skyline" className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" />
+            <img src={aboutHero} alt="Ghana skyline" className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy" decoding="async" />
             <div className="absolute inset-0 bg-gradient-to-t from-secondary via-secondary/26 to-transparent" />
             <div className="absolute inset-x-0 bottom-0 p-8 lg:p-11">
               <p className="font-mono text-xs uppercase tracking-[0.18em] text-primary">Purpose</p>
@@ -151,6 +154,8 @@ export default function AboutPage() {
                 src={nationalNetwork}
                 alt="Illustration of connected digital infrastructure across Ghana"
                 className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                loading="lazy"
+                decoding="async"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-secondary via-secondary/12 to-transparent" />
               <div className="absolute inset-x-0 bottom-0 p-7 sm:p-9 lg:p-10">
@@ -214,7 +219,7 @@ export default function AboutPage() {
       <section className="relative overflow-hidden bg-white py-24 lg:py-32">
         <div className="relative mx-auto grid w-full max-w-[1500px] gap-5 px-5 sm:px-8 lg:grid-cols-2 lg:px-12">
           <Reveal className="group relative min-h-[560px] overflow-hidden bg-secondary text-white transition duration-500 hover:-translate-y-2 hover:shadow-[0_24px_80px_hsl(225_50%_12%_/_0.22)]">
-            <img src={dataCentreBg} alt="" className="absolute inset-0 h-full w-full object-cover opacity-74 transition duration-700 group-hover:scale-105" />
+            <img src={dataCentreBg} alt="" className="absolute inset-0 h-full w-full object-cover opacity-74 transition duration-700 group-hover:scale-105" loading="lazy" decoding="async" />
             <div className="absolute inset-0 bg-gradient-to-t from-secondary via-secondary/42 to-transparent" />
             <div className="absolute bottom-0 left-0 right-0 p-8 lg:p-10">
               <p className="font-mono text-xs uppercase tracking-[0.2em] text-primary">Infrastructure standard</p>

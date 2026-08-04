@@ -1,10 +1,10 @@
-import securingGhanasDigitalServices from "@/assets/webinars/securing-ghanas-digital-services.png";
-import technologyForecast from "@/assets/webinars/technology-forecast-2026.png";
-import dataSovereignty from "@/assets/webinars/data-sovereignty-trust.png";
-import digitalFirstBusiness from "@/assets/webinars/digital-first-business.png";
-import cybersecurityDigitalAge from "@/assets/webinars/cybersecurity-digital-age.png";
-import securingConnectivity from "@/assets/webinars/securing-connectivity.png";
-import dataCentresCloud from "@/assets/webinars/data-centres-cloud-solutions.png";
+import securingGhanasDigitalServices from "@/assets/webinars/securing-ghanas-digital-services.webp";
+import technologyForecast from "@/assets/webinars/technology-forecast-2026.webp";
+import dataSovereignty from "@/assets/webinars/data-sovereignty-trust.webp";
+import digitalFirstBusiness from "@/assets/webinars/digital-first-business.webp";
+import cybersecurityDigitalAge from "@/assets/webinars/cybersecurity-digital-age.webp";
+import securingConnectivity from "@/assets/webinars/securing-connectivity.webp";
+import dataCentresCloud from "@/assets/webinars/data-centres-cloud-solutions.webp";
 
 export type WebinarSection = { heading: string; body: string[] };
 

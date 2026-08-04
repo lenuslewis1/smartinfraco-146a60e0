@@ -34,7 +34,7 @@ export default function AwardsPage() {
             <p className="mt-7 max-w-md text-sm leading-7 text-white/60">Smart Infraco has been recognised for innovation, operational excellence and services that strengthen Ghana's digital infrastructure.</p>
           </Reveal>
           <Reveal className="group relative flex items-center overflow-hidden border border-white/15 bg-white lg:col-span-6 lg:col-start-7">
-            <img src={awardsShowcase} alt="Smart Infraco award trophies and recognition summary" className="w-full object-contain transition duration-700 group-hover:scale-[1.02]" />
+            <img src={awardsShowcase} alt="Smart Infraco award trophies and recognition summary" className="w-full object-contain transition duration-700 group-hover:scale-[1.02]" loading="lazy" decoding="async" />
             <div className="pointer-events-none absolute inset-0 ring-1 ring-inset ring-white/10" />
           </Reveal>
         </div>
@@ -60,6 +60,8 @@ export default function AwardsPage() {
                       src={awardsShowcase}
                       alt={`${award.title} trophy`}
                       className="absolute max-w-none transition duration-700 group-hover:scale-[1.025]"
+                      loading="lazy"
+                      decoding="async"
                       style={{
                         width: `${(showcaseWidth / award.crop.width) * 100}%`,
                         left: `${(-award.crop.x / award.crop.width) * 100}%`,

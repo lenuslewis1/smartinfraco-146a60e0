@@ -10,7 +10,7 @@ import Layout from "@/components/layout/Layout";
 import PageHero from "@/components/shared/PageHero";
 import Eyebrow from "@/components/ui-system/Eyebrow";
 import { Reveal, RevealGroup, RevealItem } from "@/components/ui-system/RevealOnScroll";
-import heroImage from "@/assets/hero-internet.png";
+import heroImage from "@/assets/hero-internet.webp";
 import deliveryImage from "@/assets/service-network.jpg";
 
 const services = [
@@ -136,6 +136,8 @@ export default function SoftwareDevelopmentPage() {
               src={deliveryImage}
               alt="Connected digital infrastructure"
               className="absolute inset-0 h-full w-full object-cover"
+              loading="lazy"
+              decoding="async"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-secondary/70 via-secondary/10 to-transparent" />
           </Reveal>

@@ -22,6 +22,8 @@ export default function PageHero({ title, description, bgImage, eyebrow, imagePo
         className="absolute inset-0 h-full w-full object-cover"
         style={{ objectPosition: imagePosition }}
         loading="eager"
+        fetchPriority="high"
+        decoding="async"
       />
       <div className="absolute inset-0 bg-black/25" />
       <div className="absolute inset-0 bg-gradient-to-r from-secondary/90 via-secondary/60 to-secondary/10" />

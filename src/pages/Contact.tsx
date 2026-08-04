@@ -8,7 +8,7 @@ import GlassCard from "@/components/ui-system/GlassCard";
 import { Reveal } from "@/components/ui-system/RevealOnScroll";
 import { motion } from "framer-motion";
 import { useToast } from "@/hooks/use-toast";
-import contactHero from "@/assets/contact-header-building.jpg";
+import contactHero from "@/assets/contact-header-building.webp";
 
 const inputClass =
   "w-full bg-transparent border-0 border-b border-hairline text-foreground text-sm py-3 placeholder:text-muted-foreground/60 focus:outline-none focus:border-secondary transition-colors";

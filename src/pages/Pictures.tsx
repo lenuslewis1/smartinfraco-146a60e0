@@ -47,7 +47,7 @@ export default function PicturesPage() {
             {pictures.map((picture, index) => (
               <RevealItem key={picture} className="bg-background">
                 <a href={picture} target="_blank" rel="noreferrer" className="group relative block aspect-[4/3] overflow-hidden bg-secondary">
-                  <img src={picture} alt={`Smart Infraco gallery image ${index + 1}`} className="h-full w-full object-cover transition duration-700 group-hover:scale-105" />
+                  <img src={picture} alt={`Smart Infraco gallery image ${index + 1}`} className="h-full w-full object-cover transition duration-700 group-hover:scale-105" loading="lazy" decoding="async" />
                   <div className="absolute inset-0 bg-gradient-to-t from-secondary/65 via-transparent to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
                   <span className="absolute bottom-5 left-5 inline-flex translate-y-2 items-center gap-2 text-[10px] uppercase tracking-[0.22em] text-primary-foreground opacity-0 transition-all duration-500 group-hover:translate-y-0 group-hover:opacity-100">
                     View image <ArrowUpRight className="h-3.5 w-3.5" />
